@@ -1,0 +1,22 @@
+<div class="action-loading" *ngIf="isLoading">
+    <div class="ui active text loader">{{ loading_action }}</div>
+</div>
+
+<div class="owl-carousel" style="display:block;">
+	<card [profile]="profile" [edit]="true"></card>
+</div>
+
+<div class="pagination-container">
+	<div class="ui pagination menu">
+
+		<a class="item" style="color:#fd7085" (click)="delete()">
+			<i style="color:#fd7085" class="trash layout icon"></i> Delete
+		</a>
+		<a class="item" style="color:#d7add0;" (click)="cancel()" [class.disabled]="disableCancel">
+			<i style="color:#d7add0;" class="close layout icon"></i> Cancel
+		</a>
+		<a class="item" (click)="save()" style="color:#36d8b4;" >
+			<i style="color:#36d8b4;" class="save layout icon"></i> Save
+		</a>
+	</div>
+</div>

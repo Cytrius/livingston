@@ -1,0 +1,34 @@
+<div class="action-loading" *ngIf="isLoading">
+    <div class="ui active text loader">{{ loading_action }}</div>
+</div>
+
+<div class="action-empty" *ngIf="isEmpty">
+    <div class="ui active text loader">{{ empty_action }}</div>
+</div>
+
+<div class="owl-carousel">
+	<card *ngFor="let profile of profiles; let index = index;" [profile]="profile" [attr.index]="index"></card>
+</div>
+
+<div *ngIf="profiles" class="pagination-container">
+	<div class="ui pagination menu">
+		<a class="icon item" (click)="previousProfile()" [class.disabled]="activeProfileIndex == 0">
+		  <i class="left chevron icon"></i>
+		</a>
+		<a *ngIf="!filter.query" class="disabled item">
+			{{ activeProfileIndex+1 }} of {{ results.all }} Profiles
+		</a>
+		<a *ngIf="filter.query" class="disabled item">
+			Found {{ results.all }} Profiles For '{{ filter.query }}'
+		</a>
+		<a *ngIf="filter.query" class="item" [routerLink]="['/dashboard']" style="color:#fd7085">
+			<i style="color:#fd7085" class="close layout icon"></i> Clear
+		</a>
+		<a class="item" (click)="edit()" style="color:#36d8b4;" >
+			<i style="color:#36d8b4;" class="pencil layout icon"></i> Edit
+		</a>
+		<a class="icon item" (click)="nextProfile()" [class.disabled]="activeProfileIndex == profiles.length-1">
+		  <i class="right chevron icon"></i>
+		</a>
+	</div>
+</div>

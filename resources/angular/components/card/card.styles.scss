@@ -1,0 +1,225 @@
+:host {
+	padding: 1.2em 2em 0.5em 2em;
+	display:block;
+}
+
+.ui.label {
+	border-radius:1em;
+}
+
+.ui.static.segments {
+    width: 1100px;
+    max-height: 100%;
+    margin: 0 auto;
+    border-radius:1em;
+
+    box-shadow:none;
+
+    &.edit {
+    	max-height: none;	
+    	margin-bottom: 7em;
+    }
+
+	&>.segment:first-child {
+		max-width:25%;
+		min-width:25%;
+	}
+	&>.segment:last-child {
+		max-width:25%;
+		min-width:25%;
+	}
+	&>.segment:not(:first-child):not(:last-child) {
+		background:rgba(250, 250, 250, 0.35);
+		box-shadow:inset 0px 0px 2px #e2e2e2;
+	}
+
+	&>.segment.scroll {
+		overflow-y: scroll;
+    	overflow-x: hidden;
+	}
+
+	&>.segment.scroll.edit {
+		.ui.button {
+			border-radius:50%;
+			padding:1em;
+			float:left;
+			&.inactive {
+				display:none;
+			}
+			margin-right:0.5em;
+		}
+		.hover-text, .hover-text-2 {
+			color:#ccc;
+			float:left;
+			margin: 0;
+    		height: 36px;
+    		line-height: 36px;
+    		margin-left:0.25em;
+    		text-transform:none;
+    		font-weight:100;
+		}
+		.hover-text-2 {
+			clear:left;
+			margin-left:calc( 36px + 0.5em );
+		}
+		.ui.segment.content:first-of-type {
+			clear:both;
+		}
+		.ui.segment.content {
+			h5 { float:left; margin-top:0; }
+			.ui.basic.button {
+				border:none;
+				float:right;
+			    border: none;
+			    box-shadow: none;
+			    padding: 0;
+			}
+			.ui.left.basic.button {
+				float:left;
+				border-radius: 0.5em;
+    			border: 1px solid #ccc;
+    			padding: 0.7em;
+			}
+		}
+	}
+
+	.ui.segment.content {
+		p {
+			color:#999;
+			font-size: 14px;
+			font-weight:normal;
+			line-height:1.5em;
+		}
+		border:none;
+	}
+
+	.ui.profile.image {
+		max-width:50%;
+		margin:0 auto;
+		margin-top:1em;
+		display:block;
+		z-index:1;
+		min-height: 123px;
+	}
+	.profile-border:after {
+	    content: ' ';
+	    display: block;
+	    position: absolute;
+	    background: blue;
+	    width: 132px;
+	    height: 133px;
+	    top: 0;
+	    left: 50%;
+	    margin-top: 1.65em;
+	    transform: translateX(-50%);
+	    border-radius: 50%;
+	    z-index: 0;
+		/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#bfefe7+0,b5ccdc+50,e1d8ed+100 */
+		background: rgb(191,239,231); /* Old browsers */
+		background: -moz-linear-gradient(top, rgba(191,239,231,1) 0%, rgba(181,204,220,1) 50%, rgba(225,216,237,1) 100%); /* FF3.6-15 */
+		background: -webkit-linear-gradient(top, rgba(191,239,231,1) 0%,rgba(181,204,220,1) 50%,rgba(225,216,237,1) 100%); /* Chrome10-25,Safari5.1-6 */
+		background: linear-gradient(to bottom, rgba(191,239,231,1) 0%,rgba(181,204,220,1) 50%,rgba(225,216,237,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#bfefe7', endColorstr='#e1d8ed',GradientType=0 ); /* IE6-9 */
+	}
+
+	.title {
+		text-align:center;
+		margin-top:1.5em;
+		.ui.header {
+			text-align:center;
+			margin-top:0.25em;
+			margin-bottom:0.5em;
+		}
+		.ui.header:not(:first-child) {
+			font-weight:normal;
+		}
+		padding:0 1em;
+	}
+
+	.profile-keywords {
+		margin-top:2em;
+		padding:0 1em;
+		text-align:center;
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		.ui.header {
+			text-align:center;
+			width:100%;
+		}
+		.ui.label {
+			margin-bottom:0.5em;
+			flex-grow:1;
+		}
+	}
+
+	.more-information {
+		margin-top:2em;
+		padding:0 1em;
+		.ui.header {
+			text-align:center;
+		}
+		.ui.form {
+
+			p {
+				color:#aaa;
+				font-weight:normal;
+			}
+		}
+	}
+
+	.colleagues {
+		margin-top:2em;
+		padding:0 1em;
+		display:flex;
+	    flex-direction: row;
+	    flex-wrap: wrap;
+	    justify-content: space-around;
+		.ui.header {
+			text-align:center;
+			width:100%;
+		}
+		.image {
+			width:90px; height:90px;
+			margin-bottom:1em;
+			&:nth-of-type(1) {
+				border:4px solid #7eb6f1;
+			}
+			&:nth-of-type(2) {
+				border:4px solid #d7add0;
+			}
+			&:nth-of-type(3) {
+				border:4px solid #3cd9b7;
+			}
+			&:nth-of-type(4) {
+				border:4px solid #fd7186;
+			}
+		}
+	}
+
+
+	.field .ui.mini.input input {
+		font-size: 13px !important;
+    	padding: 0.3em;
+		border-left: none;
+	    border-right: none;
+	    border-top: none;
+	    border-radius: 0;
+	}
+	.ui.selection.dropdown {
+		font-size: 13px !important;
+    	padding: 0.3em;
+		border-left: none;
+	    border-right: none;
+	    border-top: none;
+	    border-radius: 0;
+	}
+
+	.icon.red.flag {
+		color:#fd7085 !important;
+	}
+
+	.ui.very.basic.button {
+		border:none; box-shadow:none;
+	}
+}

@@ -1,0 +1,246 @@
+<div *ngIf="profile" class="ui static horizontal segments" [class.edit]="edit" [class.form]="edit">
+	<div class="ui segment">
+		<div class="profile-border">
+			<img class="ui medium circular bordered profile image" [attr.src]="profile?.photo">
+		</div>
+		<div *ngIf="!edit" class="title">
+			<h5 class="ui header">{{ profile?.name }}</h5>
+			<h5 class="ui header">{{ profile?.title }}</h5>
+			<h5 class="ui header">{{ profile?.company }}</h5>
+		</div>
+		<div *ngIf="edit" class="title">
+			<h5 class="ui header">
+				<div class="field">
+					<div class="ui mini input">
+						<input type="text" name="name" [(ngModel)]="profile.name" placeholder="Name">
+					</div>
+				</div>
+			</h5>
+			<h5 class="ui header">
+				<div class="field">
+					<div class="ui mini input">
+						<input type="text" name="title" [(ngModel)]="profile.title" placeholder="Title">
+					</div>
+				</div>
+			</h5>
+			<h5 class="ui header">
+				<div class="field">
+					<div class="ui mini input">
+						<input type="text" name="company" [(ngModel)]="profile.company" placeholder="Company">
+					</div>
+				</div>
+			</h5>
+		</div>
+		<div *ngIf="!edit && isArray(profile.keywords)" class="profile-keywords">
+			<h5 class="ui header">Profile Keywords</h5>
+			<span *ngFor="let keyword of profile.keywords" class="ui label">{{ keyword }}</span>
+		</div>
+		<div *ngIf="edit" class="profile-keywords">
+			<h5 class="ui header">Profile Keywords</h5>
+				<div class="ui fluid multiple search selection dropdown">
+					<input name="profile_keywords" type="hidden" [(ngModel)]="profile.keywords">
+					<div class="default text"></div>
+				</div>
+		</div>
+		<div *ngIf="!edit" class="more-information">
+			<div class="ui form">
+				<div class="inline field">
+					<label>Company Size</label>
+					<p>{{ profile?.company_size }}</p>
+				</div>
+				<div class="inline field">
+					<label>Industry</label>
+					<p>{{ profile?.industry }}</p>
+				</div>
+				<div class="inline field">
+					<label>Influence Role</label>
+					<p>{{ profile?.influence_role }}</p>
+				</div>
+			</div>
+		</div>
+		<div *ngIf="edit" class="more-information">
+			<div class="ui form">
+				<div class="field">
+					<div class="ui mini input">
+						<input type="number" placeholder="Company Size" name="company_size" [(ngModel)]="profile.company_size">
+					</div>
+				</div>
+				<div class="field">
+					<div class="ui mini input">
+						<input type="text" placeholder="Industry" name="industry" [(ngModel)]="profile.industry">
+					</div>
+				</div>
+				<div class="field">
+					<div class="ui mini input">
+						<input type="text" placeholder="Influence Role" name="influence_role" [(ngModel)]="profile.influence_role">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Middle Segment -->
+	<div *ngIf="!edit" class="ui segment scroll">
+		<div *ngIf="profile.notes" class="ui segment content">
+			<h5 class="ui header">Notes</h5>
+			<p>{{ profile.notes }}</p>
+		</div>
+		<div *ngIf="profile.daily_life" class="ui segment content">
+			<h5 class="ui header">Daily Life</h5>
+			<p>{{ profile.daily_life }}</p>
+		</div>
+		<div *ngIf="profile.demographic" class="ui segment content">
+			<h5 class="ui header">Demographic</h5>
+			<p>{{ profile.demographic }}</p>
+		</div>
+		<div *ngIf="profile.goals" class="ui segment content">
+			<h5 class="ui header">Goals (life/career)</h5>
+			<p>{{ profile.goals }}</p>
+		</div>
+		<div *ngIf="profile.story" class="ui segment content">
+			<h5 class="ui header">Story</h5>
+			<p>{{ profile.story }}</p>
+		</div>
+		<div *ngIf="profile.objections" class="ui segment content">
+			<h5 class="ui header">Objections</h5>
+			<p>{{ profile.objections }}</p>
+		</div>
+		<div *ngIf="profile?.red_flags && profile?.red_flags?.length" class="ui segment content">
+			<p *ngFor="let flag of profile.red_flags"><i class="icon red flag"></i> {{ flag }}</p>
+		</div>
+	</div>
+
+	<div *ngIf="edit" class="ui segment scroll edit">
+		<button _ngcontent-qdg-4="" class="ui basic tiny icon button maximize" (click)="addDetails()">
+			<i *ngIf="!actionOpen" class="add icon"></i>
+			<i *ngIf="actionOpen" class="minus icon"></i>
+		</button>
+		<button 
+			[class.disabled]="details.notes"
+			(mouseover)="hoverAction = 'Add Notes'" 
+			(mouseout)="hoverAction = ''" 
+			class="ui basic tiny icon button inactive" 
+			(click)="addDetailsSegment('notes')">
+				<i _ngcontent-qdg-4="" class="pencil icon"></i>
+		</button>
+		<button 
+			[class.disabled]="details.daily_life"
+			(mouseover)="hoverAction = 'Add Daily Life'"
+			(mouseout)="hoverAction = ''" 
+			class="ui basic tiny icon button inactive" 
+			(click)="addDetailsSegment('daily_life')">
+				<i _ngcontent-qdg-4="" class="heartbeat icon"></i>
+		</button>
+		<button 
+			[class.disabled]="details.demographic"
+			(mouseover)="hoverAction = 'Add Demographic Information'" 
+			(mouseout)="hoverAction = ''" 
+			class="ui basic tiny icon button inactive" 
+			(click)="addDetailsSegment('demographic')">
+				<i _ngcontent-qdg-4="" class="industry icon"></i>
+		</button>
+		<button 
+			[class.disabled]="details.goals"
+			(mouseover)="hoverAction = 'Add Goals'" 
+			(mouseout)="hoverAction = ''" 
+			class="ui basic tiny icon button inactive" 
+			(click)="addDetailsSegment('goals')">
+				<i _ngcontent-qdg-4="" class="checkmark icon"></i>
+		</button>
+		<button 
+			[class.disabled]="details.story"
+			(mouseover)="hoverAction = 'Add Story'" 
+			(mouseout)="hoverAction = ''" 
+			class="ui basic tiny icon button inactive" 
+			(click)="addDetailsSegment('story')">
+				<i _ngcontent-qdg-4="" class="book icon"></i>
+		</button>
+		<button
+			[class.disabled]="details.objections"
+			(mouseover)="hoverAction = 'Add Objections'" 
+			(mouseout)="hoverAction = ''" 
+			class="ui basic tiny icon button inactive" 
+			(click)="addDetailsSegment('objections')">
+				<i _ngcontent-qdg-4="" class="hand paper icon"></i>
+		</button>
+		<button
+			*ngIf="profile.red_flags"
+			[class.disabled]="profile.red_flags.length"
+			(mouseover)="hoverAction = 'Add Red Flags'" 
+			(mouseout)="hoverAction = ''" 
+			class="ui basic tiny icon button inactive" 
+			(click)="addDetailsSegment('red_flags')">
+				<i _ngcontent-qdg-4="" class="flag icon"></i>
+		</button>
+		<p class="hover-text">Click here to add details</p>
+		<p class="hover-text-2">{{ hoverAction }}</p>
+
+		<div *ngIf="details.notes" class="ui segment content">
+			<a class="ui basic icon button" (click)="removeDetails('notes')"><i class="close icon"></i></a>
+			<h5 class="ui header">Notes</h5>
+			<textarea name="notes" [(ngModel)]="profile.notes" placeholder="Fresh out of mechanical engineering at Carleton University. Likes to game for fun on the side but needed an entry level job."></textarea>
+		</div>
+		<div *ngIf="details.daily_life" class="ui segment content">
+			<a class="ui basic icon button" (click)="removeDetails('daily_life')"><i class="close icon"></i></a>
+			<h5 class="ui header">Daily Life</h5>
+			<textarea name="daily_life" [(ngModel)]="profile.daily_life" placeholder="Fresh out of mechanical engineering at Carleton University. Likes to game for fun on the side but needed an entry level job."></textarea>
+		</div>
+		<div *ngIf="details.demographic" class="ui segment content">
+			<a class="ui basic icon button" (click)="removeDetails('demographic')"><i class="close icon"></i></a>
+			<h5 class="ui header">Demographic</h5>
+			<textarea name="demographic" [(ngModel)]="profile.demographic" placeholder="Fresh out of mechanical engineering at Carleton University. Likes to game for fun on the side but needed an entry level job."></textarea>
+		</div>
+		<div *ngIf="details.goals" class="ui segment content">
+			<a class="ui basic icon button" (click)="removeDetails('goals')"><i class="close icon"></i></a>
+			<h5 class="ui header">Goals (life/career)</h5>
+			<textarea name="goals" [(ngModel)]="profile.goals" placeholder="Fresh out of mechanical engineering at Carleton University. Likes to game for fun on the side but needed an entry level job."></textarea>
+		</div>
+		<div *ngIf="details.story" class="ui segment content">
+			<a class="ui basic icon button" (click)="removeDetails('story')"><i class="close icon"></i></a>
+			<h5 class="ui header">Story</h5>
+			<textarea name="story" [(ngModel)]="profile.story" placeholder="Fresh out of mechanical engineering at Carleton University. Likes to game for fun on the side but needed an entry level job."></textarea>
+		</div>
+		<div *ngIf="details.objections" class="ui segment content">
+			<a class="ui basic icon button" (click)="removeDetails('objections')"><i class="close icon"></i></a>
+			<h5 class="ui header">Objections</h5>
+			<textarea name="objections" [(ngModel)]="profile.objections" placeholder="Fresh out of mechanical engineering at Carleton University. Likes to game for fun on the side but needed an entry level job."></textarea>
+		</div>
+
+		<div *ngIf="profile?.red_flags?.length" class="ui segment content">
+			<a class="ui basic icon button" (click)="removeDetails('red_flags')"><i class="close icon"></i></a>
+			<h5 class="ui header">Red Flags</h5>
+			<div *ngFor="let flag of profile.red_flags; let index = index; trackBy:customTrackBy" class="field">
+				<div class="ui left icon mini input">
+					<input type="text" [attr.raw_name]="'red_flag_'+index" name="red_flag_{{index}}" [(ngModel)]="profile.red_flags[index]">
+					<i class="flag red icon"></i>
+				</div>
+			</div>
+			<button class="ui basic left tiny icon button" (click)="addFlag()">
+			  <i class="add icon"></i>
+			</button>
+			<div style="clear:both"></div>
+		</div>
+
+	</div>
+
+	<div class="ui segment">
+		<div *ngIf="!edit && isArray(profile.skills)" class="profile-keywords">
+			<h5 class="ui header">Skills</h5>
+			<span *ngFor="let skill of profile.skills" class="ui label">{{ skill }}</span>
+		</div>
+		<div *ngIf="edit" class="profile-keywords">
+			<h5 class="ui header">Skills</h5>
+				<div class="ui fluid multiple search selection dropdown">
+					<input name="skills" type="hidden" [(ngModel)]="profile.skills">
+					<div class="default text"></div>
+				</div>
+		</div>
+		<div class="colleagues">
+			<h5 class="ui header">Colleagues</h5>
+			<img class="ui medium circular bordered image" src="https://media.licdn.com/mpr/mpr/shrinknp_100_100/AAEAAQAAAAAAAAesAAAAJDI5ZDEyNmIwLTU4ZjMtNDYxZS1iZDI3LWIxNWQ0NTc1ODY1ZA.jpg">
+			<img class="ui medium circular bordered image" src="https://media.licdn.com/mpr/mpr/shrinknp_100_100/p/7/000/253/05b/308dd6e.jpg">
+			<img class="ui medium circular bordered image" src="https://media.licdn.com/mpr/mpr/shrinknp_100_100/AAEAAQAAAAAAAAK1AAAAJDVmMThkZDc0LWNkZTQtNGM3OC05YWEyLTIyODM2ZjhmMGVmNg.jpg">
+			<img class="ui medium circular bordered image" src="https://media.licdn.com/mpr/mpr/shrinknp_100_100/p/1/005/097/25e/1134cf9.jpg">
+		</div>
+	</div>
+</div>

@@ -1,0 +1,12 @@
+<svg width="1600" height="198" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+ <defs>
+  <linearGradient id="svg_1" x1="NaN" x2="NaN" y1="-10.959%" y2="100%">
+   <stop stop-color="#fff" offset="0%"/>
+   <stop stop-color="#fff" offset="100%"/>
+  </linearGradient>
+ </defs>
+ <g>
+  <title>Layer 1</title>
+  <path fill="url(#svg_1)" fill-rule="evenodd" d="m1599.995,157.94437c-310.995,0 -409.893,-63.07461 -810.995,-62.94456c-400,0 -500,62.94456 -789,62.94456l0,40.05563l1600,0s-0.005,-24.96974 -0.005,-40.05563z" id="svg_2"/>
+ </g>
+</svg>

@@ -1,0 +1,44 @@
+:host {
+	overflow:hidden;
+	height:100%;
+	width:100%;
+	overflow-y:scroll;
+}
+
+.action-loading {
+	width:100%;
+	height:100%;
+	.ui.loader {
+		color:#999;
+	}
+	.ui.loader:before {
+		    border: .2em solid rgba(60, 217, 182, 0.38);
+	}
+	.ui.loader:after {
+		border-color: #7db6f0 transparent transparent;
+	}
+}
+
+.pagination-container {
+	text-align:center;
+	padding-top:0.5em;
+	.ui.pagination.menu {
+		/*box-shadow:none;*/
+		border-radius:1em;
+		font-family: 'Roboto', sans-serif;
+	}
+	.disabled.item {
+		color:#999999;
+		pointer-events:none;
+	}
+	.right.chevron.icon {
+		color:#83b9f1;
+	}
+	.left.chevron.icon {
+		color:#83b9f1;
+	}
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+}
