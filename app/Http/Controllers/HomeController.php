@@ -4,8 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use PHPHtmlParser\Dom;
+
 class HomeController extends Controller
 {
+
+    private $parent_site = 'http://vehicletransportation.ca/';
     /**
      * Create a new controller instance.
      *
@@ -13,7 +17,13 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        
+    }
+
+    public function leadForm() {
+        return view('welcome', [
+
+        ]);
     }
 
     /**
@@ -23,6 +33,8 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $this->middleware('auth');
+        
         $directory = base_path().'/public/dist';
 
         try {
