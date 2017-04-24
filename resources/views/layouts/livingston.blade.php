@@ -81,15 +81,27 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
             <div id="top-decoration" class="row full-width show-for-medium-down"></div>
             <nav class="top-bar full-width blue-background top_wrap hide-for-medium-down" data-topbar="" role="navigation" itemscope="" itemtype="http://schema.org/SiteNavigationElement">
                 <div class="row">
-                <!--<ul id="menu-top-right-menu" class="right inline-list"><li id="menu-item-947" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-947"><a href="http://vehicletransportation.ca/login/">Client Log-in</a></li>
-</ul><ul id="menu-top-left-menu" class="left inline-list top-menu-left small-6 left columns"><li id="menu-item-943" class="orange menu-item menu-item-type-post_type menu-item-object-page menu-item-943"><a href="http://vehicletransportation.ca/">Vehicle Transportation Services</a></li>
-</ul>-->
+
                     <div class="medium-6 columns text-left top-bar-featured">
-                        <a href="/" class="inline-block orange text-italic">Vehicle Transportation Service</a>
+                         @if(!\Auth::check())
+                            <a href="/" class="inline-block orange text-italic">Vehicle Transportation Service</a>
+                        @else
+                            <a href="/" class="inline-block orange text-italic">Welcome, {{ Auth::user()->name }}</a>
+                        @endif
                     </div>
                     <div class="medium-6 columns text-right margin-left">
                         <a href="tel:18002829892" class="orange">1-800-282-9892</a>
-                        <a href="/login/" class="bold-700">Client Log-In</a>                    </div>
+                        @if(!\Auth::check())
+                            <a href="/login/" class="bold-700">Client Log-In</a> 
+                        @else 
+                            <a href="/" class="bold-700">Request A Quote</a> 
+                            @if(\Auth::user()->is_rep || \Auth::user()->is_admin)
+                                 <a href="/dashboard" class="bold-700">Quote Management</a> 
+                            @endif
+                            <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="bold-700">Log Out</a> 
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">{{ csrf_field() }}</form>
+                        @endif
+                    </div>
                 </div>
             </nav>
 

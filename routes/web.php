@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/', 'HomeController@leadForm');
-
 Auth::routes();
+
+Route::get('/', 'HomeController@leadForm');
 
 Route::get('/dashboard', 'HomeController@index');
 Route::get('/dashboard/{a?}/{b?}/{c?}/{d?}/{e?}', 'HomeController@index');

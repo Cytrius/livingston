@@ -1,4 +1,4 @@
-@extends('layouts.auth')
+@extends('layouts.livingston')
 
 @section('content')
 <div class="container"  style="margin-top:5%">

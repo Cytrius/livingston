@@ -6,7 +6,7 @@
 
 <div class="lead-gen-module-container lead-gen-main">
     <div class="lead-gen-module">
-         <h2><span>KEVIN,</span></h2>
+         <h2><span style="text-transform:uppercase;">{{ $user->name }},</span></h2>
                     <h2>HOW CAN WE <span>HELP YOU?</span></h2>
             <p><b>Select options from the form below to define your transportation needs.</b><br>Livingston can help Simplify Trade — starting with a real-time quote.</p>
 

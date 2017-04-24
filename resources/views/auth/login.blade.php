@@ -1,7 +1,14 @@
-@extends('layouts.auth')
+@extends('layouts.livingston')
 
 @section('content')
-<div class="container" style="margin-top:5%">
+
+<div class="row masthead" style="margin-top:2em;">
+    <div class="small-12 columns compact">
+        <h2>Login</h2>
+    </div>
+</div>
+
+<div class="container" style="max-width: 300px;width: 100%;margin: 1em auto 6em auto;">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
@@ -53,7 +60,7 @@
                                     Login
                                 </button>
 
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
+                                <a style="display:none;" class="btn btn-link" href="{{ route('password.request') }}">
                                     Forgot Your Password?
                                 </a>
                             </div>

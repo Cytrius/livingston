@@ -17,12 +17,13 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        
+         $this->middleware('auth');
     }
 
     public function leadForm() {
-        return view('welcome', [
 
+        return view('lead-form', [
+            'user' => \Auth::user()
         ]);
     }
 
@@ -33,7 +34,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $this->middleware('auth');
         
         $directory = base_path().'/public/dist';
 
