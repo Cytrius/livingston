@@ -4,6 +4,132 @@
 
 <link href="{{ asset('css/form.css') }}" rel="stylesheet">
 
+<style>
+
+    .lead-gen-form-container {
+        margin-top:2em;
+    }
+
+    .hidden { display:none; }
+    .section-2 { display:none; }
+    .section-2-2 { display:none; }
+    .section-3 { display:none; }
+    .section-3-2 { display:none; }
+
+    .flatpickr-calendar, .hidden, .section-2, .section-2-2, .section-3, .section-3-2 {
+        -webkit-transition: none;
+        -moz-transition: none;
+        -ms-transition: none;
+        -o-transition: none;
+        transition: none;
+    }
+</style>
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/2.5.7/flatpickr.min.css" rel="stylesheet">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/2.5.7/flatpickr.min.js"></script>
+
+<script>
+
+/* Lead Form Script */
+$(document).ready(function() {
+
+    $('#freightForwardingRequired').change(function() {
+        if($(this).is(":checked")) {
+            $('#departureDate').parents('.hidden').fadeIn();
+            $("#departureDate").flatpickr({});
+        } else {
+            $('#departureDate').parents('.hidden').hide();
+            $('.section-2, .section-3').hide();
+        }   
+    });
+
+    $('#departureDate').change(function() {
+        if ($(this).val().length) {
+            $('.section-2').fadeIn(); 
+        } else {
+            $('.section-2, .section-3').hide();
+        }
+    });
+
+    $('#cb_pickupRequired').change(function() {
+        if($(this).is(":checked")) {
+            $('#cb_pickupRequired').parents('.checkbox-group').css({opacity:1});
+            $('#cb_pickupNoRequired').prop('checked', false);
+            $('#cb_pickupNoRequired').parents('.checkbox-group').css({opacity:0.3});
+            $('.section-2-2').fadeIn();
+            $('#cb_originCity').parents('.hidden').fadeIn();
+            $('#cb_originProvince').parents('.hidden').fadeIn();
+            $('#cb_originPostalCode').parents('.hidden').fadeIn();
+        } else {
+            $('.section-2-2').hide();
+            $('#cb_pickupNoRequired').parents('.checkbox-group').css({opacity:1});
+            $('#cb_originCity').parents('.hidden').hide();
+            $('#cb_originProvince').parents('.hidden').hide();
+            $('#cb_originPostalCode').parents('.hidden').hide();  
+        }    
+    });
+
+    $('#cb_pickupNoRequired').change(function() {
+        if($(this).is(":checked")) {
+            $('#cb_pickupNoRequired').parents('.checkbox-group').css({opacity:1});
+            $('#cb_pickupRequired').prop('checked', false);
+            $('#cb_pickupRequired').parents('.checkbox-group').css({opacity:0.3});
+            $('.section-2-2').fadeIn();
+            $('#cb_originCity').parents('.hidden').fadeIn();
+            $('#cb_originProvince').parents('.hidden').hide();
+            $('#cb_originPostalCode').parents('.hidden').hide();
+        } else {
+            $('.section-2-2').hide();
+            $('#cb_pickupRequired').parents('.checkbox-group').css({opacity:1});
+            $('#cb_originCity').parents('.hidden').hide();
+            $('#cb_originProvince').parents('.hidden').hide();
+            $('#cb_originPostalCode').parents('.hidden').hide();
+        }    
+    });
+
+    $('#cb_deliveryRequired').change(function() {
+        if($(this).is(":checked")) {
+            $('#cb_deliveryNoRequired').prop('checked', false);
+            $('.section-3').fadeIn();
+            $('#cb_destCity').parents('.hidden').fadeIn();
+            $('#cb_destProvince').parents('.hidden').fadeIn();
+            $('#cb_destPostalCode').parents('.hidden').fadeIn();
+        } else {
+            $('.section-3').hide();
+            $('#cb_destCity').parents('.hidden').hide();
+            $('#cb_destProvince').parents('.hidden').hide();
+            $('#cb_destPostalCode').parents('.hidden').hide();  
+        }    
+    });
+
+    $('#cb_deliveryNoRequired').change(function() {
+        if($(this).is(":checked")) {
+            $('#cb_deliveryRequired').prop('checked', false);
+            $('.section-3').fadeIn();
+            $('#cb_destCity').parents('.hidden').fadeIn();
+            $('#cb_destProvince').parents('.hidden').hide();
+            $('#cb_destPostalCode').parents('.hidden').hide();
+        } else {
+            $('.section-3').hide();
+            $('#cb_destCity').parents('.hidden').hide();
+            $('#cb_destProvince').parents('.hidden').hide();
+            $('#cb_destPostalCode').parents('.hidden').hide();  
+        }    
+    });
+
+    $('#vehicleCanBeDriven, #vehicleHasParkingBreak').change(function() {
+        if($('#vehicleCanBeDriven').is(":checked") && $('#vehicleHasParkingBreak').is(":checked")) {
+            $('.section-3-2').fadeIn();
+        } else {
+            $('.section-3-2').hide(); 
+        }    
+    });
+
+});
+
+</script>
+
 <div class="lead-gen-module-container lead-gen-main">
     <div class="lead-gen-module">
          <h2><span style="text-transform:uppercase;">{{ $user->name }},</span></h2>
@@ -17,26 +143,26 @@
     <div class="lead-gen-form">
         <div id="lg-form-services">
 
-            <div class="lg-section-holder">
-                <p class="lg-section-heading marginx2">Do you require freight forwarding services?</p>
+            <div class="lg-section-holder section-1">
+                <p class="lg-section-heading marginx2">Do you require vehicle transportation services?</p>
                 <div class="lg-section-content">
                     <div class="checkbox-group">
                         <input id="freightForwardingRequired" type="checkbox" value="yes">
-                        <label for="freightForwardingRequired">Yes, I require freight forwarding services.</label>
+                        <label for="freightForwardingRequired">Yes, I require vehicle transportation services.</label>
                     </div>
                 </div>
 
                 <br/>
 
-                <div style="height: 72px;">
+                <div style="height: 72px;" class="hidden">
                     <div class="lg-subsection-holder" style="opacity: 1;">
-                        <label for="cb_originPostalCode" class="lg-section-subheading">Expected Departure Date</label>
-                        <input id="cb_originPostalCode" value="" type="text" class="text">
+                        <label for="departureDate" class="lg-section-subheading">Expected Departure Date</label>
+                        <input id="departureDate" value="" type="text" class="text">
                     </div>
                 </div>
             </div>
 
-            <div class="lg-section-holder">
+            <div class="lg-section-holder section-2">
                 <p class="lg-section-heading marginx2">Do you need a pick-up service at the origin?</p>
                 <div class="lg-section-content">
 
@@ -52,21 +178,21 @@
 
                     <br/>
 
-                    <div class="marginx3" style="height: 72px;">
+                    <div class="marginx3 hidden" style="height: 72px;">
                         <div class="lg-subsection-holder" style="opacity: 1;">
-                            <label for="cb_originPostalCode" class="lg-section-subheading">Origin City</label>
-                            <input id="cb_originPostalCode" value="" type="text" class="text">
+                            <label for="cb_originCity" class="lg-section-subheading">Origin City</label>
+                            <input id="cb_originCity" value="" type="text" class="text">
                         </div>
                     </div>
 
-                    <div class="marginx3" style="height: 72px;">
+                    <div class="marginx3 hidden" style="height: 72px;">
                         <div class="lg-subsection-holder" style="opacity: 1;">
-                            <label for="cb_originPostalCode" class="lg-section-subheading">Origin State/Province</label>
-                            <input id="cb_originPostalCode" value="" type="text" class="text">
+                            <label for="cb_originProvince" class="lg-section-subheading">Origin State/Province</label>
+                            <input id="cb_originProvince" value="" type="text" class="text">
                         </div>
                     </div>
 
-                    <div style="height: 72px;">
+                    <div class="hidden" style="height: 72px;">
                         <div class="lg-subsection-holder" style="opacity: 1;">
                             <label for="cb_originPostalCode" class="lg-section-subheading">Origin Postal Code</label>
                             <input id="cb_originPostalCode" value="" type="text" class="text">
@@ -75,42 +201,44 @@
 
                 </div>
                 <br/><br/>
-                <p class="lg-section-heading marginx2">Do you need a delivery service at the destination?</p>
-                <div class="lg-section-content">
-                    <div class="checkbox-group">
-                        <input id="cb_deliveryRequired" type="checkbox" value="yes">
-                        <label for="cb_deliveryRequired">Yes, I need the shipment delivered.</label>
-                    </div>
-                    <br/>
-                    <div class="checkbox-group">
-                        <input id="cb_deliveryNoRequired" type="checkbox" value="yes">
-                        <label for="cb_deliveryNoRequired">No, I will pick up the shipment at the terminal.</label>
-                    </div>
-                    <br/>
-                    <div class="marginx3" style="height: 72px;">
-                        <div class="lg-subsection-holder" style="opacity: 1;">
-                            <label for="cb_originPostalCode" class="lg-section-subheading">Destination City</label>
-                            <input id="cb_originPostalCode" value="" type="text" class="text">
+                <div class="section-2-2">
+                    <p class="lg-section-heading marginx2">Do you need a delivery service at the destination?</p>
+                    <div class="lg-section-content">
+                        <div class="checkbox-group">
+                            <input id="cb_deliveryRequired" type="checkbox" value="yes">
+                            <label for="cb_deliveryRequired">Yes, I need the shipment delivered.</label>
                         </div>
-                    </div>
-
-                    <div class="marginx3" style="height: 72px;">
-                        <div class="lg-subsection-holder" style="opacity: 1;">
-                            <label for="cb_originPostalCode" class="lg-section-subheading">Destination State/Province</label>
-                            <input id="cb_originPostalCode" value="" type="text" class="text">
+                        <br/>
+                        <div class="checkbox-group">
+                            <input id="cb_deliveryNoRequired" type="checkbox" value="yes">
+                            <label for="cb_deliveryNoRequired">No, I will pick up the shipment at the terminal.</label>
                         </div>
-                    </div>
+                        <br/>
+                        <div class="marginx3 hidden" style="height: 72px;">
+                            <div class="lg-subsection-holder" style="opacity: 1;">
+                                <label for="cb_destCity" class="lg-section-subheading">Destination City</label>
+                                <input id="cb_destCity" value="" type="text" class="text">
+                            </div>
+                        </div>
 
-                    <div style="height: 72px;">
-                        <div class="lg-subsection-holder" style="opacity: 1;">
-                            <label for="cb_originPostalCode" class="lg-section-subheading">Destination Postal Code</label>
-                            <input id="cb_originPostalCode" value="" type="text" class="text">
+                        <div class="marginx3 hidden" style="height: 72px;">
+                            <div class="lg-subsection-holder" style="opacity: 1;">
+                                <label for="cb_destProvince" class="lg-section-subheading">Destination State/Province</label>
+                                <input id="cb_destProvince" value="" type="text" class="text">
+                            </div>
+                        </div>
+
+                        <div class="hidden" style="height: 72px;">
+                            <div class="lg-subsection-holder" style="opacity: 1;">
+                                <label for="cb_destPostalCode" class="lg-section-subheading">Destination Postal Code</label>
+                                <input id="cb_destPostalCode" value="" type="text" class="text">
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="lg-section-holder" style="border-bottom:none;">
+            <div class="lg-section-holder section-3" style="border-bottom:none;">
                 <p class="lg-section-heading marginx2">Vehicle can be driven?</p>
                 <div class="lg-section-content">
                     <div class="checkbox-group">
@@ -127,31 +255,33 @@
                     </div>
                 </div>
                 <br/>
-                <div class="marginx3" style="height: 72px;">
-                    <div class="lg-subsection-holder" style="opacity: 1;">
-                        <label for="cb_originPostalCode" class="lg-section-subheading">Vehicle Type</label>
-                        <input id="cb_originPostalCode" value="" type="text" class="text">
+                <div class="section-3-2">
+                    <div class="marginx3" style="height: 72px;">
+                        <div class="lg-subsection-holder" style="opacity: 1;">
+                            <label for="cb_originPostalCode" class="lg-section-subheading">Vehicle Type</label>
+                            <input id="cb_originPostalCode" value="" type="text" class="text">
+                        </div>
                     </div>
-                </div>
 
-                <div class="marginx3" style="height: 72px;">
-                    <div class="lg-subsection-holder" style="opacity: 1;">
-                        <label for="cb_originPostalCode" class="lg-section-subheading">Vehicle Make</label>
-                        <input id="cb_originPostalCode" value="" type="text" class="text">
+                    <div class="marginx3" style="height: 72px;">
+                        <div class="lg-subsection-holder" style="opacity: 1;">
+                            <label for="cb_originPostalCode" class="lg-section-subheading">Vehicle Make</label>
+                            <input id="cb_originPostalCode" value="" type="text" class="text">
+                        </div>
                     </div>
-                </div>
 
-                <div class="marginx3" style="height: 72px;">
-                    <div class="lg-subsection-holder" style="opacity: 1;">
-                        <label for="cb_originPostalCode" class="lg-section-subheading">Vehicle Model</label>
-                        <input id="cb_originPostalCode" value="" type="text" class="text">
+                    <div class="marginx3" style="height: 72px;">
+                        <div class="lg-subsection-holder" style="opacity: 1;">
+                            <label for="cb_originPostalCode" class="lg-section-subheading">Vehicle Model</label>
+                            <input id="cb_originPostalCode" value="" type="text" class="text">
+                        </div>
                     </div>
-                </div>
 
-                <div class="marginx3" style="height: 72px;">
-                    <div class="lg-subsection-holder" style="opacity: 1;">
-                        <label for="cb_originPostalCode" class="lg-section-subheading">Vehicle Year</label>
-                        <input id="cb_originPostalCode" value="" type="text" class="text">
+                    <div class="marginx3" style="height: 72px;">
+                        <div class="lg-subsection-holder" style="opacity: 1;">
+                            <label for="cb_originPostalCode" class="lg-section-subheading">Vehicle Year</label>
+                            <input id="cb_originPostalCode" value="" type="text" class="text">
+                        </div>
                     </div>
                 </div>
             </div>
