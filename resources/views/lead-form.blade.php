@@ -396,7 +396,7 @@ $(document).ready(function() {
                     </div>
 
                     <div class="row marginx2">
-                        <div class="row-item">
+                        <div class="row-item" style="display:block; float:left">
                             <div class="field-label">Year</div>
                             <select id="cb_vehicleYear" name="cb_vehicleYear" class="" style="background-color:#fff;">
                                 <option value="2017">2017</option>
@@ -518,7 +518,7 @@ $(document).ready(function() {
                                 <option value="178954">1901</option>
                             </select>
                         </div>
-                        <div class="row-item">
+                        <div class="row-item" style="display:block; float:left">
                             <div class="field-label">Make</div>
                             <select id="cb_vehicleMake" name="cb_vehicleMake" style="background-color:#fff;">
                                 <option value="" selected="selected">Select Make</option>
@@ -580,7 +580,7 @@ $(document).ready(function() {
                                 <option value="Other">Other</option>
                             </select>
                         </div>
-                        <div class="row-item">
+                        <div class="row-item" style="display:block; float:left">
                             <div class="field-label">Model</div>
                             <input id="cb_vehicleModel" name="cb_vehicleModel" type="text" placeholder="Enter vehicle model" class="small">
                         </div>
