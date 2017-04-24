@@ -18,7 +18,7 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password')->nullable();
-            $gable->string('account_number')->nullable();
+            $table->string('account_number')->nullable();
             $table->boolean('is_rep')->default(0)->nullable();
             $table->boolean('is_admin')->default(0)->nullable();
             $table->rememberToken();
