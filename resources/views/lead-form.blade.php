@@ -227,8 +227,10 @@ $(document).ready(function() {
             $('.lead-gen-not-enough').fadeIn();
         });
 
-        $('.lg-section-holder:visible:not(.after)').css({'border-bottom':'1px solid #B6BCC1'})
-        $('.lg-section-holder:visible:not(.after)').last().css({'border-bottom':'none'});
+        setTimeout(function() {
+            $('.lg-section-holder:visible:not(.after)').css({'border-bottom':'1px solid #B6BCC1'})
+            $('.lg-section-holder:visible:not(.after)').last().css({'border-bottom':'none'});
+        });
     }
 
     notEnoughDetail();
