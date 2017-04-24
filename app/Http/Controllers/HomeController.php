@@ -27,6 +27,14 @@ class HomeController extends Controller
         ]);
     }
 
+    public function quote(Request $request) {
+
+        return view('quote', [
+            'user' => \Auth::user(),
+            'form' => $request->all()
+        ]);
+    }
+
     /**
      * Show the application dashboard.
      *
