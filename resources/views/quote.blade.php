@@ -8,6 +8,10 @@
 
 <style>
 
+    .lead-gen-module {
+        padding-top:60px;
+    }
+
     .lg-section-holder:visible {
         border-bottom:none;   
     }
@@ -44,7 +48,6 @@ $(document).ready(function() {
     <div class="lead-gen-module">
          <h2><span style="text-transform:uppercase;">{{ $user->name }},</span></h2>
                     <h2>Your Real-time Quote <span></span></h2>
-            <p>Please see your quote breakdown below.</p>
 
     </div>
 </div>
