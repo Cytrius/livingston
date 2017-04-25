@@ -47,6 +47,7 @@ img.emoji {
 	padding: 0 !important;
 }
 </style>
+<script src="https://use.fontawesome.com/1c93c020aa.js"></script>
 <link rel="stylesheet" id="f5bb-app-stylesheet-css" href="http://vehicletransportation.ca/wp-content/themes/vts2016/library/css/main.css" type="text/css" media="all">
 <link rel="stylesheet" id="f5bb-app-genericons-css" href="http://vehicletransportation.ca/wp-content/themes/vts2016/library/css/genericons/genericons.css" type="text/css" media="all">
 <script type="text/javascript" src="http://vehicletransportation.ca/wp-content/themes/vts2016/library/bower_components/modernizr/modernizr.js"></script>

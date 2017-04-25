@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use PHPHtmlParser\Dom;
 
+use App\Account as AccountModel;
+
 class HomeController extends Controller
 {
 
@@ -23,7 +25,8 @@ class HomeController extends Controller
     public function leadForm() {
 
         return view('lead-form', [
-            'user' => \Auth::user()
+            'user' => \Auth::user(),
+            'account' => AccountModel::where('id', \Auth::user()->account_id)->first()
         ]);
     }
 
@@ -31,6 +34,7 @@ class HomeController extends Controller
 
         return view('quote', [
             'user' => \Auth::user(),
+            'account' => AccountModel::where('id', \Auth::user()->account_id)->first(),
             'form' => $request->all()
         ]);
     }

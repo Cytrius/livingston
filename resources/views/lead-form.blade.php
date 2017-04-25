@@ -44,20 +44,12 @@
 /* Lead Form Script */
 $(document).ready(function() {
 
-    $('#freightForwardingRequired').change(function() {
-        if($(this).is(":checked")) {
-            $('#departureDate').parents('.hidden').fadeIn();
-            $("#departureDate").flatpickr({});
-        } else {
-            $('#departureDate').parents('.hidden').hide();
-            $('.section-2, .section-3').hide();
-        } 
-        notEnoughDetail();  
-    });
+    $("#departureDate").flatpickr({});
 
     $('#departureDate').change(function() {
         if ($(this).val().length) {
             $('.section-2').fadeIn(); 
+            $('#cb_pickupRequired').click();
         } else {
             $('.section-2, .section-3').hide();
         }
@@ -107,6 +99,7 @@ $(document).ready(function() {
                 $('#cb_originPostalCode').val().length
             ) {
                 $('.section-2-2').fadeIn();
+                $('#cb_deliveryRequired').click();
             } else {
                 $('.section-2-2, .section-3').hide();
             }
@@ -114,8 +107,9 @@ $(document).ready(function() {
         if ($('#cb_pickupNoRequired').is(":checked")) {
             if (
                 $('#cb_originCity').val().length
-            ) {
+            ) { 
                 $('.section-2-2').fadeIn();
+                $('#cb_deliveryRequired').click();
             } else {
                 $('.section-2-2, .section-3').hide();
             }
@@ -167,6 +161,7 @@ $(document).ready(function() {
                 $('#cb_destPostalCode').val().length
             ) {
                 $('.section-3').fadeIn();
+                $('#vehicleCanBeDriven, #vehicleHasParkingBreak, #vehicleEmpty').click();
             } else {
                 $('.section-3').fadeOut();
             }
@@ -176,6 +171,7 @@ $(document).ready(function() {
                 $('#cb_destCity').val().length
             ) {
                  $('.section-3').fadeIn();
+                $('#vehicleCanBeDriven, #vehicleHasParkingBreak, #vehicleEmpty').click();
             } else {
                 $('.section-3').fadeOut();
             }
@@ -183,10 +179,12 @@ $(document).ready(function() {
         notEnoughDetail();
     });
 
-    $('#vehicleCanBeDriven, #vehicleHasParkingBreak').change(function() {
-        if($('#vehicleCanBeDriven').is(":checked") && $('#vehicleHasParkingBreak').is(":checked")) {
+    $('#vehicleCanBeDriven, #vehicleHasParkingBreak, #vehicleEmpty').change(function() {
+        if($('#vehicleCanBeDriven').is(":checked") && $('#vehicleHasParkingBreak').is(":checked") && $('#vehicleEmpty').is(":checked")) {
             $('.section-3-2').fadeIn();
+            $('.disclaimer').hide();
         } else {
+            $('.disclaimer').fadeIn();
             $('.section-3-2').hide(); 
         }    
         notEnoughDetail();
@@ -264,17 +262,9 @@ $(document).ready(function() {
         <div id="lg-form-services">
 
             <div class="lg-section-holder section-1">
-                <p class="lg-section-heading marginx2">Do you require vehicle transportation services?</p>
-                <div class="lg-section-content">
-                    <div class="checkbox-group">
-                        <input id="freightForwardingRequired" name="freightForwardingRequired" type="checkbox" value="yes">
-                        <label for="freightForwardingRequired">Yes, I require vehicle transportation services.</label>
-                    </div>
-                </div>
+                <p class="lg-section-heading marginx2">Let us provide you with a real-time quote:</p>
 
-                <br/>
-
-                <div style="height: 72px;" class="hidden">
+                <div style="height: 72px;">
                     <div class="lg-subsection-holder" style="opacity: 1;">
                         <label for="departureDate" class="lg-section-subheading">Expected Departure Date</label>
                         <input id="departureDate" name="departureDate" value="" type="text" class="text">
@@ -376,6 +366,21 @@ $(document).ready(function() {
                     </div>
                 </div>
                 <br/>
+                <p class="lg-section-heading marginx2">Vehicle contains no personal effects?</p>
+                <div class="lg-section-content">
+                    <div class="checkbox-group">
+                        <input id="vehicleEmpty" name="vehicleEmpty" type="checkbox" value="yes">
+                        <label for="vehicleEmpty">Yes, vehicle will not contain any personal effects.</label>
+                    </div>
+                </div>
+                <br/>
+                <div class="disclaimer">
+                    <div class="lg-section-holder after" style="border: none; padding-bottom:0">
+                        <p class="lg-section-heading marginx3" style="font-size: 22px !important; margin-bottom:0">
+                        <i class="fa fa-2x fa-warning" style="float: left;padding-right: 0.5em;padding-top: 0.1em;"></i> It is required that the vehicle can be driven, has function parking breaks, and contains no personal effects in order for us to provide you a real-time quote.</p>
+                    </div>
+                </div>
+                <br/>
                 <div class="section-3-2">
                     <div class="marginx3" style="height: 72px;">
                         <div class="lg-subsection-holder" style="opacity: 1;">
@@ -383,8 +388,7 @@ $(document).ready(function() {
                             <div id="pd_country" style="height:auto;">
                                 <select name="cb_vehicleType" id="cb_vehicleType" style="width:311px; background-color:#fff;">
                                     <option value=""></option>
-                                    <option value="" selected="selected">Please Select...</option>
-                                    <option value="car">Car</option>
+                                    <option value="car" selected="selected">Car</option>
                                     <option value="car">Van</option>
                                     <option value="car">Suv</option>
                                     <option value="car">Small Truck</option>
@@ -629,22 +633,22 @@ $(document).ready(function() {
                     </div>
                     <div class="marginx1 form-check form-check-phone">
                         <label class="" for="contact_business_phone">Business Phone *</label>
-                        <input type="text" class="" name="contact_business_phone" id="contact_business_phone" value="" size="30" maxlength="40">
+                        <input type="text" class="" name="contact_business_phone" id="contact_business_phone" size="30" maxlength="40" value="{{ $user->phone ? $user->phone : $account->phone }}">
                         <span class="errormsg">Please provide a valid telephone number.</span>
                     </div>
                     <div class="marginx1 form-check form-check-ignore">
                         <label class="" for="contact_company">Company *</label>
-                        <input type="text" class="" name="contact_company" id="contact_company" value="" size="30" maxlength="255">
+                        <input type="text" class="" name="contact_company" id="contact_company" size="30" maxlength="255" value="{{ $account->company }}">
                         <span class="errormsg">Please provide the name of your company.</span>
                     </div>
                     <div class="marginx1 form-check form-check-ignore">
                         <label class="" for="contact_address">Address *</label>
-                        <input type="text" class="" name="contact_address" id="contact_address" value="" size="30" maxlength="255">
+                        <input type="text" class="" name="contact_address" id="contact_address" size="30" maxlength="255" value="{{ $account->address }}">
                         <span class="errormsg">Please provide your address.</span>
                     </div>
                     <div class="marginx1 form-check form-check-ignore">
                         <label class="" for="contact_city">City *</label>
-                        <input type="text" class="" name="contact_city" id="contact_city" value="" size="30" maxlength="40">
+                        <input type="text" class="" name="contact_city" id="contact_city" size="30" maxlength="40" value="{{ $account->city }}">
                         <span class="errormsg">Please provide your city.</span>
                     </div>
                     <div id="pd_country" class="marginx1 form-check">
