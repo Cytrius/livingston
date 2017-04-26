@@ -50,7 +50,8 @@ $(document).ready(function() {
     $('#departureDate').change(function() {
         if ($(this).val().length) {
             $('.section-2').fadeIn(); 
-            $('#cb_pickupRequired').click();
+            if (!$('#cb_pickupRequired').is(":checked"))
+                $('#cb_pickupRequired').click();
         } else {
             $('.section-2, .section-3').hide();
         }
@@ -100,7 +101,8 @@ $(document).ready(function() {
                 $('#cb_originPostalCode').val().length
             ) {
                 $('.section-2-2').fadeIn();
-                $('#cb_deliveryRequired').click();
+                if (!$('#cb_deliveryRequired').is(":checked"))
+                    $('#cb_deliveryRequired').click();
             } else {
                 $('.section-2-2, .section-3').hide();
             }
@@ -110,7 +112,8 @@ $(document).ready(function() {
                 $('#cb_originCity').val().length
             ) { 
                 $('.section-2-2').fadeIn();
-                $('#cb_deliveryRequired').click();
+                if (!$('#cb_deliveryRequired').is(":checked"))
+                    $('#cb_deliveryRequired').click();
             } else {
                 $('.section-2-2, .section-3').hide();
             }
@@ -162,7 +165,8 @@ $(document).ready(function() {
                 $('#cb_destPostalCode').val().length
             ) {
                 $('.section-3').fadeIn();
-                $('#vehicleCanBeDriven, #vehicleHasParkingBreak, #vehicleEmpty').click();
+                if (!$('#vehicleCanBeDriven, #vehicleHasParkingBreak, #vehicleEmpty').is(":checked"))
+                    $('#vehicleCanBeDriven, #vehicleHasParkingBreak, #vehicleEmpty').click();
             } else {
                 $('.section-3').fadeOut();
             }
@@ -172,7 +176,8 @@ $(document).ready(function() {
                 $('#cb_destCity').val().length
             ) {
                  $('.section-3').fadeIn();
-                $('#vehicleCanBeDriven, #vehicleHasParkingBreak, #vehicleEmpty').click();
+                if (!$('#vehicleCanBeDriven, #vehicleHasParkingBreak, #vehicleEmpty').is(":checked"))
+                    $('#vehicleCanBeDriven, #vehicleHasParkingBreak, #vehicleEmpty').click();
             } else {
                 $('.section-3').fadeOut();
             }
