@@ -62,6 +62,14 @@ $(document).ready(function() {
                 <br/>
 
                 <h3 style="color:#ccc;">Account</h3>
+                @foreach($account->toArray() as $key=>$val)
+                    <b>{{ $key }}:</b> {{ $val }}
+                    <br/>
+                @endforeach
+
+                <br/>
+
+                <h3 style="color:#ccc;">User</h3>
                 @foreach($user->toArray() as $key=>$val)
                     <b>{{ $key }}:</b> {{ $val }}
                     <br/>
