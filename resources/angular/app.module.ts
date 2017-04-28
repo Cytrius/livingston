@@ -11,11 +11,9 @@ import { routing } from '@app/app.routes';
 
 /* Common Views */
 import { DashboardView } from '@app/views/dashboard/dashboard.view';
-import { EditProfileView } from '@app/views/edit-profile/edit-profile.view';
 
 /* Common Components */
 import { HeaderComponent } from '@app/components/header/header.component';
-import { CardComponent } from '@app/components/card/card.component';
 
 @NgModule({
     imports: [
@@ -33,11 +31,9 @@ import { CardComponent } from '@app/components/card/card.component';
         
         /* Common Views */
         DashboardView,
-        EditProfileView,
 
         /* Components */
-        HeaderComponent,
-        CardComponent
+        HeaderComponent
     ],
     bootstrap:    [ AppComponent ]
 })

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.livingstonapp')
 
 @section('content')
     <!-- Application Container -->

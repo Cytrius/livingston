@@ -47,7 +47,7 @@ $(document).ready(function() {
 <div class="lead-gen-module-container lead-gen-main">
     <div class="lead-gen-module">
          <h2><span style="text-transform:uppercase;">{{ $user->name }},</span></h2>
-                    <h2>Your Real-time Quote <span></span></h2>
+                    <h2>Your Transportation Quote <span></span></h2>
 
     </div>
 </div>

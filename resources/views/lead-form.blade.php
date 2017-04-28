@@ -34,6 +34,10 @@
         display:none;
     }
 
+    .lead-gen-button.grey {
+        background-color:#bcc5ce !important;
+    }
+
 </style>
 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/2.5.7/flatpickr.min.css" rel="stylesheet">
@@ -239,15 +243,21 @@ $(document).ready(function() {
 
     notEnoughDetail();
 
+    $('.lead-gen-button.grey').click(function() {
+        $('.contact-info-static').hide();
+        $('.lead-gen-button.grey').hide();
+        $('.contact-info').fadeIn();
+    });
+
     $('.contact-anyway').click(function() {
-        $('.lead-gen-button').text('Get A Quote');
+        $('.lead-gen-button:not(.grey)').text('Get A Quote');
         $('.lead-gen-not-enough').fadeOut(300, function() {
             $('.lead-gen-details').fadeIn();
         });
         return false;
     });
 
-    $('.lead-gen-button').click(function() {
+    $('.lead-gen-button:not(.grey)').click(function() {
         $('form.lead-form').submit();
     });
 
@@ -622,9 +632,13 @@ $(document).ready(function() {
         <div id="lg-form-personal">
             <!-- FORM: Personal Details -->
             <div class="lg-section-holder" style="border: none;">
-                <p class="lg-section-heading marginx3">Who should we contact about this quote?</p>
 
-                <div class="lg-section-content">
+                <p class="lg-section-heading marginx3 visible contact-info-static" style="margin-bottom:0">A copy of this quote will be sent to {{ $user->email }}.</p>
+
+
+                <p class="lg-section-heading marginx3 hidden contact-info">Who should we contact about this quote?</p>
+
+                <div class="lg-section-content hidden contact-info" style="margin-bottom:0">
                     <div class="marginx1 form-check form-check-email">
                         <label class="" for="contact_email">Email *</label>
                         <input type="text" class="" name="contact_email" id="contact_email" value="{{ $user->email }}" size="30" maxlength="255">
@@ -757,34 +771,11 @@ $(document).ready(function() {
 
                         </div>
                     </div>
-                    <div class="lg-subsection-holder">
-                        <div id="pd_castl" class="marginx1 form-check">
-                            <div>
-                                <label class="marginx2"><span class="errormsg" style="padding-left:0;"></span>Yes, I consent to receive Livingston emails.</label>
-                                <div class="lg-section-content radio-group">
-                                    <input name="contact_casl" id="contact_caslYES" type="radio" value="yes">
-                                    <label for="contact_caslYES">Yes</label>
-                                    <input name="contact_casl" id="contact_caslNO" type="radio" value="no">
-                                    <label for="contact_caslNO">No</label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- error message for errors elsewhere in form -->
-                <div class="lg-section-content">
-                    <div class="errorflag-holder">
-                        <span class="errormsg errorflag" style="display: none;">Errors have been found in your form. Please verify before submitting.</span>
-                    </div>
-                </div>
-
-                <div class="lg-section-content">
-                    <span class="">* = required information</span>
                 </div>
             </div>
             <div id="lg-form-submit">
                 <button type="button" class="lead-gen-button">Get A Real-Time Quote</button>
+                <button type="button" class="lead-gen-button grey">Edit Contact</button>
             </div>
         </div>
     </div>

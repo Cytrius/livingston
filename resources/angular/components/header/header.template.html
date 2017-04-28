@@ -1,58 +1,21 @@
 <div class="ui container">
-    <div class="ui huge secondary menu">
-        <div class="header item">
-            <a [routerLink]="['/dashboard']"><img class="logo" src="/images/logo.png"></a>
-        </div>
-        <div class="search item">
-            <div class="ui transparent left icon large input">
-                <i class="search link icon"></i>
-                <input class="prompt" type="text" (keypress)="searchKeyPress($event.keyCode)" placeholder="Search job titles, industry, profile keywords..." [(ngModel)]="query">
-            </div>
-        </div>
-        <div class="right icon secondary menu">
-            <a class="item" href="https://chrome.google.com/webstore/detail/sonas/hklhekgmcpifpbljmoadibgomeameabm" target="_blank">
-                <i class="chrome circle large icon"></i>
-            </a>
-            <a class="item" [routerLink]="['/dashboard', 'new']">
-                <i class="add circle large icon"></i>
-            </a>
-        </div>
-    </div>
-    <div class="ui breadcrumb">
-        <a class="section" [routerLink]="['/dashboard', 'search', 'Oil and Gas']">Oil and Gas</a>
-        <span class="divider">/</span>
-        <a class="section" [routerLink]="['/dashboard', 'search', 'Development']">Development</a>
-        <span class="divider">/</span>
-        <a class="section" [routerLink]="['/dashboard', 'search', 'Marketing Agencies']">Marketing Agencies</a>
-        <span class="divider">/</span>
-        <a class="section" [routerLink]="['/dashboard', 'search', 'Automotive']">Automotive</a>
-        <span class="divider">/</span>
-        <a class="section" [routerLink]="['/dashboard', 'search', 'Logistics']">Logistics</a>
-        <span class="divider">/</span>
-        <a class="section" [routerLink]="['/dashboard', 'search', 'Contracting']">Contracting</a>
-        <span class="divider">/</span>
-        <a class="section" [routerLink]="['/dashboard', 'search', 'Entertainment']">Entertainment</a>
-        <span class="divider">/</span>
-        <a class="section" [routerLink]="['/dashboard', 'search', 'Broadcasting']">Broadcasting</a>
-        <span class="divider">/</span>
-        <a class="section" [routerLink]="['/dashboard', 'search', 'Education']">Education</a>
-        <span class="divider">/</span>
-        <a class="section" [routerLink]="['/dashboard', 'search', 'Hospitality']">Hospitality</a>
-        <span class="divider">/</span>
-        <a class="section" [routerLink]="['/dashboard', 'search', 'Trades']">Trades</a>
-    </div>
-</div>
 
-<div class="ui small modal">
-  <div class="ui icon header">
-    Chrome Extension
-  </div>
-  <div class="content">
-    <p>Drag and drop the extension file into your Chrome Extension page (Menu > More Tools > Extensions)</p>
-  </div>
-  <div class="actions">
-    <div class="ui ok button">
-      OK
+  <div class="ui basic segment">
+
+    <h1 style="font-size:36px; margin-bottom:0;" class="ui header">RFQ Management</h1>
+
+    <div style="margin-top:0;" class="ui secondary pointing menu">
+      <a class="active item">
+        Quotes
+      </a>
+      <a class="item">
+        Rates
+      </a>
+      <a class="item">
+        Accounts
+      </a>
     </div>
+
   </div>
+
 </div>

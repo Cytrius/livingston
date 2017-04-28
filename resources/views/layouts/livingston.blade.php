@@ -97,7 +97,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
                         @else 
                             <a href="/" class="bold-700">Request A Quote</a> 
                             @if(\Auth::user()->is_rep || \Auth::user()->is_admin)
-                                 <a href="/dashboard" class="bold-700">Quote Management</a> 
+                                 <a href="/dashboard" class="bold-700">Administrators</a> 
                             @endif
                             <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="bold-700">Log Out</a> 
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">{{ csrf_field() }}</form>
