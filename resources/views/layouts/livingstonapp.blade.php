@@ -169,7 +169,7 @@
 
 
 
-    <main id="liContent">
+    <main id="liContent" style="overflow:visible;">
     
         @yield('content')
 
@@ -183,7 +183,7 @@
 
     	<!-- Analytics plugin did load --><script type="text/javascript" src="http://vehicletransportation.ca/wp-content/themes/vts2016/library/js/rem-unit-polyfill.min.js"></script>
 
-    <script type="text/javascript" src="http://vehicletransportation.ca/wp-content/themes/vts2016/library/js/app.js"></script>
+    <!--<script type="text/javascript" src="http://vehicletransportation.ca/wp-content/themes/vts2016/library/js/app.js"></script>-->
   
     <!-- JQuery Sortable CDN -->
     <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>

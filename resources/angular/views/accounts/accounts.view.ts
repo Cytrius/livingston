@@ -7,24 +7,25 @@ declare var $:any;
 declare var window:any;
 
 @Component({
-  templateUrl: './dashboard.template.html',
-  styleUrls: ['./dashboard.styles.scss'],
+  templateUrl: './accounts.template.html',
+  styleUrls: ['./accounts.styles.scss'],
   providers: [AppService]
 })
-export class DashboardView  {
+export class AccountsView  {
 
-    private quotes:any[];
+    private accounts:any[];
 
     private filterOptions:any = {
       origins: [],
       destinations: [],
+      types: [],
       accounts: []
     };
 
     private filterSelect:any = {
       origin: null,
       destination: null,
-      created_at: null,
+      type: null,
       account: null
     };
 
@@ -55,40 +56,32 @@ export class DashboardView  {
         $(this.element.nativeElement).find('.ui.dropdown').dropdown();
       });
     }
-    private renderDatepicker() {
-      setTimeout(() => {
-        $(this.element.nativeElement).find('input[type="date"]').flatpickr({animate: false});
-      });
-    }
 
     private loadFilteredData() {
-      setTimeout(() => {
         this.isLoading = true;
-        console.log(this.filterSelect);
-        this.appService.getFilteredQuotes(this.filterSelect).then(quotes => {
-          this.quotes = quotes;
+        this.appService.getFilteredAccounts(this.filterSelect).then(accounts => {
+          this.accounts = accounts;
           this.isLoading = false;
           this.renderDropdowns();
-          this.renderDatepicker();
         });
-      });
     }
 
     /**
      * On Component Initialize - Request the navigation json
      */
     ngOnInit() : void {
-      this.appService.getAllQuotesFilters().then(filters => {
+      this.appService.getAllAccountsFilters().then(filters => {
         this.filterOptions.origins = filters.origins;
         this.filterOptions.destinations = filters.destinations;
+        this.filterOptions.types = filters.types;
         this.filterOptions.accounts = filters.accounts;
 
-          this.appService.getAllQuotes().then(quotes => {
-            this.quotes = quotes;
+          this.appService.getAllAccounts().then(accounts => {
+            this.accounts = accounts;
             this.isLoading = false;
             this.renderDropdowns();
-            this.renderDatepicker();
           });
        });
     }
+
 }

@@ -4,15 +4,18 @@
 
     <h1 style="font-size:36px; margin-bottom:0;" class="ui header">RFQ Management</h1>
 
-    <div style="margin-top:0;" class="ui secondary pointing menu">
-      <a class="active item">
+    <div style="margin-top:0;" class="ui tabular menu">
+      <a [routerLink]="['/dashboard/quotes']" routerLinkActive="active" class="item">
         Quotes
       </a>
-      <a class="item">
+      <a [routerLink]="['/dashboard/rates']" routerLinkActive="active" class="item">
         Rates
       </a>
-      <a class="item">
+      <a [routerLink]="['/dashboard/accounts']" routerLinkActive="active" class="item">
         Accounts
+      </a>
+      <a [routerLink]="['/dashboard/surcharges']" routerLinkActive="active" class="item">
+        Taxes &amp; Surcharges
       </a>
     </div>
 

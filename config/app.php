@@ -180,6 +180,7 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         Webpatser\Countries\CountriesServiceProvider::class,
+        Maatwebsite\Excel\ExcelServiceProvider::class,
 
     ],
 
@@ -231,7 +232,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
         'Countries' => Webpatser\Countries\CountriesFacade::class,
-
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
     ],
 
 ];

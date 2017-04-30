@@ -14,36 +14,70 @@ export class AppService {
 	constructor (private http: Http) {}
 
 	/*************************
-	 * Profile
+	 * Rates
 	 *********************** */
-	getProfiles(filter:any): Promise<any> {
-		let endpoint = '/api/profiles?a=b';
-		if (filter.limit) endpoint += '&limit='+filter.limit;
-		if (filter.page) endpoint += '&page='+filter.page;
-		if (filter.query) endpoint += '&query='+filter.query;
+	getAllRates(): Promise<any> {
+		let endpoint = '/api/rates';
 		return this.http.get(endpoint).toPromise().then(this.returnJson).catch(this.throwError);
 	}
 
-	getProfile(id:number): Promise<any> {
-		let endpoint = '/api/profile/'+id;
+	getFilteredRates(filters:any): Promise<any> {
+		let endpoint = '/api/rates/filtered?a=b';
+		if (filters.origin) endpoint += '&origin='+filters.origin;
+		if (filters.destination) endpoint += '&destination='+filters.destination;
+		if (filters.type) endpoint += '&type='+filters.type;
+		if (filters.account) endpoint += '&account='+filters.account;
+		if (filters.page) endpoint += '&page='+filters.page;
 		return this.http.get(endpoint).toPromise().then(this.returnJson).catch(this.throwError);
 	}
 
-	newProfile(linkedin:string): Promise<any> {
-		let endpoint = '/api/profile/new?linkedin='+linkedin;
+	getAllRatesFilters(): Promise<any> {
+		let endpoint = '/api/rates/filters';
 		return this.http.get(endpoint).toPromise().then(this.returnJson).catch(this.throwError);
 	}
 
-	saveProfile(profile:any): Promise<any> {
-		let endpoint = '/api/profile';
-		if (profile.id) endpoint += '/'+profile.id;
-		return this.http.post(endpoint, profile).toPromise().then(this.returnJson).catch(this.throwError);
+	/*************************
+	 * Quotes
+	 *********************** */
+	getAllQuotes(): Promise<any> {
+		let endpoint = '/api/quotes';
+		return this.http.get(endpoint).toPromise().then(this.returnJson).catch(this.throwError);
 	}
 
-	deleteProfile(profile:any): Promise<any> {
-		let endpoint = '/api/profile';
-		if (profile.id) endpoint += '/'+profile.id;
-		return this.http.delete(endpoint).toPromise().then(this.returnJson).catch(this.throwError);
+	getFilteredQuotes(filters:any): Promise<any> {
+		let endpoint = '/api/quotes/filtered?a=b';
+		if (filters.origin) endpoint += '&origin='+filters.origin;
+		if (filters.destination) endpoint += '&destination='+filters.destination;
+		if (filters.account) endpoint += '&account='+filters.account;
+		if (filters.created_at) endpoint += '&created_at='+filters.created_at;
+		return this.http.get(endpoint).toPromise().then(this.returnJson).catch(this.throwError);
+	}
+
+	getAllQuotesFilters(): Promise<any> {
+		let endpoint = '/api/quotes/filters';
+		return this.http.get(endpoint).toPromise().then(this.returnJson).catch(this.throwError);
+	}
+
+	/*************************
+	 * Accounts
+	 *********************** */
+	getAllAccounts(): Promise<any> {
+		let endpoint = '/api/accounts';
+		return this.http.get(endpoint).toPromise().then(this.returnJson).catch(this.throwError);
+	}
+
+	getFilteredAccounts(filters:any): Promise<any> {
+		let endpoint = '/api/accounts/filtered?a=b';
+		if (filters.origin) endpoint += '&origin='+filters.origin;
+		if (filters.destination) endpoint += '&destination='+filters.destination;
+		if (filters.type) endpoint += '&type='+filters.type;
+		if (filters.account) endpoint += '&account='+filters.account;
+		return this.http.get(endpoint).toPromise().then(this.returnJson).catch(this.throwError);
+	}
+
+	getAllAccountsFilters(): Promise<any> {
+		let endpoint = '/api/accounts/filters';
+		return this.http.get(endpoint).toPromise().then(this.returnJson).catch(this.throwError);
 	}
 
 	/*************************

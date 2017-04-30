@@ -41,15 +41,40 @@
 </style>
 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/2.5.7/flatpickr.min.css" rel="stylesheet">
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/2.5.7/flatpickr.min.js"></script>
+
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+<style>
+    .ui-menu { transition:none; }
+    .ui-menu * { transition:none; }
+</style>
 
 <script>
 
 /* Lead Form Script */
 $(document).ready(function() {
 
-    $("#departureDate").flatpickr({});
+    $("#departureDate").flatpickr({animate: false});
+
+    var origins = [
+        @foreach($destinations as $destination) "{{ $destination->destination }}", @endforeach
+    ];
+    var destinations = [
+        @foreach($destinations as $destination) "{{ $destination->destination }}", @endforeach
+    ];
+
+    $( "#cb_originCity" ).autocomplete({
+      source: origins,
+      autoFocus: true,
+      minLength:2
+    });
+    $( "#cb_destCity" ).autocomplete({
+      source: destinations,
+      autoFocus: true,
+      minLength:2
+    });
 
     $('#departureDate').change(function() {
         if ($(this).val().length) {

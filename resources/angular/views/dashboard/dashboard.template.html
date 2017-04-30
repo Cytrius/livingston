@@ -6,45 +6,75 @@
 
 	<div class="ui basic segment">
 
+		<div class="ui tiny form">
+	  		<div class="fields">
+	  			<div class="field">
+	  				<label>Filter Quote Date</label>
+					<input type="date" name="created_at" placeholder="Date" [(ngModel)]="filterSelect.created_at" (change)="loadFilteredData()">
+				</div>
+	  			<div class="field">
+	  				<label>Filter Account</label>
+					<select class="ui search dropdown" [(ngModel)]="filterSelect.account" (change)="loadFilteredData()">
+					  <option value="">Account</option>
+					   <option *ngFor="let account of filterOptions.accounts" [value]="account.account_id">{{ account.account.company }}</option>
+					</select>
+				</div>
+	  			<div class="field">
+	  				<label>Filter Origin</label>
+					<select class="ui search dropdown" [(ngModel)]="filterSelect.origin" (change)="loadFilteredData()">
+					  <option value="">Origin</option>
+					  <option *ngFor="let origin of filterOptions.origins" [value]="origin.origin">{{ origin.origin }}</option>
+					</select>
+				</div>
+	  			<div class="field">
+	  				<label>Filter Destination</label>
+					<select class="ui search dropdown" [(ngModel)]="filterSelect.destination" (change)="loadFilteredData()">
+					  <option value="">Destination</option>
+					   <option *ngFor="let destination of filterOptions.destinations" [value]="destination.destination">{{ destination.destination }}</option>
+					</select>
+				</div>
+				<div class="field">
+					<label>&nbsp;</label>
+					<a (click)="clear()" class="ui button">Clear</a>
+				</div>
+			</div>
+		</div>
+
 		<table class="ui small celled table">
 		  <thead>
 		    <tr>
-		    	<th>Date</th>
+		    	<th>Quote Date</th>
+		    	<th>Departure Date</th>
 			    <th>Account</th>
 			    <th>User</th>
 			    <th>Origin</th>
-			    <th>Dest</th>
-			    <th>Amount</th>
+			    <th>Destination</th>
+			    <th class="collapsing">Pickup</th>
+			    <th class="collapsing">Delivery</th>
+			    <th style="text-align:right">Amount</th>
 		  	</tr>
 		  </thead>
 		  <tbody>
-		    <tr>
-		      <td>03/21/2017</td>
-		      <td>RFQ-ACC-02</td>
-		      <td>John Smith</td>
-		      <td>Toronto</td>
-		      <td>Vancouver</td>
-		      <td>$201.10</td>
-		    </tr>
-		    <tr>
-		      <td>03/21/2017</td>
-		      <td>RFQ-ACC-02</td>
-		      <td>John Smith</td>
-		      <td>Toronto</td>
-		      <td>Vancouver</td>
-		      <td>$201.10</td>
-		    </tr>
-		    <tr>
-		      <td>03/21/2017</td>
-		      <td>RFQ-ACC-02</td>
-		      <td>John Smith</td>
-		      <td>Toronto</td>
-		      <td>Vancouver</td>
-		      <td>$201.10</td>
+		    <tr *ngFor="let quote of quotes">
+		      	<td>{{ quote.created_at | date:'mediumDate' }}</td>
+		      	<td>{{ quote.departure_at | date:'mediumDate' }}</td>
+		     	<td>{{ quote.account.company }}</td>
+		      	<td>{{ quote.user.name }}</td>
+		      	<td>{{ quote.origin }}</td>
+		      	<td>{{ quote.destination }}</td>
+		      	<td class="collapsing" style="text-align:center">
+		      		<i *ngIf="quote.origin_pickup" class="fa fa-check"></i>
+		      		<i *ngIf="!quote.origin_pickup" class="fa fa-close"></i>
+		      	</td>
+		      	<td class="collapsing" style="text-align:center">
+		      		<i *ngIf="quote.destination_delivery" class="fa fa-check"></i>
+		      		<i *ngIf="!quote.destination_delivery" class="fa fa-close"></i>
+		      	</td>
+		     	<td style="text-align:right">{{ quote.total || 0 | number:'1.2-2' }}</td>
 		    </tr>
 		  </tbody>
 		  <tfoot>
-		    <tr><th colspan="6">
+		    <tr><th colspan="9">
 		      <div class="ui right floated tiny pagination menu">
 		        <a class="icon item">
 		          <i class="left chevron icon"></i>
