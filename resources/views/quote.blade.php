@@ -54,10 +54,10 @@
 /* Lead Form Script */
 $(document).ready(function() {
     $('.lead-gen-button.grey').click(function() {
-        window.print();
-    });
-    $('.lead-gen-button').click(function() {
         window.location.href = '/';
+    });
+    $('.lead-gen-button:not(.grey)').click(function() {
+        window.print();
     });
 });
 
