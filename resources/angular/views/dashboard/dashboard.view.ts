@@ -25,7 +25,8 @@ export class DashboardView  {
       origin: null,
       destination: null,
       created_at: null,
-      account: null
+      account: null,
+      page:0
     };
 
     private isLoading:boolean = true;
@@ -39,12 +40,27 @@ export class DashboardView  {
     ) {
     }
 
+    private prev() {
+      if (this.filterSelect.page > 0)
+      this.filterSelect.page = this.filterSelect.page-1;
+      this.loadFilteredData();
+    }
+    private next() {
+      this.filterSelect.page = this.filterSelect.page+1;
+      this.loadFilteredData();
+    }
+    private first() {
+      this.filterSelect.page = 0;
+      this.loadFilteredData();
+    }
+
     private clear() {
       this.filterSelect = {
         origin: null,
         destination: null,
         type: null,
-        account: null
+        account: null,
+      page:0
       };
       $(this.element.nativeElement).find('.ui.dropdown').dropdown('clear');
       this.loadFilteredData();

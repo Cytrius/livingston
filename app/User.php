@@ -30,6 +30,6 @@ class User extends Authenticatable
     ];
 
     public function account() {
-        $this->hasOne(Account::class, 'account_id', 'id');
+        return $this->hasOne(Account::class, 'id', 'account_id');
     }
 }

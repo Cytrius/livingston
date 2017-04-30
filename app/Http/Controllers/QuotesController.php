@@ -22,9 +22,16 @@ class QuotesController extends Controller
 
     }
 
-    public function getAllQuotes() {
+    public function getAllQuotes(Request $request) {
 
-        $quotes = QuotesModel::with('account')->with('user')->get();
+        $quotes = QuotesModel::with('account')->with('user');
+
+        $quotes->limit(10);
+
+        if ($request->has('page'))
+            $quotes->offset($request->get('page')*10);
+
+        $quotes = $quotes->get();
 
         return response()->json($quotes);
     }
@@ -49,6 +56,11 @@ class QuotesController extends Controller
             $quotes->where('created_at', '>=', $day_start)->where('created_at', '<=', $day_end);
         }
 
+        $quotes->limit(10);
+
+        if ($request->has('page'))
+            $quotes->offset($request->get('page')*10);
+
         $quotes = $quotes->with('account')->with('user')->get();
 
         return response()->json($quotes);
@@ -70,6 +82,13 @@ class QuotesController extends Controller
 
         return response()->json($results);
         
+    }
+
+    public function getQuoteById(Request $request, $quote_id) {
+
+        $quote = QuotesModel::with('account')->with('user')->where('id', $quote_id)->first();
+
+        return response()->json($quote);
     }
 
     

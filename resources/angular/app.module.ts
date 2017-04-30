@@ -11,8 +11,11 @@ import { routing } from '@app/app.routes';
 
 /* Common Views */
 import { DashboardView } from '@app/views/dashboard/dashboard.view';
+import { QuotesView } from '@app/views/quotes/quotes.view';
 import { RatesView } from '@app/views/rates/rates.view';
 import { AccountsView } from '@app/views/accounts/accounts.view';
+import { UsersView } from '@app/views/users/users.view';
+import { SettingsView } from '@app/views/settings/settings.view';
 
 /* Common Components */
 import { HeaderComponent } from '@app/components/header/header.component';
@@ -33,8 +36,11 @@ import { HeaderComponent } from '@app/components/header/header.component';
         
         /* Common Views */
         DashboardView,
+        QuotesView,
         RatesView,
         AccountsView,
+        UsersView,
+        SettingsView,
 
         /* Components */
         HeaderComponent

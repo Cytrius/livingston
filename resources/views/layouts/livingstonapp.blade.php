@@ -79,7 +79,7 @@
                         @else 
                             <a href="/" class="bold-700">Request A Quote</a> 
                             @if(\Auth::user()->is_rep || \Auth::user()->is_admin)
-                                 <a href="/dashboard" class="bold-700">Administrators</a> 
+                                 <a href="/dashboard/quotes" class="bold-700">Administrators</a> 
                             @endif
                             <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="bold-700">Log Out</a> 
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">{{ csrf_field() }}</form>

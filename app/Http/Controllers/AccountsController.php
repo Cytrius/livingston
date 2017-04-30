@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Account as AccountModel;
+use App\User as UserModel;
 
 class AccountsController extends Controller
 {
@@ -69,6 +70,13 @@ class AccountsController extends Controller
         ];
 
         return response()->json($results);
+    }
+
+    public function getUsersByAccountId($account_id) {
+
+        $users = UserModel::where('account_id', $account_id)->with('account')->get();
+
+        return response()->json($users);
     }
 
     

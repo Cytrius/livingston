@@ -1,0 +1,177 @@
+<div class="action-loading" *ngIf="isLoading">
+    <div class="ui active text loader">{{ loading_action }}</div>
+</div>
+
+<div class="ui container">
+
+	<div class="ui basic segment">
+
+		<div class="ui form">
+
+			<h4 class="ui right floated header">
+				Total: <strong>${{ quote?.total | number:'1.2-2' }}</strong>
+			</h4>
+
+			<h4 class="ui left floated header">
+				Quote #{{quote?.id}}
+				<div class="sub header">{{ quote?.account?.company }} - {{ quote?.user?.name }}</div>
+			</h4>
+
+			<div class="ui secondary segment" style="clear:both;">
+
+		  		<div class="five fields">
+		  			<div class="field">
+		  				<label>Departure Date</label>
+		  				<p>{{ quote?.departure_at | date:'mediumDate' }}</p>
+					</div>
+		  			<div class="field">
+		  				<label>Date Quoted</label>
+		  				<p>{{ quote?.created_at | date:'mediumDate' }}</p>
+					</div>
+				</div>
+
+			</div>
+			<div class="ui secondary segment" style="clear:both;">
+
+				<h5 class="ui dividing header">Vehicle</h5>
+		  		<div class="five fields">
+		  			<div class="field">
+		  				<label>Type</label>
+		  				<p>{{ quote?.vehicle_type }}</p>
+					</div>
+		  			<div class="field">
+		  				<label>Year</label>
+		  				<p>{{ quote?.vehicle_year }}</p>
+					</div>
+		  			<div class="field">
+		  				<label>Make</label>
+		  				<p>{{ quote?.vehicle_make }}</p>
+					</div>
+		  			<div class="field">
+		  				<label>Model</label>
+		  				<p>{{ quote?.vehicle_model }}</p>
+					</div>
+				</div>
+
+			</div>
+			<div class="ui secondary segment" style="clear:both;">
+
+				<h5 class="ui dividing header">Pickup</h5>
+		  		<div class="five fields">
+		  			<div class="field">
+		  				<label>Origin Pickup</label>
+		  				<p>{{ quote?.origin_pickup || 'None' }}</p>
+					</div>
+		  			<div class="field">
+		  				<label>Origin Terminal</label>
+		  				<p>{{ quote?.origin || 'None' }}</p>
+					</div>
+		  			<div class="field">
+		  				<label>Pickup Required</label>
+		  				<p>{{ quote?.origin_pickup ? 'Yes' : 'No' }}</p>
+					</div>
+		  			<div class="field">
+		  				<label>Pickup Rate</label>
+		  				<p>{{ quote?.origin_pickup_rate }}</p>
+					</div>
+				</div>
+
+			</div>
+			<div class="ui secondary segment" style="clear:both;">
+
+				<h5 class="ui dividing header">Delivery</h5>
+		  		<div class="five fields">
+		  			<div class="field">
+		  				<label>Destination Delivery</label>
+		  				<p>{{ quote?.destination_delivery || 'None' }}</p>
+					</div>
+		  			<div class="field">
+		  				<label>Destination Terminal</label>
+		  				<p>{{ quote?.destination || 'None' }}</p>
+					</div>
+		  			<div class="field">
+		  				<label>Delivery Required</label>
+		  				<p>{{ quote?.origin_pickup ? 'Yes' : 'No' }}</p>
+					</div>
+		  			<div class="field">
+		  				<label>Delivery Rate</label>
+		  				<p>{{ quote?.destination_delivery_rate }}</p>
+					</div>
+				</div>
+			</div>
+			<div class="ui secondary segment" style="clear:both;">
+
+				<h5 class="ui dividing header">Rail</h5>
+		  		<div class="five fields">
+		  			<div class="field">
+		  				<label>Origin Terminal</label>
+		  				<p>{{ quote?.origin }}</p>
+					</div>
+		  			<div class="field">
+		  				<label>Destination Terminal</label>
+		  				<p>{{ quote?.destination }}</p>
+					</div>
+		  			<div class="field">
+		  				<label>Days Estimate</label>
+		  				<p>{{ quote?.est_days || 0 }}</p>
+					</div>
+		  			<div class="field">
+		  				<label>Rail Rate</label>
+		  				<p>{{ quote?.rate }}</p>
+					</div>
+				</div>
+			</div>
+
+			<h5 class="ui header" style="margin-top:1.5em !important;">Cost Breakdown</h5>
+			<table class="ui small table">
+				<thead>
+					<tr>
+						<th>Line Item</th>
+						<th>Description</th>
+						<th>Rate</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr *ngIf="quote?.origin_pickup">
+						<td>Pickup</td>
+						<td>Pickup from {{ quote?.form_origin_postal }}, {{ quote?.form_origin_city }}, {{ quote?.form_origin_province }}</td>
+						<td>${{ quote?.origin_pickup_rate | number:'1.2-2' }}</td>
+					</tr>
+					<tr>
+						<td>Rail Rate</td>
+						<td>{{ quote?.origin }} to<br/>{{ quote?.destination }}</td>
+						<td>${{ quote?.rate | number:'1.2-2' }}</td>
+					</tr>
+					<tr  *ngIf="quote?.destination_delivery">
+						<td>Delivery</td>
+						<td>Delivery to {{ quote?.form_destination_postal }}, {{ quote?.form_destination_city }}, {{ quote?.form_destination_province }}</td>
+						<td>${{ quote?.destination_delivery_rate | number:'1.2-2' }}</td>
+					</tr>
+					<tr>
+						<td>Fuel Surcharge</td>
+						<td>{{ quote?.fuel_surcharge | number:'1.2-2' }}%</td>
+						<td>${{ quote?.subtotal * (quote?.fuel_surcharge / 100) | number:'1.2-2' }}</td>
+					</tr>
+					<tr>
+						<td><strong>Subtotal</strong></td>
+						<td></td>
+						<td>${{ quote?.subtotal | number:'1.2-2' }}</td>
+					</tr>
+					<tr>
+						<td>Destination Tax</td>
+						<td>{{ quote?.tax_percent | number:'1.2-2' }}%</td>
+						<td>${{ quote?.subtotal * (quote?.tax_percent / 100) | number:'1.2-2' }}</td>
+					</tr>
+					<tr>
+						<td><strong>Total</strong></td>
+						<td></td>
+						<td><strong>${{ quote?.total | number:'1.2-2' }}</strong></td>
+					</tr>
+				</tbody>
+			</table>
+
+		</div>
+
+	</div>
+
+</div>

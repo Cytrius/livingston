@@ -1,0 +1,40 @@
+<div class="action-loading" *ngIf="isLoading">
+    <div class="ui active text loader">{{ loading_action }}</div>
+</div>
+
+<div class="ui container">
+
+	<div class="ui basic segment">
+
+		<a class="ui right floated button">New User</a>
+
+		<h4 *ngIf="users" class="ui left floated header">
+			{{ users[0].account?.company }}
+		</h4>
+
+		<h4 *ngIf="!users" class="ui left floated header">
+			Account
+		</h4>
+
+		<div class="ui divider hidden" style="clear:both"></div>
+
+		<table class="ui small selectable celled table">
+		  <thead>
+		    <tr>
+		    	<th>Name</th>
+			    <th>Email</th>
+			    <th>Phone</th>
+		  	</tr>
+		  </thead>
+		  <tbody>
+		    <tr *ngFor="let user of users">
+		      	<td>{{ user.name }}</td>
+		     	<td>{{ user.email }}</td>
+		      	<td>{{ user.phone }}</td>
+		    </tr>
+		  </tbody>
+		</table>
+
+	</div>
+
+</div>

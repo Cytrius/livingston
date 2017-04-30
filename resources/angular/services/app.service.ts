@@ -44,12 +44,18 @@ export class AppService {
 		return this.http.get(endpoint).toPromise().then(this.returnJson).catch(this.throwError);
 	}
 
+	getQuoteById(id:number): Promise<any> {
+		let endpoint = '/api/quote/'+id;
+		return this.http.get(endpoint).toPromise().then(this.returnJson).catch(this.throwError);
+	}
+
 	getFilteredQuotes(filters:any): Promise<any> {
 		let endpoint = '/api/quotes/filtered?a=b';
 		if (filters.origin) endpoint += '&origin='+filters.origin;
 		if (filters.destination) endpoint += '&destination='+filters.destination;
 		if (filters.account) endpoint += '&account='+filters.account;
 		if (filters.created_at) endpoint += '&created_at='+filters.created_at;
+		if (filters.page) endpoint += '&page='+filters.page;
 		return this.http.get(endpoint).toPromise().then(this.returnJson).catch(this.throwError);
 	}
 
@@ -66,12 +72,18 @@ export class AppService {
 		return this.http.get(endpoint).toPromise().then(this.returnJson).catch(this.throwError);
 	}
 
+	getUsersByAccountId(id:number): Promise<any> {
+		let endpoint = '/api/account/'+id;
+		return this.http.get(endpoint).toPromise().then(this.returnJson).catch(this.throwError);
+	}
+
 	getFilteredAccounts(filters:any): Promise<any> {
 		let endpoint = '/api/accounts/filtered?a=b';
 		if (filters.origin) endpoint += '&origin='+filters.origin;
 		if (filters.destination) endpoint += '&destination='+filters.destination;
 		if (filters.type) endpoint += '&type='+filters.type;
 		if (filters.account) endpoint += '&account='+filters.account;
+		if (filters.page) endpoint += '&page='+filters.page;
 		return this.http.get(endpoint).toPromise().then(this.returnJson).catch(this.throwError);
 	}
 

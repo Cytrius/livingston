@@ -26,7 +26,8 @@ export class AccountsView  {
       origin: null,
       destination: null,
       type: null,
-      account: null
+      account: null,
+      page: 0
     };
 
     private isLoading:boolean = true;
@@ -45,7 +46,8 @@ export class AccountsView  {
         origin: null,
         destination: null,
         type: null,
-        account: null
+        account: null,
+        page: 0
       };
       $(this.element.nativeElement).find('.ui.dropdown').dropdown('clear');
       this.loadFilteredData();

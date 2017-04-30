@@ -31,6 +31,11 @@ Route::get('/api/quotes', 'QuotesController@getAllQuotes');
 Route::get('/api/quotes/filtered', 'QuotesController@getFilteredQuotes');
 Route::get('/api/quotes/filters', 'QuotesController@getAllQuotesFilters');
 
+
+Route::get('/api/quote/{id}', 'QuotesController@getQuoteById');
+
 Route::get('/api/accounts', 'AccountsController@getAllAccounts');
 Route::get('/api/accounts/filtered', 'AccountsController@getFilteredAccounts');
 Route::get('/api/accounts/filters', 'AccountsController@getAllAccountsFilters');
+
+Route::get('/api/account/{id}', 'AccountsController@getUsersByAccountId');
