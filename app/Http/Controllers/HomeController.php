@@ -48,14 +48,37 @@ class HomeController extends Controller
         return view('import');
     }
 
-    public function book() {
+    public function book($quote_id=false) {
 
         if (!\Auth::user()->is_admin)
             return response('', 400);
 
+        if ($quote_id)
+            $quote = QuotesModel::where('id', $quote_id)->first();
+        else
+            $quote = null;
+
         return view('book', [
             'user' => \Auth::user(),
-            'account' => AccountModel::where('id', \Auth::user()->account_id)->first()
+            'account' => AccountModel::where('id', \Auth::user()->account_id)->first(),
+            'quote' => $quote
+        ]);
+    }
+
+    public function bookConfirm($quote_id=false) {
+
+        if (!\Auth::user()->is_admin)
+            return response('', 400);
+
+        if ($quote_id)
+            $quote = QuotesModel::where('id', $quote_id)->first();
+        else
+            $quote = null;
+
+        return view('book-confirm', [
+            'user' => \Auth::user(),
+            'account' => AccountModel::where('id', \Auth::user()->account_id)->first(),
+            'quote' => $quote
         ]);
     }
 
@@ -156,11 +179,21 @@ class HomeController extends Controller
         $new_quote->vehicle_model = $form['cb_vehicleModel'];
 
         $new_quote->form_origin_city = $form['cb_originCity'];
-        $new_quote->form_origin_province = $form['cb_originProvince'];
-        $new_quote->form_origin_postal = $form['cb_originPostalCode'];
+
+        if (isset($form['cb_originProvince']))
+            $new_quote->form_origin_province = $form['cb_originProvince'];
+
+        if (isset($form['cb_originPostalCode']))
+            $new_quote->form_origin_postal = $form['cb_originPostalCode'];
+
         $new_quote->form_destination_city = $form['cb_destCity'];
-        $new_quote->form_destination_province = $form['cb_destProvince'];
-        $new_quote->form_destination_postal = $form['cb_destPostalCode'];
+
+        if (isset($form['cb_destProvince']))
+            $new_quote->form_destination_province = $form['cb_destProvince'];
+
+        if (isset($form['cb_destPostalCode']))
+            $new_quote->form_destination_postal = $form['cb_destPostalCode'];
+
         $new_quote->form_email = $form['contact_email'];
         $new_quote->form_first_name = $form['contact_first_name'];
         $new_quote->form_last_name = $form['contact_last_name'];

@@ -116,7 +116,7 @@ $(document).ready(function() {
                         Transport Your<br/><span class="information">{{ $form['cb_vehicleYear'] }} {{ $form['cb_vehicleMake'] }} {{ $form['cb_vehicleModel'] }}</span>
                     </p>
     
-                    @if($quote->origin_pickup_rate !== 0)
+                    @if($quote->origin_pickup_rate && $quote->origin_pickup_rate !== 0)
                          <p class="lg-section-heading marginx2"><i class="fa fa-map-marker"></i> Pickup From<br/><span class="information"><span class="postal-code">{{ $quote->form_origin_postal }}</span>, <span class="city">{{ $quote->origin_pickup }}</span>, <span class="province">{{ $quote->form_origin_province }}</span></span></p>
                     @endif
 
@@ -124,7 +124,7 @@ $(document).ready(function() {
                     <p class="lg-section-heading marginx2"><i class="fa fa-train"></i> Rail Transportation<br/><span class="information">{{ $quote->origin }} to {{ $quote->destination }}</span></p>
                     @endif
 
-                    @if($quote->destination_delivery_rate !== 0)
+                    @if($quote->destination_delivery_rate && $quote->destination_delivery_rate !== 0)
                     <p class="lg-section-heading marginx2"><i class="fa fa-map-marker"></i> Delivery To<br/><span class="information"><span class="postal-code">{{ $quote->form_destination_postal }}</span>, <span class="city">{{ $quote->destination_delivery }}</span>, <span class="province">{{ $quote->form_destination_province }}</span></span></p>
                     @endif
 
@@ -153,7 +153,7 @@ $(document).ready(function() {
                             <p style="margin-top:1em; font-size:14px; margin-bottom: 55px;">The overall transit times vary based on requested pickup & delivery locations as well as rail departure dates. Additional information available at time of booking.</p>
                         </div>
 
-                        <a href="/book"><button class="button small orange left absolute-bottom" style="">Book Now</button></a>
+                        <a href="/book/{{ $quote->id }}"><button class="button small orange left absolute-bottom" style="">Book Now</button></a>
                     </div>
                     @endif
 
@@ -174,9 +174,9 @@ $(document).ready(function() {
                             <p style="margin-top:1em; font-size:14px; margin-bottom: 55px;">The estimated transit time is {{ $quote->est_days }} days from the date of departure from the origin terminal</p>
                         </div>
                         @if($quote->origin_pickup_rate > 0)
-                        <a href="/book"><button class="button small blue left absolute-bottom" style="">Book Now</button></a>
+                        <a href="/book/{{ $quote->id }}?alt=true"><button class="button small blue left absolute-bottom" style="">Book Now</button></a>
                         @else
-                         <a href="/book"><button class="button small orange left absolute-bottom" style="">Book Now</button></a>
+                         <a href="/book/{{ $quote->id }}"><button class="button small orange left absolute-bottom" style="">Book Now</button></a>
                         @endif
                     </div>
 

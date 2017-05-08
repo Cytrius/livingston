@@ -18,7 +18,8 @@ Route::get('/', 'HomeController@leadForm');
 Route::get('/dashboard', 'HomeController@index');
 Route::get('/dashboard/{a?}/{b?}/{c?}/{d?}/{e?}', 'HomeController@index');
 Route::get('/import', 'HomeController@import');
-Route::get('/book', 'HomeController@book');
+Route::get('/book/{quote_id}', 'HomeController@book');
+Route::post('/book-confirm/{quote_id}', 'HomeController@bookConfirm');
 
 Route::post('/quote', 'HomeController@quote');
 Route::post('/import', 'HomeController@importPost');
@@ -39,3 +40,13 @@ Route::get('/api/accounts/filtered', 'AccountsController@getFilteredAccounts');
 Route::get('/api/accounts/filters', 'AccountsController@getAllAccountsFilters');
 
 Route::get('/api/account/{id}', 'AccountsController@getUsersByAccountId');
+
+Route::get('/api/dropdowns/origin/city', 'DropdownController@getCities');
+Route::get('/api/dropdowns/destination/city', 'DropdownController@getCities');
+
+Route::get('/api/dropdowns/origin/province', 'DropdownController@getProvince');
+Route::get('/api/dropdowns/destination/province', 'DropdownController@getProvince');
+
+Route::get('/api/dropdowns/vehicle/years', 'DropdownController@getVehicleYears');
+Route::get('/api/dropdowns/vehicle/makes', 'DropdownController@getVehicleMakes');
+Route::get('/api/dropdowns/vehicle/models', 'DropdownController@getVehicleModels');

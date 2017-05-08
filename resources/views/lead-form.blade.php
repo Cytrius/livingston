@@ -43,12 +43,31 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/2.5.7/flatpickr.min.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/2.5.7/flatpickr.min.js"></script>
 
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.full.min.js"></script>
 
 <style>
     .ui-menu { transition:none; }
     .ui-menu * { transition:none; }
+
+    .select2, .select2-container { transition:none; }
+    .select2 *, .select2-container * { transition:none; }
+
+    .select2 { min-width:311px; }
+
+    .select2-selection.select2-selection--single {
+        height:40px;
+        background:#fff !important;
+    }
+    .select2-container--default .select2-selection--single .select2-selection__rendered {
+        line-height:40px;
+    }
+    .select2-container--default .select2-selection--single .select2-selection__arrow {
+        height:38px;
+        background:#fff !important;
+        right:3px;
+    }
+}
 </style>
 
 <script>
@@ -58,23 +77,146 @@ $(document).ready(function() {
 
     $("#departureDate").flatpickr({animate: false});
 
-    var origins = [
-        @foreach($destinations as $destination) "{{ $destination->destination }}", @endforeach
-    ];
-    var destinations = [
-        @foreach($destinations as $destination) "{{ $destination->destination }}", @endforeach
-    ];
+    /**
+     * Select2 API Powered Dropdowns
+     */
 
-    $( "#cb_originCity" ).autocomplete({
-      source: origins,
-      autoFocus: true,
-      minLength:2
+    $('#cb_originCity').select2({
+        ajax: {
+            url: function (params) {
+                return '/api/dropdowns/origin/city?term='+params.term+'&local='+$('#cb_pickupRequired').is(':checked');
+            },
+            delay:100,
+            processResults: function (data) {
+                window.validTransport = data.valid;
+                return {
+                    results: data.items
+                };
+            }
+        }
     });
-    $( "#cb_destCity" ).autocomplete({
-      source: destinations,
-      autoFocus: true,
-      minLength:2
+    $('#cb_originCity').on('select2:select', function (evt) {
+        if (evt.params.data && evt.params.data.province) {
+            console.log(evt.params.data.province);
+            $('#cb_originProvince').append($('<option value="'+evt.params.data.province+'">'+evt.params.data.province+'</option>'))
+             $('#cb_originProvince').val(evt.params.data.province).trigger('change');
+        } else {
+            $('#cb_originProvince').val(null).trigger('change');
+        }
+        console.log('Is Valid Route', window.validTransport);
+        checkValidRoute();
     });
+
+    $('#cb_originProvince').select2({
+        ajax: {
+            url: function (params) {
+                return '/api/dropdowns/origin/province?city='+$('#cb_originCity').val();
+            },
+            delay:100,
+            processResults: function (data) {
+                return {
+                    results: data.items
+                };
+            }
+        }
+    });
+
+
+    $('#cb_destCity').select2({
+        ajax: {
+            url: function (params) {
+                return '/api/dropdowns/destination/city?term='+params.term+'&local='+$('#cb_deliveryRequired').is(':checked');;
+            },
+            delay:100,
+            processResults: function (data) {
+                window.validTransport = data.valid;
+                return {
+                    results: data.items
+                };
+            }
+        }
+    });
+    $('#cb_destCity').on('select2:select', function (evt) {
+        if (evt.params.data && evt.params.data.province) {
+            console.log(evt.params.data.province);
+            $('#cb_destProvince').append($('<option value="'+evt.params.data.province+'">'+evt.params.data.province+'</option>'))
+             $('#cb_destProvince').val(evt.params.data.province).trigger('change');
+        } else {
+            $('#cb_destProvince').val(null).trigger('change');
+        }
+        console.log('Is Valid Route', window.validTransport);
+        checkValidRoute();
+    });
+    $('#cb_destProvince').select2({
+        ajax: {
+            url: function (params) {
+                return '/api/dropdowns/destination/province?city='+$('#cb_destCity').val();
+            },
+            delay:100,
+            processResults: function (data) {
+                return {
+                    results: data.items
+                };
+            }
+        }
+    });
+
+    $('#cb_vehicleYear').select2({
+        ajax: {
+            url: function (params) {
+                return '/api/dropdowns/vehicle/years?term='+params.term;
+            },
+            delay:100,
+            processResults: function (data) {
+                return {
+                    results: data
+                };
+            }
+        }
+    });
+    $('#cb_vehicleMake').select2({
+        ajax: {
+            url: function (params) {
+                return '/api/dropdowns/vehicle/makes?term='+params.term;
+            },
+            delay:100,
+            processResults: function (data) {
+                return {
+                    results: data
+                };
+            }
+        }
+    });
+    
+    $('#cb_vehicleModel').select2({
+        ajax: {
+            url: function (params) {
+                return '/api/dropdowns/vehicle/models?make='+$('#cb_vehicleMake').val()+'&term='+params.term;
+            },
+            delay:100,
+            processResults: function (data) {
+                return {
+                    results: data
+                };
+            }
+        }
+    });
+    $('#cb_vehicleModel').on('select2:select', function (evt) {
+        if (evt.params.data && evt.params.data.type) {
+            if (evt.params.data.type === 'C')
+                $('#cb_vehicleType').val('car');
+            if (evt.params.data.type === 'S')
+                $('#cb_vehicleType').val('suv');
+            if (evt.params.data.type === 'T')
+                $('#cb_vehicleType').val('truck');
+            if (evt.params.data.type === 'V')
+                $('#cb_vehicleType').val('van');
+        }
+    });
+
+    /**
+     * Form Animation Fade In Out
+     */
 
     $('#departureDate').change(function() {
         if ($(this).val().length) {
@@ -122,12 +264,13 @@ $(document).ready(function() {
         notEnoughDetail(); 
     });
 
-    $('#cb_originCity,#cb_originProvince,#cb_originPostalCode').keyup(function() {
+    $('#cb_originCity,#cb_originProvince,#cb_originPostalCode').on('change keyup', function() {
         if ($('#cb_pickupRequired').is(":checked")) {
             if (
-                $('#cb_originCity').val().length &&
-                $('#cb_originProvince').val().length &&
-                $('#cb_originPostalCode').val().length
+                $('#cb_originCity').val() && $('#cb_originCity').val().length &&
+                $('#cb_originProvince').val() && $('#cb_originProvince').val().length &&
+                $('#cb_originPostalCode').val() && $('#cb_originPostalCode').val().length &&
+                window.validTransport
             ) {
                 $('.section-2-2').fadeIn();
                 if (!$('#cb_deliveryRequired').is(":checked"))
@@ -137,8 +280,10 @@ $(document).ready(function() {
             }
         }
         if ($('#cb_pickupNoRequired').is(":checked")) {
+            console.log($('#cb_originCity').val().length,window.validTransport );
             if (
-                $('#cb_originCity').val().length
+                $('#cb_originCity').val().length && 
+                window.validTransport
             ) { 
                 $('.section-2-2').fadeIn();
                 if (!$('#cb_deliveryRequired').is(":checked"))
@@ -186,12 +331,13 @@ $(document).ready(function() {
         notEnoughDetail();  
     });
 
-    $('#cb_destCity,#cb_destProvince,#cb_destPostalCode').keyup(function() {
+    $('#cb_destCity,#cb_destProvince,#cb_destPostalCode').on('change keyup', function() {
         if ($('#cb_deliveryRequired').is(":checked")) {
             if (
-                $('#cb_destCity').val().length &&
-                $('#cb_destProvince').val().length &&
-                $('#cb_destPostalCode').val().length
+                $('#cb_destCity').val() && $('#cb_destCity').val().length &&
+                $('#cb_destProvince').val() && $('#cb_destProvince').val().length &&
+                $('#cb_destPostalCode').val() && $('#cb_destPostalCode').val().length &&
+                window.validTransport
             ) {
                 $('.section-3').fadeIn();
                 if (!$('#vehicleCanBeDriven, #vehicleHasParkingBreak, #vehicleEmpty').is(":checked"))
@@ -202,7 +348,8 @@ $(document).ready(function() {
         }
         if ($('#cb_deliveryNoRequired').is(":checked")) {
             if (
-                $('#cb_destCity').val().length
+                $('#cb_destCity').val().length &&
+                window.validTransport
             ) {
                  $('.section-3').fadeIn();
                 if (!$('#vehicleCanBeDriven, #vehicleHasParkingBreak, #vehicleEmpty').is(":checked"))
@@ -225,27 +372,12 @@ $(document).ready(function() {
         notEnoughDetail();
     });
 
-    $('#cb_vehicleType,#cb_vehicleYear,#cb_vehicleMake,#cb_vehicleModel').keyup(function() {
-            if (
-                $('#cb_vehicleType').val().length &&
-                $('#cb_vehicleYear').val().length &&
-                $('#cb_vehicleMake').val().length &&
-                $('#cb_vehicleModel').val().length
-            ) {
-                $('.lead-gen-not-enough').fadeOut(300, function() {
-                    $('.lead-gen-details').fadeIn();
-                });
-            } else {
-                notEnoughDetail();
-            }
-    });
-
     $('#cb_vehicleType,#cb_vehicleYear,#cb_vehicleMake,#cb_vehicleModel').change(function() {
             if (
-                $('#cb_vehicleType').val().length &&
-                $('#cb_vehicleYear').val().length &&
-                $('#cb_vehicleMake').val().length &&
-                $('#cb_vehicleModel').val().length
+                $('#cb_vehicleType').val() &&
+                $('#cb_vehicleYear').val() &&
+                $('#cb_vehicleMake').val() &&
+                $('#cb_vehicleModel').val()
             ) {
                 $('.lead-gen-not-enough').fadeOut(300, function() {
                     $('.lead-gen-details').fadeIn();
@@ -267,6 +399,14 @@ $(document).ready(function() {
     }
 
     notEnoughDetail();
+
+    var checkValidRoute = function() {
+        if (!window.validTransport) {
+            $('.lead-gen-not-valid-route').fadeIn();
+        } else {
+            $('.lead-gen-not-valid-route').fadeOut();
+        }
+    }
 
     $('.lead-gen-button.grey').click(function() {
         $('.contact-info-static').hide();
@@ -334,14 +474,14 @@ $(document).ready(function() {
                     <div class="marginx3 hidden" style="height: 72px;">
                         <div class="lg-subsection-holder" style="opacity: 1;">
                             <label for="cb_originCity" class="lg-section-subheading">Origin City</label>
-                            <input id="cb_originCity" name="cb_originCity" value="" type="text" class="text">
+                            <select id="cb_originCity" name="cb_originCity"></select>
                         </div>
                     </div>
 
                     <div class="marginx3 hidden" style="height: 72px;">
                         <div class="lg-subsection-holder" style="opacity: 1;">
                             <label for="cb_originProvince" class="lg-section-subheading">Origin State/Province</label>
-                            <input id="cb_originProvince" name="cb_originProvince" value="" type="text" class="text">
+                            <select id="cb_originProvince" name="cb_originProvince"></select>
                         </div>
                     </div>
 
@@ -371,14 +511,14 @@ $(document).ready(function() {
                         <div class="marginx3 hidden" style="height: 72px;">
                             <div class="lg-subsection-holder" style="opacity: 1;">
                                 <label for="cb_destCity" class="lg-section-subheading">Destination City</label>
-                                <input id="cb_destCity" name="cb_destCity" value="" type="text" class="text">
+                                <select id="cb_destCity" name="cb_destCity"></select>
                             </div>
                         </div>
 
                         <div class="marginx3 hidden" style="height: 72px;">
                             <div class="lg-subsection-holder" style="opacity: 1;">
                                 <label for="cb_destProvince" class="lg-section-subheading">Destination State/Province</label>
-                                <input id="cb_destProvince" name="cb_destProvince" value="" type="text" class="text">
+                                <select id="cb_destProvince" name="cb_destProvince"></select>
                             </div>
                         </div>
 
@@ -389,6 +529,13 @@ $(document).ready(function() {
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+
+            <div class="lg-section-holder lead-gen-not-valid-route hidden" style="border-bottom:none; padding-top:0;">
+                <div class="lg-section-holder after" style="border: none; padding-bottom:0">
+                    <p class="lg-section-heading marginx3" style="font-size: 22px !important; margin-bottom:0">
+                    <i class="fa fa-2x fa-warning" style="color:#fc2214; float: left;padding-right: 0.5em;padding-top: 0.1em;"></i> It does not appear that we have real-time rates for the selected origin or destination. Please correct your selection, or <a href="#" class="contact-anyway">contact us below</a> for a custom quote.</p>
                 </div>
             </div>
 
@@ -420,216 +567,42 @@ $(document).ready(function() {
                 <div class="disclaimer">
                     <div class="lg-section-holder after" style="border: none; padding-bottom:0">
                         <p class="lg-section-heading marginx3" style="font-size: 22px !important; margin-bottom:0">
-                        <i class="fa fa-2x fa-warning" style="float: left;padding-right: 0.5em;padding-top: 0.1em;"></i> It is required that the vehicle can be driven, has function parking breaks, and contains no personal effects in order for us to provide you a real-time quote.</p>
+                        <i class="fa fa-2x fa-warning" style="color:#fc2214; float: left;padding-right: 0.5em;padding-top: 0.1em;"></i> It is required that the vehicle can be driven, has function parking breaks, and contains no personal effects in order for us to provide you a real-time quote.</p>
                     </div>
                 </div>
                 <br/>
                 <div class="section-3-2">
-                    <div class="marginx3" style="height: 72px;">
-                        <div class="lg-subsection-holder" style="opacity: 1;">
-                            <label for="cb_vehiclType" class="lg-section-subheading">Vehicle Type</label>
-                            <div id="pd_country" style="height:auto;">
-                                <select name="cb_vehicleType" id="cb_vehicleType" style="width:311px; background-color:#fff;">
-                                    <option value=""></option>
-                                    <option value="car" selected="selected">Car</option>
-                                    <option value="car">Van</option>
-                                    <option value="car">Suv</option>
-                                    <option value="car">Small Truck</option>
-                                    <option value="car">Oversized Vehicle</option>
-                                    <option value="car">Other</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
 
                     <div class="row marginx2">
                         <div class="row-item" style="display:block; float:left">
                             <div class="field-label">Year</div>
-                            <select id="cb_vehicleYear" name="cb_vehicleYear" class="" style="background-color:#fff;">
-                                <option value="2017">2017</option>
-                                <option value="2016">2016</option>
-                                <option value="178726">2015</option>
-                                <option value="178728">2014</option>
-                                <option value="178730">2013</option>
-                                <option value="178732">2012</option>
-                                <option value="178734">2011</option>
-                                <option value="178736">2010</option>
-                                <option value="178738">2009</option>
-                                <option value="178740">2008</option>
-                                <option value="178742">2007</option>
-                                <option value="178744">2006</option>
-                                <option value="178746">2005</option>
-                                <option value="178748">2004</option>
-                                <option value="178750">2003</option>
-                                <option value="178752">2002</option>
-                                <option value="178754">2001</option>
-                                <option value="178756">2000</option>
-                                <option value="178758">1999</option>
-                                <option value="178760">1998</option>
-                                <option value="178762">1997</option>
-                                <option value="178764">1996</option>
-                                <option value="178766">1995</option>
-                                <option value="178768">1994</option>
-                                <option value="178770">1993</option>
-                                <option value="178772">1992</option>
-                                <option value="178774">1991</option>
-                                <option value="178776">1990</option>
-                                <option value="178778">1989</option>
-                                <option value="178780">1988</option>
-                                <option value="178782">1987</option>
-                                <option value="178784">1986</option>
-                                <option value="178786">1985</option>
-                                <option value="178788">1984</option>
-                                <option value="178790">1983</option>
-                                <option value="178792">1982</option>
-                                <option value="178794">1981</option>
-                                <option value="178796">1980</option>
-                                <option value="178798">1979</option>
-                                <option value="178800">1978</option>
-                                <option value="178802">1977</option>
-                                <option value="178804">1976</option>
-                                <option value="178806">1975</option>
-                                <option value="178808">1974</option>
-                                <option value="178810">1973</option>
-                                <option value="178812">1972</option>
-                                <option value="178814">1971</option>
-                                <option value="178816">1970</option>
-                                <option value="178818">1969</option>
-                                <option value="178820">1968</option>
-                                <option value="178822">1967</option>
-                                <option value="178824">1966</option>
-                                <option value="178826">1965</option>
-                                <option value="178828">1964</option>
-                                <option value="178830">1963</option>
-                                <option value="178832">1962</option>
-                                <option value="178834">1961</option>
-                                <option value="178836">1960</option>
-                                <option value="178838">1959</option>
-                                <option value="178840">1958</option>
-                                <option value="178842">1957</option>
-                                <option value="178844">1956</option>
-                                <option value="178846">1955</option>
-                                <option value="178848">1954</option>
-                                <option value="178850">1953</option>
-                                <option value="178852">1952</option>
-                                <option value="178854">1951</option>
-                                <option value="178856">1950</option>
-                                <option value="178858">1949</option>
-                                <option value="178860">1948</option>
-                                <option value="178862">1947</option>
-                                <option value="178864">1946</option>
-                                <option value="178866">1945</option>
-                                <option value="178868">1944</option>
-                                <option value="178870">1943</option>
-                                <option value="178872">1942</option>
-                                <option value="178874">1941</option>
-                                <option value="178876">1940</option>
-                                <option value="178878">1939</option>
-                                <option value="178880">1938</option>
-                                <option value="178882">1937</option>
-                                <option value="178884">1936</option>
-                                <option value="178886">1935</option>
-                                <option value="178888">1934</option>
-                                <option value="178890">1933</option>
-                                <option value="178892">1932</option>
-                                <option value="178894">1931</option>
-                                <option value="178896">1930</option>
-                                <option value="178898">1929</option>
-                                <option value="178900">1928</option>
-                                <option value="178902">1927</option>
-                                <option value="178904">1926</option>
-                                <option value="178906">1925</option>
-                                <option value="178908">1924</option>
-                                <option value="178910">1923</option>
-                                <option value="178912">1922</option>
-                                <option value="178914">1921</option>
-                                <option value="178916">1920</option>
-                                <option value="178918">1919</option>
-                                <option value="178920">1918</option>
-                                <option value="178922">1917</option>
-                                <option value="178924">1916</option>
-                                <option value="178926">1915</option>
-                                <option value="178928">1914</option>
-                                <option value="178930">1913</option>
-                                <option value="178932">1912</option>
-                                <option value="178934">1911</option>
-                                <option value="178936">1910</option>
-                                <option value="178938">1909</option>
-                                <option value="178940">1908</option>
-                                <option value="178942">1907</option>
-                                <option value="178944">1906</option>
-                                <option value="178946">1905</option>
-                                <option value="178948">1904</option>
-                                <option value="178950">1903</option>
-                                <option value="178952">1902</option>
-                                <option value="178954">1901</option>
-                            </select>
+                            <select id="cb_vehicleYear" name="cb_vehicleYear"></select>
                         </div>
                         <div class="row-item" style="display:block; float:left">
                             <div class="field-label">Make</div>
-                            <select id="cb_vehicleMake" name="cb_vehicleMake" style="background-color:#fff;">
-                                <option value="" selected="selected">Select Make</option>
-                                <option value="Acura">Acura</option>
-                                <option value="Alfa Romeo">Alfa Romeo</option>
-                                <option value="Aston Martin">Aston Martin</option>
-                                <option value="Audi">Audi</option>
-                                <option value="Bentley">Bentley</option>
-                                <option value="Bmw">Bmw</option>
-                                <option value="Buick">Buick</option>
-                                <option value="Cadillac">Cadillac</option>
-                                <option value="Chevrolet">Chevrolet</option>
-                                <option value="Chrysler">Chrysler</option>
-                                <option value="Datsun">Datsun</option>
-                                <option value="Delorean">Delorean</option>
-                                <option value="Dodge">Dodge</option>
-                                <option value="Ferrari">Ferrari</option>
-                                <option value="Fiat">Fiat</option>
-                                <option value="Ford">Ford</option>
-                                <option value="Gm">Gm</option>
-                                <option value="Gmc">Gmc</option>
-                                <option value="Honda">Honda</option>
-                                <option value="Hummer">Hummer</option>
-                                <option value="Hyundai">Hyundai</option>
-                                <option value="Infiniti">Infiniti</option>
-                                <option value="Isuzu">Isuzu</option>
-                                <option value="Jaguar">Jaguar</option>
-                                <option value="Jeep">Jeep</option>
-                                <option value="Kia">Kia</option>
-                                <option value="Lamborghini">Lamborghini</option>
-                                <option value="Landrover">Landrover</option>
-                                <option value="Lexus">Lexus</option>
-                                <option value="Lincoln">Lincoln</option>
-                                <option value="Lotus">Lotus</option>
-                                <option value="Maserati">Maserati</option>
-                                <option value="Mazda">Mazda</option>
-                                <option value="Mercedes">Mercedes</option>
-                                <option value="Mercury">Mercury</option>
-                                <option value="Mg">Mg</option>
-                                <option value="Mgb">Mgb</option>
-                                <option value="Mini">Mini</option>
-                                <option value="Mitsubishi">Mitsubishi</option>
-                                <option value="Nissan">Nissan</option>
-                                <option value="Oldsmobile">Oldsmobile</option>
-                                <option value="Plymouth">Plymouth</option>
-                                <option value="Pontiac">Pontiac</option>
-                                <option value="Porsche">Porsche</option>
-                                <option value="Rolls Royce">Rolls Royce</option>
-                                <option value="Saab">Saab</option>
-                                <option value="Saturn">Saturn</option>
-                                <option value="Scion">Scion</option>
-                                <option value="Subaru">Subaru</option>
-                                <option value="Suzuki">Suzuki</option>
-                                <option value="Tesla">Tesla</option>
-                                <option value="Toyota">Toyota</option>
-                                <option value="Triumph">Triumph</option>
-                                <option value="Volkswagen">Volkswagen</option>
-                                <option value="Volvo">Volvo</option>
-                                <option value="Other">Other</option>
-                            </select>
+                            <select id="cb_vehicleMake" name="cb_vehicleMake"></select>
                         </div>
                         <div class="row-item" style="display:block; float:left">
                             <div class="field-label">Model</div>
-                            <input id="cb_vehicleModel" name="cb_vehicleModel" type="text" placeholder="Enter vehicle model" class="small">
+                            <select id="cb_vehicleModel" name="cb_vehicleModel"></select>
+                        </div>
+                    </div>
+
+                    <div class="marginx3" style="height: 72px;">
+                        <div class="lg-subsection-holder" style="opacity: 1;">
+                            <label for="cb_vehiclType" class="field-label">Vehicle Type</label>
+                            <div id="pd_country" style="height:auto;">
+                                <!--<select id="cb_vehicleType" name="cb_vehicleType"></select>-->
+                                <select name="cb_vehicleType" id="cb_vehicleType" style="width:311px; background-color:#fff;">
+                                    <option value=""></option>
+                                    <option value="car" selected="selected">Car</option>
+                                    <option value="van">Van</option>
+                                    <option value="suv">Suv</option>
+                                    <option value="truck">Small Truck</option>
+                                    <option value="os">Oversized Vehicle</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
 
