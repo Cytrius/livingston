@@ -169,8 +169,7 @@ class HomeController extends Controller
         if (!$rail_rate) {
             // No rates for this one
             $new_quote->rate = 0;
-        }
-
+        } else
         $new_quote->rate = $rail_rate->rate;
 
         $new_quote->vehicle_type = $form['cb_vehicleType'];
