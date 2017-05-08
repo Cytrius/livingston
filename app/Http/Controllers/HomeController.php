@@ -227,7 +227,10 @@ class HomeController extends Controller
             $new_quote->alt_total = $alt_total+ ( $alt_total * ($new_quote->tax_percent / 100) );
         }
 
-        $new_quote->est_days = $rail_rate->est_days; 
+        if ($rail_rate)
+            $new_quote->est_days = $rail_rate->est_days; 
+        else
+            $new_quote->est_days = 0;
 
         $new_quote->save();
 
