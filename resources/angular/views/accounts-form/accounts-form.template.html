@@ -1,0 +1,58 @@
+<div class="action-loading" *ngIf="isLoading">
+    <div class="ui active text loader">{{ loading_action }}</div>
+</div>
+
+<div class="ui container">
+
+	<div class="ui basic segment">
+
+		<div class="ui form">
+
+			<a class="ui right floated button" (click)="save()">Save</a>
+
+			<a class="ui right floated negative button" (click)="delete()" style="background:#FCB414; margin-right:1em;">Delete</a>
+
+			<h4 class="ui left floated header">
+				{{ account?.company }}
+			</h4>
+
+			<div class="ui secondary segment" style="clear:both;">
+
+				<h5 class="ui dividing header">Information</h5>
+	  			<div class="inline field">
+	  				<label>Name</label>
+					<input type="text" placeholder="" name="company" [(ngModel)]="account.company">
+				</div>
+	  			<div class="inline field">
+	  				<label>Account Type</label>
+					<select class="ui dropdown" ame="type" [(ngModel)]="account.type">
+						<option value="private">Private</option>
+						<option value="mover">Mover</option>
+						<option value="dealer">Dealer</option>
+						<option value="repeat">Repeat</option>
+					</select>
+				</div>
+	  			<div class="inline field">
+	  				<label>Account Number</label>
+					<input type="text" placeholder="" name="account_number" [(ngModel)]="account.account_number">
+				</div>
+				<div class="inline field">
+	  				<label>Address</label>
+					<input type="text" placeholder="" name="address" [(ngModel)]="account.address">
+				</div>
+				<div class="inline field">
+	  				<label>City</label>
+					<input type="text" placeholder="" name="city" [(ngModel)]="account.city">
+				</div>
+				<div class="inline field">
+	  				<label>Country</label>
+					<input type="text" placeholder="" name="country" [(ngModel)]="account.country">
+				</div>
+			</div>
+  			
+
+		</div>
+
+	</div>
+
+</div>

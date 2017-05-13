@@ -13,7 +13,7 @@ declare var window:any;
 })
 export class SettingsView  {
 
-    private quote:any;
+    private settings:any = {};
 
     private filterOptions:any = {
       origins: [],
@@ -40,6 +40,17 @@ export class SettingsView  {
     ) {
     }
 
+    private save() {
+      this.isLoading = true;
+      console.log(this.settings);
+      this.appService.saveSettings(this.settings).then(res => {
+         this.appService.getSettings().then(settings => {
+          this.settings = settings;
+          this.isLoading = false;
+        });
+      });
+    }
+
     private renderDropdowns() {
       setTimeout(() => {
         $(this.element.nativeElement).find('.ui.dropdown').dropdown();
@@ -56,8 +67,9 @@ export class SettingsView  {
      */
     ngOnInit() : void {
 
-      this.appService.getQuoteById(+this.route.snapshot.params['id']).then(quote => {
-          this.quote = quote;
+      this.appService.getSettings().then(settings => {
+
+          this.settings = settings;
           this.isLoading = false;
           this.renderDropdowns();
           this.renderDatepicker();

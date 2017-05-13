@@ -26,7 +26,7 @@
 	  				<label>Filter Account</label>
 					<select class="ui search dropdown" [(ngModel)]="filterSelect.account" (change)="loadFilteredData()">
 					  <option value="">Account</option>
-					   <option *ngFor="let account of filterOptions.accounts" [value]="account.account_id">{{ account.account.company }}</option>
+					   <option *ngFor="let account of filterOptions.accounts" [value]="account.account_id">{{ account?.account?.company }}</option>
 					</select>
 				</div>
 	  			<div class="field">
@@ -66,21 +66,21 @@
 		  </thead>
 		  <tbody>
 		    <tr *ngFor="let quote of quotes" [routerLink]="['/dashboard/quotes', quote.id]">
-		      	<td>{{ quote.created_at | date:'mediumDate' }}</td>
-		      	<td>{{ quote.departure_at | date:'mediumDate' }}</td>
-		     	<td>{{ quote.account.company }}</td>
-		      	<td>{{ quote.user.name }}</td>
-		      	<td>{{ quote.origin }}</td>
-		      	<td>{{ quote.destination }}</td>
+		      	<td>{{ quote?.created_at | date:'mediumDate' }}</td>
+		      	<td>{{ quote?.departure_at | date:'mediumDate' }}</td>
+		     	<td>{{ quote?.account?.company }}</td>
+		      	<td>{{ quote?.user?.name }}</td>
+		      	<td>{{ quote?.origin }}</td>
+		      	<td>{{ quote?.destination }}</td>
 		      	<td class="collapsing" style="text-align:center">
-		      		<i *ngIf="quote.origin_pickup" class="fa fa-check"></i>
-		      		<i *ngIf="!quote.origin_pickup" class="fa fa-close"></i>
+		      		<i *ngIf="quote?.origin_pickup" class="fa fa-check"></i>
+		      		<i *ngIf="!quote?.origin_pickup" class="fa fa-close"></i>
 		      	</td>
 		      	<td class="collapsing" style="text-align:center">
-		      		<i *ngIf="quote.destination_delivery" class="fa fa-check"></i>
-		      		<i *ngIf="!quote.destination_delivery" class="fa fa-close"></i>
+		      		<i *ngIf="quote?.destination_delivery" class="fa fa-check"></i>
+		      		<i *ngIf="!quote?.destination_delivery" class="fa fa-close"></i>
 		      	</td>
-		     	<td style="text-align:right">{{ quote.total || 0 | number:'1.2-2' }}</td>
+		     	<td style="text-align:right">{{ quote?.total || 0 | number:'1.2-2' }}</td>
 		    </tr>
 		  </tbody>
 		  <tfoot>

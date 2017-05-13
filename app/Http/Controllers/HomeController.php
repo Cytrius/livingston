@@ -10,6 +10,7 @@ use App\Account as AccountModel;
 
 use App\Quotes as QuotesModel;
 use App\Rates as RatesModel;
+use App\Settings as SettingsModel;
 use Carbon\Carbon;
 
 class HomeController extends Controller
@@ -212,9 +213,13 @@ class HomeController extends Controller
         if ($new_quote->destination_delivery_rate)
             $total += $new_quote->destination_delivery_rate;
 
-        $new_quote->fuel_surcharge = 11.25;
+        $fuel_surcharge = SettingsModel::where('setting', 'fuel_surcharge')->first();
+        $new_quote->fuel_surcharge = floatval($fuel_surcharge->value);
         $new_quote->subtotal = $total + ( $total * ($new_quote->fuel_surcharge / 100) );
-        $new_quote->tax_percent = 12.00;
+
+
+
+        $new_quote->tax_percent = $this->getTaxRate($new_quote->destination);
         $new_quote->total = $new_quote->subtotal + ( $new_quote->subtotal * ($new_quote->tax_percent / 100) );
 
         if ($new_quote->origin_pickup_rate > 0) {
@@ -240,6 +245,23 @@ class HomeController extends Controller
             'account' => AccountModel::where('id', \Auth::user()->account_id)->first(),
             'form' => $request->all()
         ]);
+    }
+
+    public function getTaxRate($destination) {
+        $destination = RatesModel::where('destination', 'LIKE', $destination.'%')->where('type', 'pd')->first();
+
+        if (!$destination)
+            return 0;
+
+        $province = strtolower($destination->destination_province);
+
+        $tax_rate = SettingsModel::where('setting', 'tax_'.$province)->first();
+
+        if (!$tax_rate)
+            return 0;
+
+        return floatval($tax_rate->value);
+
     }
 
     public function importPost(Request $request) {
@@ -292,15 +314,15 @@ class HomeController extends Controller
 
             if (!empty($data['origin']) && !empty($data['destination'])) {
                 $data['account_type'] = 'private';
-                $data['rate'] =  intval(trim(str_replace('$', '', $sheet[$i][$col_type_private])));
+                $data['rate'] =  floatval(trim(str_replace('$', '', $sheet[$i][$col_type_private])));
                 $normalized[] = $data;
 
                 $data['account_type'] = 'mover';
-                $data['rate'] = intval(trim(str_replace('$', '', $sheet[$i][$col_type_mover])));
+                $data['rate'] = floatval(trim(str_replace('$', '', $sheet[$i][$col_type_mover])));
                 $normalized[] = $data;
 
                 $data['account_type'] = 'dealer';
-                $data['rate'] =  intval(trim(str_replace('$', '', $sheet[$i][$col_type_dealer])));
+                $data['rate'] =  floatval(trim(str_replace('$', '', $sheet[$i][$col_type_dealer])));
                 $normalized[] = $data;
             }
         }
@@ -360,62 +382,62 @@ class HomeController extends Controller
             if (!empty($data['origin']) && !empty($data['destination'])) {
                 $data['account_type'] = 'private';
                 $data['vehicle_type'] = 'car';
-                $data['rate'] =  intval(trim(str_replace('$', '', $sheet[$i][$col_private_car])));
+                $data['rate'] =  floatval(trim(str_replace('$', '', $sheet[$i][$col_private_car])));
                 $normalized[] = $data;
 
                 $data['account_type'] = 'private';
                 $data['vehicle_type'] = 'van';
-                $data['rate'] =  intval(trim(str_replace('$', '', $sheet[$i][$col_private_van])));
+                $data['rate'] =  floatval(trim(str_replace('$', '', $sheet[$i][$col_private_van])));
                 $normalized[] = $data;
 
                 $data['account_type'] = 'private';
                 $data['vehicle_type'] = 'os';
-                $data['rate'] =  intval(trim(str_replace('$', '', $sheet[$i][$col_private_os])));
+                $data['rate'] =  floatval(trim(str_replace('$', '', $sheet[$i][$col_private_os])));
                 $normalized[] = $data;
 
                 $data['account_type'] = 'repeat';
                 $data['vehicle_type'] = 'car';
-                $data['rate'] =  intval(trim(str_replace('$', '', $sheet[$i][$col_repeat_car])));
+                $data['rate'] =  floatval(trim(str_replace('$', '', $sheet[$i][$col_repeat_car])));
                 $normalized[] = $data;
 
                 $data['account_type'] = 'repeat';
                 $data['vehicle_type'] = 'van';
-                $data['rate'] =  intval(trim(str_replace('$', '', $sheet[$i][$col_repeat_van])));
+                $data['rate'] =  floatval(trim(str_replace('$', '', $sheet[$i][$col_repeat_van])));
                 $normalized[] = $data;
 
                 $data['account_type'] = 'repeat';
                 $data['vehicle_type'] = 'os';
-                $data['rate'] =  intval(trim(str_replace('$', '', $sheet[$i][$col_repeat_os])));
+                $data['rate'] =  floatval(trim(str_replace('$', '', $sheet[$i][$col_repeat_os])));
                 $normalized[] = $data;
 
                 $data['account_type'] = 'mover';
                 $data['vehicle_type'] = 'car';
-                $data['rate'] =  intval(trim(str_replace('$', '', $sheet[$i][$col_mover_car])));
+                $data['rate'] =  floatval(trim(str_replace('$', '', $sheet[$i][$col_mover_car])));
                 $normalized[] = $data;
 
                 $data['account_type'] = 'mover';
                 $data['vehicle_type'] = 'van';
-                $data['rate'] =  intval(trim(str_replace('$', '', $sheet[$i][$col_mover_van])));
+                $data['rate'] =  floatval(trim(str_replace('$', '', $sheet[$i][$col_mover_van])));
                 $normalized[] = $data;
 
                 $data['account_type'] = 'mover';
                 $data['vehicle_type'] = 'os';
-                $data['rate'] =  intval(trim(str_replace('$', '', $sheet[$i][$col_mover_os])));
+                $data['rate'] =  floatval(trim(str_replace('$', '', $sheet[$i][$col_mover_os])));
                 $normalized[] = $data;
 
                 $data['account_type'] = 'dealer';
                 $data['vehicle_type'] = 'car';
-                $data['rate'] =  intval(trim(str_replace('$', '', $sheet[$i][$col_dealer_car])));
+                $data['rate'] =  floatval(trim(str_replace('$', '', $sheet[$i][$col_dealer_car])));
                 $normalized[] = $data;
 
                 $data['account_type'] = 'dealer';
                 $data['vehicle_type'] = 'van';
-                $data['rate'] =  intval(trim(str_replace('$', '', $sheet[$i][$col_dealer_van])));
+                $data['rate'] =  floatval(trim(str_replace('$', '', $sheet[$i][$col_dealer_van])));
                 $normalized[] = $data;
 
                 $data['account_type'] = 'dealer';
                 $data['vehicle_type'] = 'os';
-                $data['rate'] =  intval(trim(str_replace('$', '', $sheet[$i][$col_dealer_os])));
+                $data['rate'] =  floatval(trim(str_replace('$', '', $sheet[$i][$col_dealer_os])));
                 $normalized[] = $data;
             }
         }
@@ -429,7 +451,7 @@ class HomeController extends Controller
                 'account_type' => $rate['account_type'],
             ]);
 
-            $rateModel->est_days = intval($rate['est_days']);
+            $rateModel->est_days = floatval($rate['est_days']);
             $rateModel->rate = $rate['rate'];
 
             $rateModel->save();

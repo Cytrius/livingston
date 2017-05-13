@@ -17,6 +17,7 @@
 	</div>
 
 		<div class="ui tiny form">
+			<a class="ui right floated button" (click)="create()" style="margin-top:calc(19px + .28571429rem)">New Rate</a>
 	  		<div class="fields">
 	  			<div class="field">
 	  				<label>Filter Origin</label>
@@ -68,7 +69,7 @@
 		  	</tr>
 		  </thead>
 		  <tbody>
-		    <tr *ngFor="let rate of rates">
+		    <tr *ngFor="let rate of rates" [routerLink]="['/dashboard/rates', rate.id, 'edit']">
 		      	<td>{{ rate.origin }}</td>
 		     	<td>{{ rate.destination }}</td>
 
@@ -79,7 +80,7 @@
 
 		      	<td>{{ rate.account_type }}</td>
 		      	<td>{{ rate.vehicle_type || 'any' }}</td>
-		     	<td>{{ rate.rate || 0 | number:'1.2-2' }}</td>
+		     	<td>{{ rate.rate || 0 | number:'1.5-5' }}</td>
 		    </tr>
 		  </tbody>
 		  <tfoot>

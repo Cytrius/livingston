@@ -23,7 +23,7 @@ class MakeRailPricingTable extends Migration
             $table->string('account_type')->nullable();
             $table->string('vehicle_type')->nullable();
             $table->integer('est_days')->nullable();
-            $table->decimal('rate', 10, 4)->nullable();
+            $table->decimal('rate', 10, 5)->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Account as AccountModel;
 use App\User as UserModel;
+use App\Settings as SettingsModel;
 
 class AccountsController extends Controller
 {
@@ -77,6 +78,127 @@ class AccountsController extends Controller
         $users = UserModel::where('account_id', $account_id)->with('account')->get();
 
         return response()->json($users);
+    }
+
+    public function getAccount($account_id) {
+
+        $account = AccountModel::where('id', $account_id)->first();
+
+        return response()->json($account);
+    }
+
+    public function deleteAccount(Request $request, $account_id) {
+
+        $account = AccountModel::where('id', $account_id)->first();
+
+        $account->delete();
+
+        return response()->json([]);
+    }
+
+    public function saveAccount(Request $request, $account_id) {
+
+        $account = AccountModel::where('id', $account_id)->first();
+
+        if (!$account)
+            return response('', 404);
+
+        if (!$account->update($request->all()))
+            return response('', 500);
+
+        return response()->json($account);
+    }
+
+    public function newAccount(Request $request) {
+
+        $account = AccountModel::create($request->all());
+
+        return response()->json($account);
+
+    }
+
+
+
+    public function getSettings() {
+
+        $settings = SettingsModel::all();
+
+        $settingsArray = [];
+
+        foreach($settings as $setting) {
+            $settingsArray[$setting->setting] = $setting->value;
+        }
+
+        return response()->json($settingsArray);
+    }
+
+    public function saveSettings(Request $request) {
+        $data = $request->all();
+
+        foreach($data as $key => $val) {
+            $setting = SettingsModel::where('setting', $key)->first();
+
+            if (!$setting) {
+                $setting = SettingsModel::create();
+            }
+
+            $setting->setting = $key;
+            $setting->value = $val;
+
+            $setting->save();
+        }
+
+        return response()->json([], 200);
+    }
+
+
+
+    public function getUser($user_id) {
+
+        $user = UserModel::where('id', $user_id)->with('account')->first();
+
+        return response()->json($user);
+    }
+
+    public function deleteUser(Request $request, $user_id) {
+
+        $user = UserModel::where('id', $user_id)->first();
+
+        $user->delete();
+
+        return response()->json([]);
+    }
+
+    public function saveUser(Request $request, $user_id) {
+
+        $user = UserModel::where('id', $user_id)->first();
+
+        if (!$user)
+            return response('', 404);
+
+        $data = $request->all();
+
+        if ($request->has('password'))
+            $data['password'] = bcrypt($data['password']);
+
+        if (!$user->update($data))
+            return response('', 500);
+
+        return response()->json($user);
+    }
+
+    public function newUser(Request $request, $account_id) {
+
+        $user = UserModel::create([
+            'name' => 'New User',
+            'email' => time().'@email.com',
+            'account_id' => $account_id
+        ]);
+
+        $user->account_id = $account_id;
+
+        return response()->json($user);
+
     }
 
     

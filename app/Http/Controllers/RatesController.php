@@ -34,6 +34,42 @@ class RatesController extends Controller
         return response()->json($rates);
     }
 
+    public function getRate(Request $request, $rate_id) {
+
+        $rate = RatesModel::where('id', $rate_id)->first();
+
+        return response()->json($rate);
+    }
+
+    public function deleteRate(Request $request, $rate_id) {
+
+        $rate = RatesModel::where('id', $rate_id)->first();
+
+        $rate->delete();
+
+        return response()->json([]);
+    }
+
+    public function saveRate(Request $request, $rate_id) {
+
+        $rate = RatesModel::where('id', $rate_id)->first();
+
+        if (!$rate)
+            return response('', 404);
+
+        if (!$rate->update($request->all()))
+            return response('', 500);
+
+        return response()->json($rate);
+    }
+
+    public function newRate(Request $request) {
+
+        $rate = RatesModel::create($request->all());
+
+        return response()->json($rate);
+    }
+
     public function getFilteredRates(Request $request) {
 
         $rates = RatesModel::select('*');

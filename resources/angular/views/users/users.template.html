@@ -6,10 +6,12 @@
 
 	<div class="ui basic segment">
 
-		<a class="ui right floated button">New User</a>
+		<a class="ui right floated button" (click)="create()">New User</a>
+
+		<a class="ui right floated button" style="margin-right:1em;" [routerLink]="['/dashboard/accounts', account_id, 'edit']">Edit Account</a>
 
 		<h4 *ngIf="users" class="ui left floated header">
-			{{ users[0].account?.company }}
+			{{ users[0]?.account?.company }}
 		</h4>
 
 		<h4 *ngIf="!users" class="ui left floated header">
@@ -27,7 +29,7 @@
 		  	</tr>
 		  </thead>
 		  <tbody>
-		    <tr *ngFor="let user of users">
+		    <tr *ngFor="let user of users" [routerLink]="['/dashboard/accounts', account_id, 'users', user.id, 'edit']">
 		      	<td>{{ user.name }}</td>
 		     	<td>{{ user.email }}</td>
 		      	<td>{{ user.phone }}</td>

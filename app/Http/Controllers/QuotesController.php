@@ -31,7 +31,7 @@ class QuotesController extends Controller
         if ($request->has('page'))
             $quotes->offset($request->get('page')*10);
 
-        $quotes = $quotes->get();
+        $quotes = $quotes->orderBy('created_at', 'ASC')->get();
 
         return response()->json($quotes);
     }

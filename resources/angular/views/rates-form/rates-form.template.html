@@ -1,0 +1,81 @@
+<div class="action-loading" *ngIf="isLoading">
+    <div class="ui active text loader">{{ loading_action }}</div>
+</div>
+
+<div class="ui container">
+
+	<div class="ui basic segment">
+
+		<div class="ui form">
+
+			<a class="ui right floated button" (click)="save()">Save</a>
+
+			<a class="ui right floated negative button" (click)="delete()" style="background:#FCB414; margin-right:1em;">Delete</a>
+
+			<h4 class="ui left floated header">
+				{{ rate?.type }} - {{ rate?.origin }} - {{ rate?.destination }}
+			</h4>
+
+			<div class="ui secondary segment" style="clear:both;">
+
+			<h5 class="ui dividing header">Type And Rate</h5>
+  			<div class="inline field">
+  				<label>Type</label>
+				<select class="ui dropdown" ame="type" [(ngModel)]="rate.type">
+					<option value="rail">Rail</option>
+					<option value="pd">Pickup/Delivery</option>
+				</select>
+			</div>
+  			<div class="inline field">
+  				<label>Account Type</label>
+				<select class="ui dropdown" ame="account_type" [(ngModel)]="rate.account_type">
+					<option value="private">Private</option>
+					<option value="mover">Mover</option>
+					<option value="dealer">Dealer</option>
+					<option value="repeat">Repeat</option>
+				</select>
+			</div>
+  			<div class="inline field">
+  				<label>Vehicle Type</label>
+				<select class="ui dropdown" ame="vehicle_type" [(ngModel)]="rate.vehicle_type">
+					<option value="car">Car</option>
+					<option value="van">Van</option>
+					<option value="os">Oversized</option>
+				</select>
+			</div>
+  			<div class="inline field">
+  				<label>Rate</label>
+				<input type="number" placeholder="" name="rate" [(ngModel)]="rate.rate">
+			</div>
+  			<div class="inline field">
+  				<label>Estimated Travel Days</label>
+				<input type="number" placeholder="" name="est_days" [(ngModel)]="rate.est_days">
+			</div>
+
+			<h5 class="ui dividing header">Origin</h5>
+
+  			<div class="inline field">
+  				<label>Origin City</label>
+				<input type="text" placeholder="" name="origin" [(ngModel)]="rate.origin">
+			</div>
+  			<div class="inline field">
+  				<label>Origin Province</label>
+				<input type="text" placeholder="" name="origin_province" [(ngModel)]="rate.origin_province">
+			</div>
+
+			<h5 class="ui dividing header">Destination</h5>
+
+  			<div class="inline field">
+  				<label>Origin City</label>
+				<input type="text" placeholder="" name="destination" [(ngModel)]="rate.destination">
+			</div>
+  			<div class="inline field">
+  				<label>Origin Province</label>
+				<input type="text" placeholder="" name="destination_province" [(ngModel)]="rate.destination_province">
+			</div>
+
+		</div>
+
+	</div>
+
+</div>

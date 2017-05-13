@@ -18,7 +18,7 @@
 
 		<div class="ui form">
 
-			<a class="ui right floated button">Save</a>
+			<a class="ui right floated button" (click)="save()">Save</a>
 
 			<h4 class="ui left floated header">
 				Taxes &amp; Surcharges
@@ -27,116 +27,220 @@
 			<div class="ui secondary segment" style="clear:both;">
 
 			<h5 class="ui dividing header">Surcharges</h5>
-	  		<div class="five fields">
-	  			<div class="field">
+	  			<div class="inline field">
 	  				<label>Fuel Surcharge</label>
 					<div class="ui icon input">
-					  <input type="text" placeholder="">
+					  <input type="text" placeholder="" name="fuel_surchage" [(ngModel)]="settings.fuel_surcharge">
 					  <i class="percent icon"></i>
 					</div>
+				</div>
+
+			<h5 class="ui dividing header">Discounts</h5>
+	  			<div class="inline field">
+	  				<label>Dealer Discount</label>
+					<div class="ui icon input">
+					  <input type="text" placeholder="" name="dealer_discount" [(ngModel)]="settings.dealer_discount">
+					  <i class="percent icon"></i>
+					</div>
+				</div>
+	  			<div class="inline field">
+	  				<label>Mover Discount</label>
+					<div class="ui icon input">
+					  <input type="text" placeholder="" name="mover_discount" [(ngModel)]="settings.mover_discount">
+					  <i class="percent icon"></i>
+					</div>
+				</div>
+	  			<div class="inline field">
+	  				<label>Private Discount</label>
+					<div class="ui icon input">
+					  <input type="text" placeholder="" name="private_discount" [(ngModel)]="settings.private_discount">
+					  <i class="percent icon"></i>
+					</div>
+				</div>
+
+			<h5 class="ui dividing header">Notifications</h5>
+  			<div class="inline field">
+  				<label>Calgary</label>
+				<div class="ui icon input">
+				  <input type="text" placeholder="" name="calgary_email" [(ngModel)]="settings.calgary_email">
+				  <i class="mail icon"></i>
+				</div>
+			</div>
+  			<div class="inline field">
+  				<label>Edmonton</label>
+				<div class="ui icon input">
+				  <input type="text" placeholder="" name="edmonton_email" [(ngModel)]="settings.edmonton_email">
+				  <i class="mail icon"></i>
+				</div>
+			</div>
+			<div class="inline field">
+  				<label>Fredericton</label>
+				<div class="ui icon input">
+				  <input type="text" placeholder="" name="fredericton_email" [(ngModel)]="settings.fredericton_email">
+				  <i class="mail icon"></i>
+				</div>
+			</div>
+			<div class="inline field">
+  				<label>Halifax</label>
+				<div class="ui icon input">
+				  <input type="text" placeholder="" name="discount" [(ngModel)]="settings.halifax_email">
+				  <i class="mail icon"></i>
+				</div>
+			</div>
+			<div class="inline field">
+  				<label>Moncton</label>
+				<div class="ui icon input">
+				  <input type="text" placeholder="" name="moncton_email" [(ngModel)]="settings.moncton_email">
+				  <i class="mail icon"></i>
+				</div>
+			</div>
+			<div class="inline field">
+  				<label>Montreal</label>
+				<div class="ui icon input">
+				  <input type="text" placeholder="" name="montreal_email" [(ngModel)]="settings.montreal_email">
+				  <i class="mail icon"></i>
+				</div>
+			</div>
+			<div class="inline field">
+  				<label>Ottawa</label>
+				<div class="ui icon input">
+				  <input type="text" placeholder="" name="ottawa_email" [(ngModel)]="settings.ottawa_email">
+				  <i class="mail icon"></i>
+				</div>
+			</div>
+			<div class="inline field">
+  				<label>Regina</label>
+				<div class="ui icon input">
+				  <input type="text" placeholder="" name="regina_email" [(ngModel)]="settings.regina_email">
+				  <i class="mail icon"></i>
+				</div>
+			</div>
+			<div class="inline field">
+  				<label>Saint John</label>
+				<div class="ui icon input">
+				  <input type="text" placeholder="" name="saint_john_email" [(ngModel)]="settings.saint_john_email">
+				  <i class="mail icon"></i>
+				</div>
+			</div>
+			<div class="inline field">
+  				<label>Saskatoon</label>
+				<div class="ui icon input">
+				  <input type="text" placeholder="" name="saskatoon_email" [(ngModel)]="settings.saskatoon_email">
+				  <i class="mail icon"></i>
+				</div>
+			</div>
+			<div class="inline field">
+  				<label>Toronto</label>
+				<div class="ui icon input">
+				  <input type="text" placeholder="" name="toronto_email" [(ngModel)]="settings.toronto_email">
+				  <i class="mail icon"></i>
+				</div>
+			</div>
+			<div class="inline field">
+  				<label>Vancouver</label>
+				<div class="ui icon input">
+				  <input type="text" placeholder="" name="vancouver_email" [(ngModel)]="settings.vancouver_email">
+				  <i class="mail icon"></i>
+				</div>
+			</div>
+			<div class="inline field">
+  				<label>Winnipeg</label>
+				<div class="ui icon input">
+				  <input type="text" placeholder="" name="winnipeg_email" [(ngModel)]="settings.winnipeg_email">
+				  <i class="mail icon"></i>
 				</div>
 			</div>
 
-			<h5 class="ui dividing header">Discounts</h5>
-	  		<div class="five fields">
-	  			<div class="field">
-	  				<label>Quote Discount</label>
-					<div class="ui icon input">
-					  <input type="text" placeholder="">
-					  <i class="percent icon"></i>
-					</div>
-				</div>
-			</div>
 
 			<h5 class="ui dividing header">Tax Rates</h5>
   			<div class="inline field">
   				<label>Alberta (AB)</label>
 				<div class="ui icon input">
-				  <input type="text" placeholder="">
+				  <input type="text" placeholder="" name="tax_ab" [(ngModel)]="settings.tax_ab">
 				  <i class="percent icon"></i>
 				</div>
 			</div>
   			<div class="inline field">
   				<label>British Columbia (BC)</label>
 				<div class="ui icon input">
-				  <input type="text" placeholder="">
+				  <input type="text" placeholder="" name="tax_bc" [(ngModel)]="settings.tax_bc">
 				  <i class="percent icon"></i>
 				</div>
 			</div>
 			<div class="inline field">
   				<label>Manitoba (MB)</label>
 				<div class="ui icon input">
-				  <input type="text" placeholder="">
+				  <input type="text" placeholder="" name="tax_mb" [(ngModel)]="settings.tax_mb">
 				  <i class="percent icon"></i>
 				</div>
 			</div>
 			<div class="inline field">
   				<label>New Brunswick (NB)</label>
 				<div class="ui icon input">
-				  <input type="text" placeholder="">
+				  <input type="text" placeholder="" name="tax_nb" [(ngModel)]="settings.tax_nb">
 				  <i class="percent icon"></i>
 				</div>
 			</div>
 			<div class="inline field">
   				<label>Newfoundland and Labrador (NL)</label>
 				<div class="ui icon input">
-				  <input type="text" placeholder="">
+				  <input type="text" placeholder="" name="tax_nl" [(ngModel)]="settings.tax_nl">
 				  <i class="percent icon"></i>
 				</div>
 			</div>
 			<div class="inline field">
   				<label>Northwest Territories (NT)</label>
 				<div class="ui icon input">
-				  <input type="text" placeholder="">
+				  <input type="text" placeholder="" name="tax_nt" [(ngModel)]="settings.tax_nt">
 				  <i class="percent icon"></i>
 				</div>
 			</div>
 			<div class="inline field">
   				<label>Nova Scotia (NS)</label>
 				<div class="ui icon input">
-				  <input type="text" placeholder="">
+				  <input type="text" placeholder="" name="tax_ns" [(ngModel)]="settings.tax_ns">
 				  <i class="percent icon"></i>
 				</div>
 			</div>
 			<div class="inline field">
   				<label>Nunavut (NU)</label>
 				<div class="ui icon input">
-				  <input type="text" placeholder="">
+				  <input type="text" placeholder="" name="tax_nu" [(ngModel)]="settings.tax_nu">
 				  <i class="percent icon"></i>
 				</div>
 			</div>
 			<div class="inline field">
   				<label>Ontario (ON)</label>
 				<div class="ui icon input">
-				  <input type="text" placeholder="">
+				  <input type="text" placeholder="" name="tax_on" [(ngModel)]="settings.tax_on">
 				  <i class="percent icon"></i>
 				</div>
 			</div>
 			<div class="inline field">
   				<label>Prince Edward Island (PE)</label>
 				<div class="ui icon input">
-				  <input type="text" placeholder="">
+				  <input type="text" placeholder="" name="tax_pe" [(ngModel)]="settings.tax_pe">
 				  <i class="percent icon"></i>
 				</div>
 			</div>
 			<div class="inline field">
   				<label>Quebec (QC)</label>
 				<div class="ui icon input">
-				  <input type="text" placeholder="">
+				  <input type="text" placeholder="" name="tax_qc" [(ngModel)]="settings.tax_qc">
 				  <i class="percent icon"></i>
 				</div>
 			</div>
 			<div class="inline field">
   				<label>Saskatchewan (SK)</label>
 				<div class="ui icon input">
-				  <input type="text" placeholder="">
+				  <input type="text" placeholder="" name="tax_sk" [(ngModel)]="settings.tax_sk">
 				  <i class="percent icon"></i>
 				</div>
 			</div>
 			<div class="inline field">
   				<label>Yukon (YT)</label>
 				<div class="ui icon input">
-				  <input type="text" placeholder="">
+				  <input type="text" placeholder="" name="tax_yt" [(ngModel)]="settings.tax_yt">
 				  <i class="percent icon"></i>
 				</div>
 			</div>

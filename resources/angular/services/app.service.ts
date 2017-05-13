@@ -36,6 +36,23 @@ export class AppService {
 		return this.http.get(endpoint).toPromise().then(this.returnJson).catch(this.throwError);
 	}
 
+	getRate(rate_id:number): Promise<any> {
+		let endpoint = '/api/rates/'+rate_id;
+		return this.http.get(endpoint).toPromise().then(this.returnJson).catch(this.throwError);
+	}
+	newRate(): Promise<any> {
+		let endpoint = '/api/rates';
+		return this.http.post(endpoint, {}).toPromise().then(this.returnJson).catch(this.throwError);
+	}
+	saveRate(rate:any): Promise<any> {
+		let endpoint = '/api/rates/'+rate.id;
+		return this.http.post(endpoint, rate).toPromise().then(this.returnJson).catch(this.throwError);
+	}
+	deleteRate(rate:any): Promise<any> {
+		let endpoint = '/api/rates/'+rate.id;
+		return this.http.delete(endpoint).toPromise().then(this.returnJson).catch(this.throwError);
+	}
+
 	/*************************
 	 * Quotes
 	 *********************** */
@@ -73,7 +90,7 @@ export class AppService {
 	}
 
 	getUsersByAccountId(id:number): Promise<any> {
-		let endpoint = '/api/account/'+id;
+		let endpoint = '/api/accounts/'+id+'/users';
 		return this.http.get(endpoint).toPromise().then(this.returnJson).catch(this.throwError);
 	}
 
@@ -92,6 +109,52 @@ export class AppService {
 		return this.http.get(endpoint).toPromise().then(this.returnJson).catch(this.throwError);
 	}
 
+	getAccount(account_id:number): Promise<any> {
+		let endpoint = '/api/accounts/'+account_id;
+		return this.http.get(endpoint).toPromise().then(this.returnJson).catch(this.throwError);
+	}
+	newAccount(): Promise<any> {
+		let endpoint = '/api/accounts';
+		return this.http.post(endpoint, {}).toPromise().then(this.returnJson).catch(this.throwError);
+	}
+	saveAccount(account:any): Promise<any> {
+		let endpoint = '/api/accounts/'+account.id;
+		return this.http.post(endpoint, account).toPromise().then(this.returnJson).catch(this.throwError);
+	}
+	deleteAccount(account:any): Promise<any> {
+		let endpoint = '/api/accounts/'+account.id;
+		return this.http.delete(endpoint).toPromise().then(this.returnJson).catch(this.throwError);
+	}
+
+	getUser(user_id:number): Promise<any> {
+		let endpoint = '/api/users/'+user_id;
+		return this.http.get(endpoint).toPromise().then(this.returnJson).catch(this.throwError);
+	}
+	newUser(account_id): Promise<any> {
+		let endpoint = '/api/accounts/'+account_id+'/users';
+		return this.http.post(endpoint, {}).toPromise().then(this.returnJson).catch(this.throwError);
+	}
+	saveUser(user:any): Promise<any> {
+		let endpoint = '/api/users/'+user.id;
+		return this.http.post(endpoint, user).toPromise().then(this.returnJson).catch(this.throwError);
+	}
+	deleteUser(user:any): Promise<any> {
+		let endpoint = '/api/users/'+user.id;
+		return this.http.delete(endpoint).toPromise().then(this.returnJson).catch(this.throwError);
+	}
+
+	/*************************
+	 * Settings
+	 *********************** */
+	getSettings(): Promise<any> {
+		let endpoint = '/api/settings';
+		return this.http.get(endpoint).toPromise().then(this.returnJson).catch(this.throwError);
+	}
+	saveSettings(settings:any): Promise<any> {
+		console.log(settings);
+		let endpoint = '/api/settings';
+		return this.http.post(endpoint, settings).toPromise().then(this.returnJson).catch(this.throwError);
+	}
 	/*************************
 	 * Callbacks
 	 *********************** */

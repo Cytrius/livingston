@@ -143,7 +143,7 @@ $(document).ready(function() {
                 </div>
 
                 <div>
-                    @if($quote->origin_pickup_rate !== 0)
+                    @if($quote->origin_pickup_rate !== 0 && !is_null($quote->origin_pickup_rate))
                     <div style="min-height:160px;max-height:none;height:auto;" class="block-bucket block-bucket-med blue-background">
                         <h3>Pickup To Delivery</h3>
                         <div class="description">
@@ -157,28 +157,32 @@ $(document).ready(function() {
                     </div>
                     @endif
 
-                    @if($quote->origin_pickup_rate > 0)
-                    <div style="min-height:160px;max-height:none;height:auto;" class="block-bucket block-bucket-med orange-background white">
-                    @else
-                    <div style="min-height:160px;max-height:none;height:auto;" class="block-bucket block-bucket-med blue-background">
-                    @endif
-                        <h3>@if($quote->origin_pickup_rate !== 0) Option 2<br/> @endif Terminal To Terminal</h3>
-                        <div class="description">
-                            <p style="font-size:26px; color:#fff !important;">
-                                @if($quote->origin_pickup_rate !== 0)
-                                <sup style="top: -5px;">$</sup>{{ money_format('%.2n', $quote->alt_total) }}
-                                @else
-                                <sup style="top: -5px;">$</sup>{{ money_format('%.2n', $quote->total) }}
-                                @endif
-                            </p>
-                            <p style="margin-top:1em; font-size:14px; margin-bottom: 55px;">The estimated transit time is {{ $quote->est_days }} days from the date of departure from the origin terminal</p>
-                        </div>
+                    @if( ($quote->origin_pickup_rate !== 0 && !is_null($quote->origin_pickup_rate) && $quote->alt_total > 0) || ( ($quote->origin_pickup_rate === 0 || is_null($quote->origin_pickup_rate)) &&  $quote->total > 0))
+
                         @if($quote->origin_pickup_rate > 0)
-                        <a href="/book/{{ $quote->id }}?alt=true"><button class="button small blue left absolute-bottom" style="">Book Now</button></a>
+                        <div style="min-height:160px;max-height:none;height:auto;" class="block-bucket block-bucket-med orange-background white">
                         @else
-                         <a href="/book/{{ $quote->id }}"><button class="button small orange left absolute-bottom" style="">Book Now</button></a>
+                        <div style="min-height:160px;max-height:none;height:auto;" class="block-bucket block-bucket-med blue-background">
                         @endif
-                    </div>
+                            <h3>@if($quote->origin_pickup_rate !== 0&& !is_null($quote->origin_pickup_rate)) Option 2<br/> @endif Terminal To Terminal</h3>
+                            <div class="description">
+                                <p style="font-size:26px; color:#fff !important;">
+                                    @if($quote->origin_pickup_rate !== 0 && !is_null($quote->origin_pickup_rate))
+                                    <sup style="top: -5px;">$</sup>{{ money_format('%.2n', $quote->alt_total) }}
+                                    @else
+                                    <sup style="top: -5px;">$</sup>{{ money_format('%.2n', $quote->total) }}
+                                    @endif
+                                </p>
+                                <p style="margin-top:1em; font-size:14px; margin-bottom: 55px;">The estimated transit time is {{ $quote->est_days }} days from the date of departure from the origin terminal</p>
+                            </div>
+                            @if($quote->origin_pickup_rate > 0)
+                            <a href="/book/{{ $quote->id }}?alt=true"><button class="button small blue left absolute-bottom" style="">Book Now</button></a>
+                            @else
+                             <a href="/book/{{ $quote->id }}"><button class="button small orange left absolute-bottom" style="">Book Now</button></a>
+                            @endif
+                        </div>
+
+                    @endif
 
                     <p class="disclaimer">
                         <i class="fa fa-info-circle"></i> Fuel surcharge, insurance, and applicable taxes included in all quotes above

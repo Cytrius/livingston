@@ -15,6 +15,8 @@ export class UsersView  {
 
     private users:any[];
 
+    private account_id:number;
+
     private isLoading:boolean = true;
     private loading_action:string = 'Loading';
 
@@ -24,6 +26,13 @@ export class UsersView  {
       private route:ActivatedRoute,
       private appService:AppService
     ) {
+    }
+
+    private create() {
+       this.isLoading = true;
+       this.appService.newUser(this.account_id).then(user => {
+         this.router.navigate(['/dashboard/accounts', user.account_id, 'users', user.id, 'edit']);
+       });
     }
 
     private renderDropdowns() {
@@ -36,7 +45,8 @@ export class UsersView  {
      * On Component Initialize - Request the navigation json
      */
     ngOnInit() : void {
-        this.appService.getUsersByAccountId(+this.route.snapshot.params['id']).then(users => {
+      this.account_id = +this.route.snapshot.params['account_id'];
+        this.appService.getUsersByAccountId(+this.route.snapshot.params['account_id']).then(users => {
           this.users = users;
           this.isLoading = false;
           this.renderDropdowns();

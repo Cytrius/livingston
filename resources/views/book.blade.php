@@ -108,7 +108,7 @@ $(document).ready(function() {
                             Quote #{{ $quote->id }} - Book Now
                         </p>
 
-                        <p class="lg-section-heading marginx3 contact-info">Who should we contact in {{ $quote->origin_pickup ? $quote->origin_pickup : $quote->origin }}?</p>
+                        <p class="lg-section-heading marginx3 contact-info">Contact at origin ({{ $quote->origin_pickup ? $quote->origin_pickup : $quote->origin }})?</p>
 
                         <div class="lg-section-content contact-info" style="margin-bottom:0">
                             <div class="marginx1 form-check form-check-email">
@@ -130,7 +130,7 @@ $(document).ready(function() {
 
                         <br/><br/>
 
-                        <p class="lg-section-heading marginx3 contact-info">Who should we contact in {{ $quote->destination_delivery ? $quote->destination_delivery : $quote->destination }}?</p>
+                        <p class="lg-section-heading marginx3 contact-info">Contact at destination ({{ $quote->destination_delivery ? $quote->destination_delivery : $quote->destination }})?</p>
 
                         <div class="lg-section-content contact-info" style="margin-bottom:0">
                             <div class="marginx1 form-check form-check-email">

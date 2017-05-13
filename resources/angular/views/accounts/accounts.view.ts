@@ -41,6 +41,13 @@ export class AccountsView  {
     ) {
     }
 
+    private create() {
+       this.isLoading = true;
+       this.appService.newAccount().then(account => {
+         this.router.navigate(['/dashboard/accounts', account.id, 'edit']);
+       });
+    }
+
     private clear() {
       this.filterSelect = {
         origin: null,

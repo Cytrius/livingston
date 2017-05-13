@@ -25,8 +25,12 @@ Route::post('/quote', 'HomeController@quote');
 Route::post('/import', 'HomeController@importPost');
 
 Route::get('/api/rates', 'RatesController@getAllRates');
+Route::post('/api/rates', 'RatesController@newRate');
 Route::get('/api/rates/filtered', 'RatesController@getFilteredRates');
 Route::get('/api/rates/filters', 'RatesController@getAllRatesFilters');
+Route::get('/api/rates/{rate_id}', 'RatesController@getRate');
+Route::post('/api/rates/{rate_id}', 'RatesController@saveRate');
+Route::delete('/api/rates/{rate_id}', 'RatesController@deleteRate');
 
 Route::get('/api/quotes', 'QuotesController@getAllQuotes');
 Route::get('/api/quotes/filtered', 'QuotesController@getFilteredQuotes');
@@ -39,7 +43,16 @@ Route::get('/api/accounts', 'AccountsController@getAllAccounts');
 Route::get('/api/accounts/filtered', 'AccountsController@getFilteredAccounts');
 Route::get('/api/accounts/filters', 'AccountsController@getAllAccountsFilters');
 
-Route::get('/api/account/{id}', 'AccountsController@getUsersByAccountId');
+Route::get('/api/accounts/{account_id}/users', 'AccountsController@getUsersByAccountId');
+Route::get('/api/accounts/{account_id}', 'AccountsController@getAccount');
+Route::post('/api/accounts', 'AccountsController@newAccount');
+Route::post('/api/accounts/{account_id}', 'AccountsController@saveAccount');
+Route::delete('/api/accounts/{account_id}', 'AccountsController@deleteAccount');
+
+Route::get('/api/users/{user_id}', 'AccountsController@getUser');
+Route::post('/api/accounts/{account_id}/users', 'AccountsController@newUser');
+Route::post('/api/users/{user_id}', 'AccountsController@saveUser');
+Route::delete('/api/users/{user_id}', 'AccountsController@deleteUser');
 
 Route::get('/api/dropdowns/origin/city', 'DropdownController@getCities');
 Route::get('/api/dropdowns/destination/city', 'DropdownController@getCities');
@@ -50,3 +63,6 @@ Route::get('/api/dropdowns/destination/province', 'DropdownController@getProvinc
 Route::get('/api/dropdowns/vehicle/years', 'DropdownController@getVehicleYears');
 Route::get('/api/dropdowns/vehicle/makes', 'DropdownController@getVehicleMakes');
 Route::get('/api/dropdowns/vehicle/models', 'DropdownController@getVehicleModels');
+
+Route::get('/api/settings', 'AccountsController@getSettings');
+Route::post('/api/settings', 'AccountsController@saveSettings');

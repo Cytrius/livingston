@@ -135,35 +135,40 @@
 					<tr *ngIf="quote?.origin_pickup">
 						<td>Pickup</td>
 						<td>Pickup from {{ quote?.form_origin_postal }}, {{ quote?.form_origin_city }}, {{ quote?.form_origin_province }}</td>
-						<td>${{ quote?.origin_pickup_rate | number:'1.2-2' }}</td>
+						<td>${{ quote?.origin_pickup_rate | number:'1.5-5' }}</td>
 					</tr>
 					<tr>
 						<td>Rail Rate</td>
 						<td>{{ quote?.origin }} to<br/>{{ quote?.destination }}</td>
-						<td>${{ quote?.rate | number:'1.2-2' }}</td>
+						<td>${{ quote?.rate | number:'1.2-5' }}</td>
 					</tr>
 					<tr  *ngIf="quote?.destination_delivery">
 						<td>Delivery</td>
 						<td>Delivery to {{ quote?.form_destination_postal }}, {{ quote?.form_destination_city }}, {{ quote?.form_destination_province }}</td>
-						<td>${{ quote?.destination_delivery_rate | number:'1.2-2' }}</td>
+						<td>${{ quote?.destination_delivery_rate | number:'1.5-5' }}</td>
 					</tr>
 					<tr>
 						<td>Fuel Surcharge</td>
-						<td>{{ quote?.fuel_surcharge | number:'1.2-2' }}%</td>
-						<td>${{ quote?.subtotal * (quote?.fuel_surcharge / 100) | number:'1.2-2' }}</td>
+						<td>{{ quote?.fuel_surcharge | number:'1.2-5' }}%</td>
+						<td>${{ quote?.subtotal * (quote?.fuel_surcharge / 100) | number:'1.2-5' }}</td>
 					</tr>
 					<tr>
 						<td><strong>Subtotal</strong></td>
 						<td></td>
-						<td>${{ quote?.subtotal | number:'1.2-2' }}</td>
+						<td>${{ quote?.subtotal | number:'1.5-5' }}</td>
 					</tr>
 					<tr>
 						<td>Destination Tax</td>
-						<td>{{ quote?.tax_percent | number:'1.2-2' }}%</td>
-						<td>${{ quote?.subtotal * (quote?.tax_percent / 100) | number:'1.2-2' }}</td>
+						<td>{{ quote?.tax_percent | number:'1.2-5' }}%</td>
+						<td>${{ quote?.subtotal * (quote?.tax_percent / 100) | number:'1.5-5' }}</td>
 					</tr>
 					<tr>
 						<td><strong>Total</strong></td>
+						<td></td>
+						<td><strong>${{ quote?.total | number:'1.5-5' }}</strong></td>
+					</tr>
+					<tr>
+						<td><strong>Total (Rounded)</strong></td>
 						<td></td>
 						<td><strong>${{ quote?.total | number:'1.2-2' }}</strong></td>
 					</tr>

@@ -41,6 +41,13 @@ export class RatesView  {
     ) {
     }
 
+    private create() {
+       this.isLoading = true;
+       this.appService.newRate().then(rate => {
+         this.router.navigate(['/dashboard/rates', rate.id, 'edit']);
+       });
+    }
+
     private prev() {
       if (this.filterSelect.page > 0)
       this.filterSelect.page = this.filterSelect.page-1;

@@ -1,0 +1,45 @@
+<div class="action-loading" *ngIf="isLoading">
+    <div class="ui active text loader">{{ loading_action }}</div>
+</div>
+
+<div class="ui container">
+
+	<div class="ui basic segment">
+
+		<div class="ui form">
+
+			<a class="ui right floated button" (click)="save()">Save</a>
+
+			<a class="ui right floated negative button" (click)="delete()" style="background:#FCB414; margin-right:1em;">Delete</a>
+
+			<h4 class="ui left floated header">
+				{{ user?.account?.company }} - {{ user?.name }}
+			</h4>
+
+			<div class="ui secondary segment" style="clear:both;">
+
+				<h5 class="ui dividing header">Information</h5>
+	  			<div class="inline field">
+	  				<label>Name</label>
+					<input type="text" placeholder="" name="company" [(ngModel)]="user.name">
+				</div>
+	  			<div class="inline field">
+	  				<label>Email</label>
+					<input type="text" placeholder="" name="email" [(ngModel)]="user.email">
+				</div>
+	  			<div class="inline field">
+	  				<label>Password</label>
+					<input type="password" placeholder="Enter a new password" name="password" [(ngModel)]="user.password">
+				</div>
+	  			<div class="inline field">
+	  				<label>Phone</label>
+					<input type="text" placeholder="" name="phone" [(ngModel)]="user.phone">
+				</div>
+			</div>
+  			
+
+		</div>
+
+	</div>
+
+</div>

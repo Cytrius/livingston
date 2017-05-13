@@ -12,9 +12,14 @@ import { routing } from '@app/app.routes';
 /* Common Views */
 import { DashboardView } from '@app/views/dashboard/dashboard.view';
 import { QuotesView } from '@app/views/quotes/quotes.view';
+
 import { RatesView } from '@app/views/rates/rates.view';
+import { RatesFormView } from '@app/views/rates-form/rates-form.view';
 import { AccountsView } from '@app/views/accounts/accounts.view';
+import { AccountsFormView } from '@app/views/accounts-form/accounts-form.view';
 import { UsersView } from '@app/views/users/users.view';
+import { UsersFormView } from '@app/views/users-form/users-form.view';
+
 import { SettingsView } from '@app/views/settings/settings.view';
 
 /* Common Components */
@@ -40,6 +45,9 @@ import { HeaderComponent } from '@app/components/header/header.component';
         RatesView,
         AccountsView,
         UsersView,
+        RatesFormView,
+        AccountsFormView,
+        UsersFormView,
         SettingsView,
 
         /* Components */

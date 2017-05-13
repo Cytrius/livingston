@@ -1,0 +1,29 @@
+:host {
+	overflow:hidden;
+	height:100%;
+	width:100%;
+}
+
+.action-loading {
+	width:100%;
+	height:100%;
+}
+
+td { text-transform:capitalize; }
+
+h4.ui.header { margin-bottom:1em !important; }
+h5.ui.header:not(:first-child) { margin-top:1.5em !important; }
+
+.ui.selectable.table {
+	tr:hover {
+		cursor:pointer;
+	}
+}
+
+strong { font-weight:bold !important; }
+
+.total {
+	float:right;
+}
+
+.ui.form .inline.field label { min-width:256px; }
