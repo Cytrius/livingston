@@ -206,9 +206,9 @@ $(document).ready(function() {
             if (evt.params.data.type === 'C')
                 $('#cb_vehicleType').val('car');
             if (evt.params.data.type === 'S')
-                $('#cb_vehicleType').val('suv');
+                $('#cb_vehicleType').val('os');
             if (evt.params.data.type === 'T')
-                $('#cb_vehicleType').val('truck');
+                $('#cb_vehicleType').val('os');
             if (evt.params.data.type === 'V')
                 $('#cb_vehicleType').val('van');
         }
@@ -600,7 +600,6 @@ $(document).ready(function() {
                                     <option value="suv">Suv</option>
                                     <option value="truck">Small Truck</option>
                                     <option value="os">Oversized Vehicle</option>
-                                    <option value="other">Other</option>
                                 </select>
                             </div>
                         </div>

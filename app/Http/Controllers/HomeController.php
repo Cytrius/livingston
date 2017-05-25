@@ -13,6 +13,8 @@ use App\Rates as RatesModel;
 use App\Settings as SettingsModel;
 use Carbon\Carbon;
 
+use App\Http\Controllers\QuotesController;
+
 class HomeController extends Controller
 {
 
@@ -89,6 +91,19 @@ class HomeController extends Controller
         $account = AccountModel::where('id', \Auth::user()->account_id)->first();
         $form = $request->all();
 
+        if (isset($form['cb_vehicleType'])) {
+            switch($form['cb_vehicleType']) {
+                case 'car': $form['cb_vehicleType'] = 'car'; break;
+                case 'van': $form['cb_vehicleType'] = 'van'; break;
+                case 'suv': $form['cb_vehicleType'] = 'os'; break;
+                case 'truck': $form['cb_vehicleType'] = 'os'; break;
+                case 'os': $form['cb_vehicleType'] = 'os'; break;
+                default: $form['cb_vehicleType'] = 'car'; break;
+            }
+        } else {
+            $form['cb_vehicleType'] = 'car';
+        }
+
         $new_quote = QuotesModel::create();
 
         $new_quote->account_id = $account->id;
@@ -158,14 +173,8 @@ class HomeController extends Controller
             ->where('destination', $new_quote->destination)
             ->where('type', 'rail')
             ->where('account_type', $account->type)
+            ->where('vehicle_type', $form['cb_vehicleType'])
             ->first();
-
-        if (!$rail_rate)
-            $rail_rate = RatesModel::where('origin', $new_quote->origin)
-                ->where('destination', $new_quote->destination)
-                ->where('type', 'rail')
-                ->where('account_type', $account->type)
-                ->first();
 
         if (!$rail_rate) {
             // No rates for this one
@@ -238,6 +247,9 @@ class HomeController extends Controller
             $new_quote->est_days = 0;
 
         $new_quote->save();
+
+        $quoteController = new QuotesController();
+        $quoteController->notifyQuote($new_quote->id, false);
 
         return view('quote', [
             'quote' => $new_quote,

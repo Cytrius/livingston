@@ -22,6 +22,41 @@ class QuotesController extends Controller
 
     }
 
+    public function notifyQuote($quote_id, $returning=true) {
+
+        $quote = QuotesModel::with('account')->with('user')->where('id', $quote_id)->first();
+
+        if (!$quote)
+            return response()->json(['error' => 'Quote not found'], 404);
+
+        // Send to customer, no rates included
+         \Mail::send('emails.quote', ['quote' => $quote, 'admin' => false], function($message) use ($quote) {
+            $message->to($quote->user->email);
+            $message->subject('Livingston Vehicle Transportation | QUOTE #'.$quote->id);
+         });
+
+         // Send to staff - with rates
+
+        $emails = ['kev.langlois@gmail.com'];
+
+         \Mail::send('emails.quote', ['quote' => $quote, 'admin' => true], function($message) use ($emails, $quote) {
+            // Default box
+            $message->to('kev.langlois+livingston@gmail.com');
+
+            // All other notifiers
+            foreach($emails as $email) {
+                $message->cc($email);
+            }
+
+            $message->subject('Livingston Vehicle Transportation | QUOTE #'.$quote->id);
+         });
+
+        if ($returning)
+            return response()->json($emails);
+        else
+            return;
+    }
+
     public function getAllQuotes(Request $request) {
 
         $quotes = QuotesModel::with('account')->with('user');

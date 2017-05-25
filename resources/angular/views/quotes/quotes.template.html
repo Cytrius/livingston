@@ -28,8 +28,18 @@
 		  				<label>Date Quoted</label>
 		  				<p>{{ quote?.created_at | date:'mediumDate' }}</p>
 					</div>
+					<div class="field">&nbsp;</div>
+					<div class="field">&nbsp;</div>
+					<div class="field">
+						<a (click)="notify(quote.id)" class="ui button">Resend Notifications</a>
+					</div>
 				</div>
 
+			</div>
+			<div *ngIf="notifications" class="ui secondary segment" style="clear:both;">
+				<h5 class="ui dividing header">Resent Notifications</h5>
+				<p>Below are the email addresses that received notifications:</p>
+				<p>{{ notifications | json }}</p>
 			</div>
 			<div class="ui secondary segment" style="clear:both;">
 

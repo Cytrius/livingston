@@ -81,6 +81,11 @@ export class AppService {
 		return this.http.get(endpoint).toPromise().then(this.returnJson).catch(this.throwError);
 	}
 
+	notify(quote_id): Promise<any> {
+		let endpoint = '/api/quotes/notify/'+quote_id;
+		return this.http.get(endpoint).toPromise().then(this.returnJson).catch(this.throwError);
+	}
+
 	/*************************
 	 * Accounts
 	 *********************** */

@@ -14,6 +14,7 @@ declare var window:any;
 export class QuotesView  {
 
     private quote:any;
+    private notifications:any[];
 
     private filterOptions:any = {
       origins: [],
@@ -48,6 +49,14 @@ export class QuotesView  {
     private renderDatepicker() {
       setTimeout(() => {
         $(this.element.nativeElement).find('input[type="date"]').flatpickr({animate: false});
+      });
+    }
+
+    private notify(quote_id) {
+      this.isLoading = true;
+      this.appService.notify(quote_id).then(res => {
+        this.notifications = res
+        this.isLoading = false;
       });
     }
 

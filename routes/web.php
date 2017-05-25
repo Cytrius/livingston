@@ -32,6 +32,8 @@ Route::get('/api/rates/{rate_id}', 'RatesController@getRate');
 Route::post('/api/rates/{rate_id}', 'RatesController@saveRate');
 Route::delete('/api/rates/{rate_id}', 'RatesController@deleteRate');
 
+Route::get('/api/quotes/notify/{quote_id}', 'QuotesController@notifyQuote');
+
 Route::get('/api/quotes', 'QuotesController@getAllQuotes');
 Route::get('/api/quotes/filtered', 'QuotesController@getFilteredQuotes');
 Route::get('/api/quotes/filters', 'QuotesController@getAllQuotesFilters');
