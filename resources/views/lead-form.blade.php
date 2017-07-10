@@ -206,7 +206,7 @@ $(document).ready(function() {
             if (evt.params.data.type === 'C')
                 $('#cb_vehicleType').val('car');
             if (evt.params.data.type === 'S')
-                $('#cb_vehicleType').val('os');
+                $('#cb_vehicleType').val('van');
             if (evt.params.data.type === 'T')
                 $('#cb_vehicleType').val('os');
             if (evt.params.data.type === 'V')
@@ -433,7 +433,7 @@ $(document).ready(function() {
 <div class="lead-gen-module-container lead-gen-main">
     <div class="lead-gen-module">
          <h2><span style="text-transform:uppercase;">{{ $user->name }},</span></h2>
-                    <h2>HOW CAN WE <span>HELP YOU?</span></h2>
+                    <h2>GET AN <span>INSTANT QUOTE.</span></h2>
 
     </div>
 </div>

@@ -148,9 +148,9 @@ $(document).ready(function() {
                         <h3>Pickup To Delivery</h3>
                         <div class="description">
                             <p style="font-size:26px; color:#fff !important;">
-                                <sup style="top: -5px;">$</sup>{{ money_format('%.2n', $quote->total) }}
+                                <sup style="top: -5px;">$</sup>{{ money_format('%.2n', $quote->subtotal) }}
                             </p>
-                            <p style="margin-top:1em; font-size:14px; margin-bottom: 55px;">The overall transit times vary based on requested pickup & delivery locations as well as rail departure dates. Additional information available at time of booking.</p>
+                            <p style=" font-size:14px; margin-bottom: 55px;"><small style="display:block;margin-bottom:0.5em;">Plus Tax</small>The overall transit times vary based on requested pickup & delivery locations as well as rail departure dates. Additional information available at time of booking.</p>
                         </div>
 
                         <a href="/book/{{ $quote->id }}"><button class="button small orange left absolute-bottom" style="">Book Now</button></a>
@@ -168,12 +168,12 @@ $(document).ready(function() {
                             <div class="description">
                                 <p style="font-size:26px; color:#fff !important;">
                                     @if($quote->origin_pickup_rate !== 0 && !is_null($quote->origin_pickup_rate))
-                                    <sup style="top: -5px;">$</sup>{{ money_format('%.2n', $quote->alt_total) }}
+                                    <sup style="top: -5px;">$</sup>{{ money_format('%.2n', $quote->alt_subtotal) }}
                                     @else
-                                    <sup style="top: -5px;">$</sup>{{ money_format('%.2n', $quote->total) }}
+                                    <sup style="top: -5px;">$</sup>{{ money_format('%.2n', $quote->subtotal) }}
                                     @endif
                                 </p>
-                                <p style="margin-top:1em; font-size:14px; margin-bottom: 55px;">The estimated transit time is {{ $quote->est_days }} days from the date of departure from the origin terminal</p>
+                                <p style="font-size:14px; margin-bottom: 55px;"><small style="display:block; margin-bottom:0.5em;">Plus Tax</small><!--The estimated transit time is {{ $quote->est_days }} days from the date of departure from the origin terminal-->The overall transit times vary based on rail departure dates. Additional information available at time of booking.</p>
                             </div>
                             @if($quote->origin_pickup_rate > 0)
                             <a href="/book/{{ $quote->id }}?alt=true"><button class="button small blue left absolute-bottom" style="">Book Now</button></a>
@@ -185,7 +185,7 @@ $(document).ready(function() {
                     @endif
 
                     <p class="disclaimer">
-                        <i class="fa fa-info-circle"></i> Fuel surcharge, insurance, and applicable taxes included in all quotes above
+                        <i class="fa fa-info-circle"></i> Exluding applicable taxes. Fuel surcharge and insurance included in all quotes above.
                     </p>
 
                 </div>

@@ -95,7 +95,7 @@ class HomeController extends Controller
             switch($form['cb_vehicleType']) {
                 case 'car': $form['cb_vehicleType'] = 'car'; break;
                 case 'van': $form['cb_vehicleType'] = 'van'; break;
-                case 'suv': $form['cb_vehicleType'] = 'os'; break;
+                case 'suv': $form['cb_vehicleType'] = 'van'; break;
                 case 'truck': $form['cb_vehicleType'] = 'os'; break;
                 case 'os': $form['cb_vehicleType'] = 'os'; break;
                 default: $form['cb_vehicleType'] = 'car'; break;
@@ -238,6 +238,7 @@ class HomeController extends Controller
                 $alt_total += $new_quote->rate;
 
             $alt_total = $alt_total + ( $alt_total * ($new_quote->fuel_surcharge / 100) );
+            $new_quote->alt_subtotal = $alt_total;
             $new_quote->alt_total = $alt_total+ ( $alt_total * ($new_quote->tax_percent / 100) );
         }
 
