@@ -59,7 +59,7 @@ class QuotesController extends Controller
 
     public function getAllQuotes(Request $request) {
 
-        $quotes = QuotesModel::with('account')->with('user');
+        $quotes = QuotesModel::with('account')->with('user')->orderBy('created_at', 'DESC');
 
         $quotes->limit(10);
 
