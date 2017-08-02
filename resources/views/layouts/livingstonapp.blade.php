@@ -1,7 +1,7 @@
 <html lang="en-US" prefix="og: http://ogp.me/ns#" class=""><!--<![endif]--><head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        
+
         <meta name="HandheldFriendly" content="True">
         <meta name="MobileOptimized" content="320">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,7 +11,7 @@
             <link rel="shortcut icon" href="http://vehicletransportation.ca/wp-content/themes/vts2016/library/images/favicon.ico">
         <![endif]-->
         <!-- scripts/styles enqueued via library/bones.php -->
-        
+
 <!-- This site is optimized with the Yoast SEO plugin v3.0.6 - https://yoast.com/wordpress/plugins/seo/ -->
 <title>Vehicle shipping Quote for your car or auto | Livingston</title>
 <meta name="description" content="Request a quote to move your vehicle. Livingston offers vehicle pick-up and delivery, door to door, between U.S. and Canada.">
@@ -35,7 +35,7 @@
 <script type="text/javascript" src="http://vehicletransportation.ca/wp-content/themes/vts2016/library/bower_components/foundation/js/foundation.js"></script>
 
 <link rel="shortlink" href="http://vehicletransportation.ca/?p=79">
-    
+
     <!-- typekit -->
 
     <script
@@ -65,23 +65,26 @@
             <nav class="top-bar full-width blue-background top_wrap hide-for-medium-down" data-topbar="" role="navigation" itemscope="" itemtype="http://schema.org/SiteNavigationElement">
                 <div class="row">
 
-                    <div class="medium-6 columns text-left top-bar-featured">
+                    <div class="medium-4 columns text-left top-bar-featured">
                          @if(!\Auth::check())
                             <a href="/" class="inline-block orange text-italic">Vehicle Transportation Service</a>
                         @else
                             <a href="/" class="inline-block orange text-italic">Welcome, {{ Auth::user()->name }}</a>
                         @endif
                     </div>
-                    <div class="medium-6 columns text-right margin-left">
+                    <div class="medium-8 columns text-right margin-left">
                         <a href="tel:18002829892" class="orange">1-800-282-9892</a>
                         @if(!\Auth::check())
-                            <a href="/login/" class="bold-700">Client Log-In</a> 
-                        @else 
-                            <a href="/" class="bold-700">Request A Quote</a> 
-                            @if(\Auth::user()->is_rep || \Auth::user()->is_admin)
-                                 <a href="/dashboard/quotes" class="bold-700">Administrators</a> 
+                            <a href="/login/" class="bold-700">Client Log-In</a>
+                        @else
+                            <a href="/" class="bold-700">Request A Quote</a>
+                            @if(\Auth::check())
+                                 <a href="/history" class="bold-700">Quote History</a>
                             @endif
-                            <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="bold-700">Log Out</a> 
+                            @if(\Auth::user()->is_rep || \Auth::user()->is_admin)
+                                 <a href="/dashboard/quotes" class="bold-700">Administrators</a>
+                            @endif
+                            <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="bold-700">Log Out</a>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">{{ csrf_field() }}</form>
                         @endif
                     </div>
@@ -161,7 +164,7 @@
 
                     </section>
 
-                    
+
                 </div>
             </nav>
         </div>
@@ -170,12 +173,12 @@
 
 
     <main id="liContent" style="overflow:visible;">
-    
+
         @yield('content')
 
     </main>
 
-       
+
     </div>
 
         <!-- Semantic UI -->
@@ -184,7 +187,19 @@
     	<!-- Analytics plugin did load --><script type="text/javascript" src="http://vehicletransportation.ca/wp-content/themes/vts2016/library/js/rem-unit-polyfill.min.js"></script>
 
     <!--<script type="text/javascript" src="http://vehicletransportation.ca/wp-content/themes/vts2016/library/js/app.js"></script>-->
-  
+
+    <script>
+        window.user = <?php if (isset($user))
+{
+    echo json_encode($user);
+}
+else
+{
+    echo '';
+}
+?>;
+    </script>
+
     <!-- JQuery Sortable CDN -->
     <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
 
@@ -202,5 +217,68 @@
     @if(isset($assets['app']))
         <script src="/dist/{{ $assets['app'] }}"></script>
     @endif
+
+<footer id="liFooter" class="footer" role="contentinfo" itemscope="" itemtype="http://schema.org/WPFooter">
+
+            <div id="inner-footer" class="wrap cf">
+
+                <div class="row">
+                    <div class="small-12 medium-6 large-9 columns">
+                       <a href="/" title="" class="logo" style="background-image: url(http://vehicletransportation.ca/wp-content/themes/vts2016/library/images/2015/livingston-white-logo.svg);">
+                            Livingston International
+                                        </a>
+                    </div>
+                    <div class="small-12 medium-6 large-3 columns hide-for-small">
+                                                                        <ul class="social-media">
+                                                <li><a href="https://www.facebook.com/livingstoninternational" target="_blank"><span class="genericon genericon-facebook-alt"></span></a></li>
+                                                                        <li><a href="https://twitter.com/livingston_intl" target="_blank"><span class="genericon genericon-twitter"></span></a></li>
+                                                                        <li><a href="https://plus.google.com/+Livingstonintl/posts" target="_blank"><span class="genericon genericon-googleplus-alt"></span></a></li>
+                                                                        <li><a href="https://www.linkedin.com/company/livingston-international" target="_blank"><span class="genericon genericon-linkedin"></span></a></li>
+                                                                        <li class="feed"><a href="http://vehicletransportation.ca/feed/" target="_blank"><span class="genericon genericon-feed"></span></a></li>
+                        </ul>
+                                            </div>
+                </div>
+
+                <nav class="row" role="navigation">
+                    <ul id="menu-footer-menu-left" class="small-12 medium-3 columns"><li id="menu-item-887" class="primary disabled menu-item menu-item-type-custom menu-item-object-custom menu-item-887"><a>Navigation</a></li>
+<li id="menu-item-878" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-878"><a href="http://vehicletransportation.ca/">Homepage</a></li>
+<li id="menu-item-881" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-881"><a href="http://vehicletransportation.ca/what-we-do/long-distance-moves/">Long Distance Moves</a></li>
+<li id="menu-item-882" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-882"><a href="http://vehicletransportation.ca/what-we-do/short-distance-moves/">Short Distance Moves</a></li>
+<li id="menu-item-880" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-880"><a href="http://vehicletransportation.ca/what-we-do/business-moves/">Business Moves</a></li>
+<li id="menu-item-879" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-879"><a href="http://vehicletransportation.ca/resources/">Resources</a></li>
+</ul><ul id="menu-footer-menu-right" class="small-12 medium-3 columns"><li id="menu-item-888" class="primary disabled show-for-medium-up menu-item menu-item-type-custom menu-item-object-custom menu-item-888"><a>&nbsp;</a></li>
+<li id="menu-item-883" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-883"><a href="http://vehicletransportation.ca/about-us/">About Us</a></li>
+<li id="menu-item-886" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-886"><a href="http://vehicletransportation.ca/what-we-do/">What We Do</a></li>
+<li id="menu-item-949" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-949"><a href="http://vehicletransportation.ca/our-promise/">Our Promise</a></li>
+<li id="menu-item-884" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-884"><a href="http://vehicletransportation.ca/about-us/contact-us/">Contact Us</a></li>
+</ul><div id="footer-copy" class="small-12 medium-6 columns">About Livingston VTS           <div class="textwidget">We are an asset-based transportation company with secure compounds in Vancouver, Edmonton, Saskatoon, Winnipeg, Toronto, Montreal and Halifax. We use our own trucks, in conjunction with safe and trusted partner- carriers, to process pick-up and delivery requirements throughout the country. We've also partnered with CN Rail, Canada's largest railway, to provide fast and efficient service.</div>
+        </div>                </nav>
+
+                <nav class="row" role="navigation">
+                    <ul id="footer-menu-bottom" class="inline-list small-12 columns"><li id="menu-item-748" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-748"><a href="http://www.livingstonintl.com/about-us/accessibility/">Accessibility</a></li>
+<li id="menu-item-153" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-153"><a target="_blank" href="http://www.livingstonintl.com/about-us/privacy-policy/">Terms of Use</a></li>
+<li id="menu-item-154" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-154"><a target="_blank" href="http://www.livingstonintl.com/service-terms/">Service Terms and Conditions</a></li>
+</ul>                </nav>
+
+                <div class="row hide-for-medium-up">
+                    <div class="small-12 columns">
+                                                                        <ul class="social-media">
+                                                <li><a href="https://www.facebook.com/livingstoninternational" target="_blank"><span class="genericon genericon-facebook-alt"></span></a></li>
+                                                                        <li><a href="https://twitter.com/livingston_intl" target="_blank"><span class="genericon genericon-twitter"></span></a></li>
+                                                                        <li><a href="https://plus.google.com/+Livingstonintl/posts" target="_blank"><span class="genericon genericon-googleplus-alt"></span></a></li>
+                                                                        <li><a href="https://www.linkedin.com/company/livingston-international" target="_blank"><span class="genericon genericon-linkedin"></span></a></li>
+                                                                        <li class="feed"><a href="http://vehicletransportation.ca/feed/" target="_blank"><span class="genericon genericon-feed"></span></a></li>
+                        </ul>
+                                            </div>
+                </div>
+
+                <div class="row">
+                    <div id="footer-copyright" class="small-12 columns">
+                                            </div>
+                </div>
+
+            </div>
+
+        </footer>
 
 </body></html>

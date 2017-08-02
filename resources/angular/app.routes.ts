@@ -14,6 +14,7 @@ import { UsersFormView } from '@app/views/users-form/users-form.view';
 import { SettingsView } from '@app/views/settings/settings.view';
 
 const routes: Routes = [
+
 	{ path: 'dashboard/quotes', component: DashboardView},
 	{ path: 'dashboard/quotes/:id', component: QuotesView},
 	{ path: 'dashboard/rates', component: RatesView },

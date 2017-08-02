@@ -10,6 +10,7 @@ import { AppComponent }  from '@app/app.component';
 import { routing } from '@app/app.routes';
 
 /* Common Views */
+
 import { DashboardView } from '@app/views/dashboard/dashboard.view';
 import { QuotesView } from '@app/views/quotes/quotes.view';
 
@@ -40,6 +41,8 @@ import { HeaderComponent } from '@app/components/header/header.component';
         AppComponent,
         
         /* Common Views */
+
+        
         DashboardView,
         QuotesView,
         RatesView,

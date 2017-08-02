@@ -2,22 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
-use PHPHtmlParser\Dom;
-
 use App\Account as AccountModel;
-
+use App\Http\Controllers\QuotesController;
 use App\Quotes as QuotesModel;
 use App\Rates as RatesModel;
 use App\Settings as SettingsModel;
 use Carbon\Carbon;
-
-use App\Http\Controllers\QuotesController;
+use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
 
+    /**
+     * @var string
+     */
     private $parent_site = 'http://vehicletransportation.ca/';
     /**
      * Create a new controller instance.
@@ -26,10 +24,19 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-         $this->middleware('auth');
+        $this->middleware('auth');
     }
 
-    public function leadForm() {
+    public function history()
+    {
+
+        $quotes = QuotesModel::where('user_id', \Auth::user()->user_id)->get();
+
+        return view('history', ['user' => \Auth::user(), 'quotes' => $quotes]);
+    }
+
+    public function leadForm()
+    {
 
         $origins = RatesModel::select('origin')->groupBy('origin')->get();
 
@@ -39,68 +46,109 @@ class HomeController extends Controller
             'origins' => $origins,
             'destinations' => $destinations,
             'user' => \Auth::user(),
-            'account' => AccountModel::where('id', \Auth::user()->account_id)->first()
+            'account' => AccountModel::where('id', \Auth::user()->account_id)->first(),
         ]);
     }
 
-    public function import() {
+    public function import()
+    {
 
         if (!\Auth::user()->is_admin)
+        {
             return response('', 400);
+        }
 
         return view('import');
     }
 
-    public function book($quote_id=false) {
+    /**
+     * @param $quote_id
+     */
+    public function book($quote_id = false)
+    {
 
         if (!\Auth::user()->is_admin)
+        {
             return response('', 400);
+        }
 
         if ($quote_id)
+        {
             $quote = QuotesModel::where('id', $quote_id)->first();
+        }
         else
+        {
             $quote = null;
+        }
 
         return view('book', [
             'user' => \Auth::user(),
             'account' => AccountModel::where('id', \Auth::user()->account_id)->first(),
-            'quote' => $quote
+            'quote' => $quote,
         ]);
     }
 
-    public function bookConfirm($quote_id=false) {
+    /**
+     * @param $quote_id
+     */
+    public function bookConfirm($quote_id = false)
+    {
 
         if (!\Auth::user()->is_admin)
+        {
             return response('', 400);
+        }
 
         if ($quote_id)
+        {
             $quote = QuotesModel::where('id', $quote_id)->first();
+
+            $quoteController = new QuotesController();
+            $quoteController->notifyBooking($quote->id, false);
+
+        }
         else
+        {
             $quote = null;
+        }
 
         return view('book-confirm', [
             'user' => \Auth::user(),
             'account' => AccountModel::where('id', \Auth::user()->account_id)->first(),
-            'quote' => $quote
+            'quote' => $quote,
         ]);
     }
 
-    public function quote(Request $request) {
+    /**
+     * @param Request $request
+     */
+    public function quote(Request $request)
+    {
 
-        $user =  \Auth::user();
+        $user = \Auth::user();
         $account = AccountModel::where('id', \Auth::user()->account_id)->first();
         $form = $request->all();
 
-        if (isset($form['cb_vehicleType'])) {
-            switch($form['cb_vehicleType']) {
-                case 'car': $form['cb_vehicleType'] = 'car'; break;
-                case 'van': $form['cb_vehicleType'] = 'van'; break;
-                case 'suv': $form['cb_vehicleType'] = 'van'; break;
-                case 'truck': $form['cb_vehicleType'] = 'os'; break;
-                case 'os': $form['cb_vehicleType'] = 'os'; break;
-                default: $form['cb_vehicleType'] = 'car'; break;
+        if (isset($form['cb_vehicleType']))
+        {
+            switch ($form['cb_vehicleType'])
+            {
+                case 'car':$form['cb_vehicleType'] = 'car';
+                    break;
+                case 'van':$form['cb_vehicleType'] = 'van';
+                    break;
+                case 'suv':$form['cb_vehicleType'] = 'van';
+                    break;
+                case 'truck':$form['cb_vehicleType'] = 'os';
+                    break;
+                case 'os':$form['cb_vehicleType'] = 'os';
+                    break;
+                default:$form['cb_vehicleType'] = 'car';
+                    break;
             }
-        } else {
+        }
+        else
+        {
             $form['cb_vehicleType'] = 'car';
         }
 
@@ -113,54 +161,70 @@ class HomeController extends Controller
         // Sort out pickup and origin hub
         $new_quote->origin_pickup = isset($form['cb_pickupRequired']) ? $form['cb_originCity'] : null;
 
-        $origin_pd_rate = RatesModel::where('destination',$form['cb_originCity'])
+        $origin_pd_rate = RatesModel::where('destination', $form['cb_originCity'])
             ->where('type', 'pd')
             ->where('account_type', $account->type)
             ->first();
 
-        if (isset($form['cb_pickupRequired'])) 
+        if (isset($form['cb_pickupRequired']))
         {
-            if ($origin_pd_rate) {
+            if ($origin_pd_rate)
+            {
                 $new_quote->origin_pickup_rate = $origin_pd_rate->rate;
                 $form['cb_pickupRequired'] = $form['cb_originCity'];
                 $form['cb_originCity'] = $origin_pd_rate->origin;
-            } else {
-                $new_quote->origin_pickup_rate = null;
             }
-        } else {
-            if ($origin_pd_rate) {
-                $new_quote->origin_pickup_rate = 0; 
-                $form['cb_originCity'] = $origin_pd_rate->origin;
-            } else {
+            else
+            {
                 $new_quote->origin_pickup_rate = null;
             }
         }
-       
+        else
+        {
+            if ($origin_pd_rate)
+            {
+                $new_quote->origin_pickup_rate = 0;
+                $form['cb_originCity'] = $origin_pd_rate->origin;
+            }
+            else
+            {
+                $new_quote->origin_pickup_rate = null;
+            }
+        }
+
         $new_quote->origin = $form['cb_originCity'];
 
         // Sort out delivery and destination hub
 
         $new_quote->destination_delivery = isset($form['cb_deliveryRequired']) ? $form['cb_destCity'] : null;
 
-        $dest_pd_rate = RatesModel::where('destination',$form['cb_destCity'])
+        $dest_pd_rate = RatesModel::where('destination', $form['cb_destCity'])
             ->where('type', 'pd')
             ->where('account_type', $account->type)
             ->first();
 
-        if (isset($form['cb_deliveryRequired'])) 
+        if (isset($form['cb_deliveryRequired']))
         {
-            if ($dest_pd_rate) {
+            if ($dest_pd_rate)
+            {
                 $new_quote->destination_delivery_rate = $dest_pd_rate->rate;
                 $form['cb_destCity'] = $dest_pd_rate->origin;
-            } else {
+            }
+            else
+            {
                 $new_quote->destination_delivery_rate = null;
             }
-        } else {
-            if ($dest_pd_rate) {
-                $new_quote->destination_delivery_rate = 0; 
+        }
+        else
+        {
+            if ($dest_pd_rate)
+            {
+                $new_quote->destination_delivery_rate = 0;
                 $form['cb_deliveryRequired'] = $form['cb_destCity'];
                 $form['cb_destCity'] = $dest_pd_rate->origin;
-            } else {
+            }
+            else
+            {
                 $new_quote->destination_delivery_rate = null;
             }
         }
@@ -176,11 +240,15 @@ class HomeController extends Controller
             ->where('vehicle_type', $form['cb_vehicleType'])
             ->first();
 
-        if (!$rail_rate) {
+        if (!$rail_rate)
+        {
             // No rates for this one
             $new_quote->rate = 0;
-        } else
-        $new_quote->rate = $rail_rate->rate;
+        }
+        else
+        {
+            $new_quote->rate = $rail_rate->rate;
+        }
 
         $new_quote->vehicle_type = $form['cb_vehicleType'];
         $new_quote->vehicle_year = $form['cb_vehicleYear'];
@@ -190,18 +258,26 @@ class HomeController extends Controller
         $new_quote->form_origin_city = $form['cb_originCity'];
 
         if (isset($form['cb_originProvince']))
+        {
             $new_quote->form_origin_province = $form['cb_originProvince'];
+        }
 
         if (isset($form['cb_originPostalCode']))
+        {
             $new_quote->form_origin_postal = $form['cb_originPostalCode'];
+        }
 
         $new_quote->form_destination_city = $form['cb_destCity'];
 
         if (isset($form['cb_destProvince']))
+        {
             $new_quote->form_destination_province = $form['cb_destProvince'];
+        }
 
         if (isset($form['cb_destPostalCode']))
+        {
             $new_quote->form_destination_postal = $form['cb_destPostalCode'];
+        }
 
         $new_quote->form_email = $form['contact_email'];
         $new_quote->form_first_name = $form['contact_first_name'];
@@ -214,38 +290,49 @@ class HomeController extends Controller
         $total = 0;
 
         if ($new_quote->origin_pickup_rate)
+        {
             $total += $new_quote->origin_pickup_rate;
+        }
 
         if ($new_quote->rate)
+        {
             $total += $new_quote->rate;
+        }
 
         if ($new_quote->destination_delivery_rate)
+        {
             $total += $new_quote->destination_delivery_rate;
+        }
 
         $fuel_surcharge = SettingsModel::where('setting', 'fuel_surcharge')->first();
         $new_quote->fuel_surcharge = floatval($fuel_surcharge->value);
-        $new_quote->subtotal = $total + ( $total * ($new_quote->fuel_surcharge / 100) );
-
-
+        $new_quote->subtotal = $total + ($total * ($new_quote->fuel_surcharge / 100));
 
         $new_quote->tax_percent = $this->getTaxRate($new_quote->destination);
-        $new_quote->total = $new_quote->subtotal + ( $new_quote->subtotal * ($new_quote->tax_percent / 100) );
+        $new_quote->total = $new_quote->subtotal + ($new_quote->subtotal * ($new_quote->tax_percent / 100));
 
-        if ($new_quote->origin_pickup_rate > 0) {
+        if ($new_quote->origin_pickup_rate > 0)
+        {
             // Alternative
             $alt_total = 0;
             if ($new_quote->rate)
+            {
                 $alt_total += $new_quote->rate;
+            }
 
-            $alt_total = $alt_total + ( $alt_total * ($new_quote->fuel_surcharge / 100) );
+            $alt_total = $alt_total + ($alt_total * ($new_quote->fuel_surcharge / 100));
             $new_quote->alt_subtotal = $alt_total;
-            $new_quote->alt_total = $alt_total+ ( $alt_total * ($new_quote->tax_percent / 100) );
+            $new_quote->alt_total = $alt_total + ($alt_total * ($new_quote->tax_percent / 100));
         }
 
         if ($rail_rate)
-            $new_quote->est_days = $rail_rate->est_days; 
+        {
+            $new_quote->est_days = $rail_rate->est_days;
+        }
         else
+        {
             $new_quote->est_days = 0;
+        }
 
         $new_quote->save();
 
@@ -256,53 +343,82 @@ class HomeController extends Controller
             'quote' => $new_quote,
             'user' => \Auth::user(),
             'account' => AccountModel::where('id', \Auth::user()->account_id)->first(),
-            'form' => $request->all()
+            'form' => $request->all(),
         ]);
     }
 
-    public function getTaxRate($destination) {
-        $destination = RatesModel::where('destination', 'LIKE', $destination.'%')->where('type', 'pd')->first();
+    /**
+     * @param $destination
+     * @return int
+     */
+    public function getTaxRate($destination)
+    {
+        $destination = RatesModel::where('destination', 'LIKE', $destination . '%')->where('type', 'pd')->first();
 
         if (!$destination)
+        {
             return 0;
+        }
 
         $province = strtolower($destination->destination_province);
 
-        $tax_rate = SettingsModel::where('setting', 'tax_'.$province)->first();
+        $tax_rate = SettingsModel::where('setting', 'tax_' . $province)->first();
 
         if (!$tax_rate)
+        {
             return 0;
+        }
 
         return floatval($tax_rate->value);
 
     }
 
-    public function importPost(Request $request) {
+    /**
+     * @param Request $request
+     * @return mixed
+     */
+    public function importPost(Request $request)
+    {
 
         if (!\Auth::user()->is_admin)
+        {
             return response('', 400);
+        }
 
         $file = $request->file('file');
 
         try {
-            \Excel::load($file->getPath().'/'.$file->getFilename(), function($reader) {
+            \Excel::load($file->getPath() . '/' . $file->getFilename(), function ($reader)
+            {
                 $sheet = $reader->sheet(0)->toArray();
 
                 if (isset($sheet[5]) && $sheet[5][0] === 'Origin' && $sheet[5][7] === 'Dealer')
+                {
                     return $this->parsePickupDeliveryRates($sheet);
+                }
                 else if (isset($sheet[4]) && $sheet[4][0] === 'Origin' && $sheet[4][2] === 'Days')
+                {
                     return $this->parseRailRates($sheet);
+                }
                 else
+                {
                     return response('Bad File Format', 403);
+                }
+
             });
-        } catch(\Exception $e) {
+        }
+        catch (\Exception $e)
+        {
             return response($e->getMessage(), 403);
         }
 
-        
     }
 
-    private function parsePickupDeliveryRates($sheet) {
+    /**
+     * @param $sheet
+     */
+    private function parsePickupDeliveryRates($sheet)
+    {
         $start_at = 6;
 
         $col_origin = 0;
@@ -316,7 +432,8 @@ class HomeController extends Controller
 
         $normalized = [];
 
-        for($i = $start_at; $i < count($sheet); $i++) {
+        for ($i = $start_at; $i < count($sheet); $i++)
+        {
             $data = [];
 
             $data['origin'] = $sheet[$i][$col_origin];
@@ -325,9 +442,10 @@ class HomeController extends Controller
             $data['destination_province'] = $sheet[$i][$col_destination_prov];
             $data['type'] = 'pd';
 
-            if (!empty($data['origin']) && !empty($data['destination'])) {
+            if (!empty($data['origin']) && !empty($data['destination']))
+            {
                 $data['account_type'] = 'private';
-                $data['rate'] =  floatval(trim(str_replace('$', '', $sheet[$i][$col_type_private])));
+                $data['rate'] = floatval(trim(str_replace('$', '', $sheet[$i][$col_type_private])));
                 $normalized[] = $data;
 
                 $data['account_type'] = 'mover';
@@ -335,12 +453,13 @@ class HomeController extends Controller
                 $normalized[] = $data;
 
                 $data['account_type'] = 'dealer';
-                $data['rate'] =  floatval(trim(str_replace('$', '', $sheet[$i][$col_type_dealer])));
+                $data['rate'] = floatval(trim(str_replace('$', '', $sheet[$i][$col_type_dealer])));
                 $normalized[] = $data;
             }
         }
 
-        foreach($normalized as $rate) {
+        foreach ($normalized as $rate)
+        {
             $rateModel = RatesModel::firstOrCreate([
                 'origin' => $rate['origin'],
                 'origin_province' => $rate['origin_province'],
@@ -358,7 +477,11 @@ class HomeController extends Controller
         return response('Imported', 200);
     }
 
-    private function parseRailRates($sheet) {
+    /**
+     * @param $sheet
+     */
+    private function parseRailRates($sheet)
+    {
         $start_at = 5;
 
         $col_origin = 0;
@@ -381,10 +504,10 @@ class HomeController extends Controller
         $col_dealer_van = 13;
         $col_dealer_os = 14;
 
-
         $normalized = [];
 
-        for($i = $start_at; $i < count($sheet); $i++) {
+        for ($i = $start_at; $i < count($sheet); $i++)
+        {
             $data = [];
 
             $data['origin'] = $sheet[$i][$col_origin];
@@ -392,70 +515,72 @@ class HomeController extends Controller
             $data['est_days'] = $sheet[$i][$col_days];
             $data['type'] = 'rail';
 
-            if (!empty($data['origin']) && !empty($data['destination'])) {
+            if (!empty($data['origin']) && !empty($data['destination']))
+            {
                 $data['account_type'] = 'private';
                 $data['vehicle_type'] = 'car';
-                $data['rate'] =  floatval(trim(str_replace('$', '', $sheet[$i][$col_private_car])));
+                $data['rate'] = floatval(trim(str_replace('$', '', $sheet[$i][$col_private_car])));
                 $normalized[] = $data;
 
                 $data['account_type'] = 'private';
                 $data['vehicle_type'] = 'van';
-                $data['rate'] =  floatval(trim(str_replace('$', '', $sheet[$i][$col_private_van])));
+                $data['rate'] = floatval(trim(str_replace('$', '', $sheet[$i][$col_private_van])));
                 $normalized[] = $data;
 
                 $data['account_type'] = 'private';
                 $data['vehicle_type'] = 'os';
-                $data['rate'] =  floatval(trim(str_replace('$', '', $sheet[$i][$col_private_os])));
+                $data['rate'] = floatval(trim(str_replace('$', '', $sheet[$i][$col_private_os])));
                 $normalized[] = $data;
 
                 $data['account_type'] = 'repeat';
                 $data['vehicle_type'] = 'car';
-                $data['rate'] =  floatval(trim(str_replace('$', '', $sheet[$i][$col_repeat_car])));
+                $data['rate'] = floatval(trim(str_replace('$', '', $sheet[$i][$col_repeat_car])));
                 $normalized[] = $data;
 
                 $data['account_type'] = 'repeat';
                 $data['vehicle_type'] = 'van';
-                $data['rate'] =  floatval(trim(str_replace('$', '', $sheet[$i][$col_repeat_van])));
+                $data['rate'] = floatval(trim(str_replace('$', '', $sheet[$i][$col_repeat_van])));
                 $normalized[] = $data;
 
                 $data['account_type'] = 'repeat';
                 $data['vehicle_type'] = 'os';
-                $data['rate'] =  floatval(trim(str_replace('$', '', $sheet[$i][$col_repeat_os])));
+                $data['rate'] = floatval(trim(str_replace('$', '', $sheet[$i][$col_repeat_os])));
                 $normalized[] = $data;
 
                 $data['account_type'] = 'mover';
                 $data['vehicle_type'] = 'car';
-                $data['rate'] =  floatval(trim(str_replace('$', '', $sheet[$i][$col_mover_car])));
+                $data['rate'] = floatval(trim(str_replace('$', '', $sheet[$i][$col_mover_car])));
                 $normalized[] = $data;
 
                 $data['account_type'] = 'mover';
                 $data['vehicle_type'] = 'van';
-                $data['rate'] =  floatval(trim(str_replace('$', '', $sheet[$i][$col_mover_van])));
+                $data['rate'] = floatval(trim(str_replace('$', '', $sheet[$i][$col_mover_van])));
                 $normalized[] = $data;
 
                 $data['account_type'] = 'mover';
                 $data['vehicle_type'] = 'os';
-                $data['rate'] =  floatval(trim(str_replace('$', '', $sheet[$i][$col_mover_os])));
+                $data['rate'] = floatval(trim(str_replace('$', '', $sheet[$i][$col_mover_os])));
                 $normalized[] = $data;
 
                 $data['account_type'] = 'dealer';
                 $data['vehicle_type'] = 'car';
-                $data['rate'] =  floatval(trim(str_replace('$', '', $sheet[$i][$col_dealer_car])));
+                $data['rate'] = floatval(trim(str_replace('$', '', $sheet[$i][$col_dealer_car])));
                 $normalized[] = $data;
 
                 $data['account_type'] = 'dealer';
                 $data['vehicle_type'] = 'van';
-                $data['rate'] =  floatval(trim(str_replace('$', '', $sheet[$i][$col_dealer_van])));
+                $data['rate'] = floatval(trim(str_replace('$', '', $sheet[$i][$col_dealer_van])));
                 $normalized[] = $data;
 
                 $data['account_type'] = 'dealer';
                 $data['vehicle_type'] = 'os';
-                $data['rate'] =  floatval(trim(str_replace('$', '', $sheet[$i][$col_dealer_os])));
+                $data['rate'] = floatval(trim(str_replace('$', '', $sheet[$i][$col_dealer_os])));
                 $normalized[] = $data;
             }
         }
 
-        foreach($normalized as $rate) {
+        foreach ($normalized as $rate)
+        {
             $rateModel = RatesModel::firstOrCreate([
                 'origin' => $rate['origin'],
                 'destination' => $rate['destination'],
@@ -478,31 +603,84 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function form()
     {
 
-        if (!\Auth::user()->is_admin)
-            return response('', 400);
-        
-        $directory = base_path().'/public/dist';
+        $directory = base_path() . '/public/dist';
 
         try {
             $files = array_diff(scandir($directory), array('..', '.'));
-        } catch(\Exception $e) {
+        }
+        catch (\Exception $e)
+        {
             throw new \Exception('No bundled application exists in the public directory');
         }
 
         $assets = [];
 
-        foreach($files as $file) {
+        foreach ($files as $file)
+        {
             if (strpos($file, 'app') !== false && strpos($file, 'map') == false)
+            {
                 $assets['app'] = $file;
+            }
 
             if (strpos($file, 'vendor') !== false && strpos($file, 'map') == false)
+            {
                 $assets['vendor'] = $file;
+            }
 
             if (strpos($file, 'polyfill') !== false && strpos($file, 'map') == false)
+            {
                 $assets['polyfill'] = $file;
+            }
+
+        }
+        return view('dashboard', ['assets' => $assets, 'user' => \Auth::user()->toArray()]);
+    }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+
+        if (!\Auth::user()->is_admin)
+        {
+            return response('', 400);
+        }
+
+        $directory = base_path() . '/public/dist';
+
+        try {
+            $files = array_diff(scandir($directory), array('..', '.'));
+        }
+        catch (\Exception $e)
+        {
+            throw new \Exception('No bundled application exists in the public directory');
+        }
+
+        $assets = [];
+
+        foreach ($files as $file)
+        {
+            if (strpos($file, 'app') !== false && strpos($file, 'map') == false)
+            {
+                $assets['app'] = $file;
+            }
+
+            if (strpos($file, 'vendor') !== false && strpos($file, 'map') == false)
+            {
+                $assets['vendor'] = $file;
+            }
+
+            if (strpos($file, 'polyfill') !== false && strpos($file, 'map') == false)
+            {
+                $assets['polyfill'] = $file;
+            }
+
         }
 
         return view('dashboard', ['assets' => $assets]);

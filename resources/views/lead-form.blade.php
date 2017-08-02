@@ -13,7 +13,7 @@
     }
 
     .lg-section-holder:visible {
-        border-bottom:none;   
+        border-bottom:none;
     }
 
     .hidden { display:none; }
@@ -36,6 +36,10 @@
 
     .lead-gen-button.grey {
         background-color:#bcc5ce !important;
+    }
+
+    .lead-gen-module {
+        background-image:url('/images/car-keys.png');
     }
 
 </style>
@@ -187,7 +191,7 @@ $(document).ready(function() {
             }
         }
     });
-    
+
     $('#cb_vehicleModel').select2({
         ajax: {
             url: function (params) {
@@ -220,7 +224,7 @@ $(document).ready(function() {
 
     $('#departureDate').change(function() {
         if ($(this).val().length) {
-            $('.section-2').fadeIn(); 
+            $('.section-2').fadeIn();
             if (!$('#cb_pickupRequired').is(":checked"))
                 $('#cb_pickupRequired').click();
         } else {
@@ -241,9 +245,9 @@ $(document).ready(function() {
             $('#cb_pickupNoRequired').parents('.checkbox-group').css({opacity:1});
             $('#cb_originCity').parents('.hidden').hide();
             $('#cb_originProvince').parents('.hidden').hide();
-            $('#cb_originPostalCode').parents('.hidden').hide();  
-        }  
-        notEnoughDetail();  
+            $('#cb_originPostalCode').parents('.hidden').hide();
+        }
+        notEnoughDetail();
     });
 
     $('#cb_pickupNoRequired').change(function() {
@@ -260,8 +264,8 @@ $(document).ready(function() {
             $('#cb_originCity').parents('.hidden').hide();
             $('#cb_originProvince').parents('.hidden').hide();
             $('#cb_originPostalCode').parents('.hidden').hide();
-        }   
-        notEnoughDetail(); 
+        }
+        notEnoughDetail();
     });
 
     $('#cb_originCity,#cb_originProvince,#cb_originPostalCode').on('change keyup', function() {
@@ -282,9 +286,9 @@ $(document).ready(function() {
         if ($('#cb_pickupNoRequired').is(":checked")) {
             console.log($('#cb_originCity').val().length,window.validTransport );
             if (
-                $('#cb_originCity').val().length && 
+                $('#cb_originCity').val().length &&
                 window.validTransport
-            ) { 
+            ) {
                 $('.section-2-2').fadeIn();
                 if (!$('#cb_deliveryRequired').is(":checked"))
                     $('#cb_deliveryRequired').click();
@@ -308,8 +312,8 @@ $(document).ready(function() {
             $('.section-3').fadeOut();
             $('#cb_destCity').parents('.hidden').hide();
             $('#cb_destProvince').parents('.hidden').hide();
-            $('#cb_destPostalCode').parents('.hidden').hide();  
-        }    
+            $('#cb_destPostalCode').parents('.hidden').hide();
+        }
         notEnoughDetail();
     });
 
@@ -326,9 +330,9 @@ $(document).ready(function() {
             $('.section-3').fadeOut();
             $('#cb_destCity').parents('.hidden').hide();
             $('#cb_destProvince').parents('.hidden').hide();
-            $('#cb_destPostalCode').parents('.hidden').hide();  
-        }  
-        notEnoughDetail();  
+            $('#cb_destPostalCode').parents('.hidden').hide();
+        }
+        notEnoughDetail();
     });
 
     $('#cb_destCity,#cb_destProvince,#cb_destPostalCode').on('change keyup', function() {
@@ -367,8 +371,8 @@ $(document).ready(function() {
             $('.disclaimer').hide();
         } else {
             $('.disclaimer').fadeIn();
-            $('.section-3-2').hide(); 
-        }    
+            $('.section-3-2').hide();
+        }
         notEnoughDetail();
     });
 
@@ -493,7 +497,7 @@ $(document).ready(function() {
                     </div>
 
                 </div>
-                
+
                 <div class="section-2-2">
                     <br/><br/>
                     <p class="lg-section-heading marginx2">Do you need a delivery service at the destination?</p>
@@ -588,19 +592,22 @@ $(document).ready(function() {
                         </div>
                     </div>
 
-                    <div class="marginx3" style="height: 72px;">
-                        <div class="lg-subsection-holder" style="opacity: 1;">
-                            <label for="cb_vehiclType" class="field-label">Vehicle Type</label>
-                            <div id="pd_country" style="height:auto;">
-                                <!--<select id="cb_vehicleType" name="cb_vehicleType"></select>-->
-                                <select name="cb_vehicleType" id="cb_vehicleType" style="width:311px; background-color:#fff;">
-                                    <option value=""></option>
-                                    <option value="car" selected="selected">Car</option>
-                                    <option value="van">Van</option>
-                                    <option value="suv">Suv</option>
-                                    <option value="truck">Small Truck</option>
-                                    <option value="os">Oversized Vehicle</option>
-                                </select>
+                    <!-- hidding type -->
+                    <div style="display:none">
+                        <div class="marginx3" style="height: 72px;" style="display:none;">
+                            <div class="lg-subsection-holder" style="opacity: 1;">
+                                <label for="cb_vehiclType" class="field-label">Vehicle Type</label>
+                                <div id="pd_country" style="height:auto;">
+                                    <!--<select id="cb_vehicleType" name="cb_vehicleType"></select>-->
+                                    <select name="cb_vehicleType" id="cb_vehicleType" style="width:311px; background-color:#fff;">
+                                        <option value=""></option>
+                                        <option value="car" selected="selected">Car</option>
+                                        <option value="van">Van</option>
+                                        <option value="suv">Suv</option>
+                                        <option value="truck">Small Truck</option>
+                                        <option value="os">Oversized Vehicle</option>
+                                    </select>
+                                </div>
                             </div>
                         </div>
                     </div>
