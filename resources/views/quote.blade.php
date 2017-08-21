@@ -121,7 +121,7 @@ $(document).ready(function() {
                     @endif
 
                     @if($quote->rate !== 0)
-                    <p class="lg-section-heading marginx2"><i class="fa fa-train"></i> Rail Transportation<br/><span class="information">{{ $quote->origin }} to {{ $quote->destination }}</span></p>
+                    <p class="lg-section-heading marginx2"><i class="fa fa-train"></i> Transportation<br/><span class="information">{{ $quote->origin }} to {{ $quote->destination }}</span></p>
                     @endif
 
                     @if($quote->destination_delivery_rate && $quote->destination_delivery_rate !== 0)

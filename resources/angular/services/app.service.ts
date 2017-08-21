@@ -86,6 +86,21 @@ export class AppService {
 		return this.http.get(endpoint).toPromise().then(this.returnJson).catch(this.throwError);
 	}
 
+	booked(quote_id): Promise<any> {
+		let endpoint = '/api/quotes/booked/'+quote_id;
+		return this.http.get(endpoint).toPromise().then(this.returnJson).catch(this.throwError);
+	}
+
+	exportQuotes(filters:any): Promise<any> {
+		let endpoint = '/api/quotes/export?a=b';
+		if (filters.origin) endpoint += '&origin='+filters.origin;
+		if (filters.destination) endpoint += '&destination='+filters.destination;
+		if (filters.account) endpoint += '&account='+filters.account;
+		if (filters.created_at) endpoint += '&created_at='+filters.created_at;
+		if (filters.page) endpoint += '&page='+filters.page;
+		return this.http.get(endpoint).toPromise().then(this.returnJson).catch(this.throwError);
+	}
+
 	/*************************
 	 * Accounts
 	 *********************** */

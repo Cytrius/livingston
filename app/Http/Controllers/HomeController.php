@@ -30,7 +30,7 @@ class HomeController extends Controller
     public function history()
     {
 
-        $quotes = QuotesModel::where('user_id', \Auth::user()->user_id)->get();
+        $quotes = QuotesModel::where('account_id', \Auth::user()->account_id)->get();
 
         return view('history', ['user' => \Auth::user(), 'quotes' => $quotes]);
     }
@@ -102,6 +102,10 @@ class HomeController extends Controller
         if ($quote_id)
         {
             $quote = QuotesModel::where('id', $quote_id)->first();
+
+            $quote->is_booked = true;
+
+            $quote->save();
 
             $quoteController = new QuotesController();
             $quoteController->notifyBooking($quote->id, false);

@@ -28,10 +28,14 @@
 		  				<label>Date Quoted</label>
 		  				<p>{{ quote?.created_at | date:'mediumDate' }}</p>
 					</div>
-					<div class="field">&nbsp;</div>
-					<div class="field">&nbsp;</div>
-					<div class="field">
-						<a (click)="notify(quote.id)" class="ui button">Resend Notifications</a>
+		  			<div class="field">
+		  				<label>Booked</label>
+		  				<p>{{ quote?.is_booked ? 'Yes' : 'No' }}</p>
+					</div>
+					<div class="eight wide field">
+						<a *ngIf="!quote?.is_booked" (click)="booked(quote.id)" class="ui right floated button" style="margin-left:1em;">Mark As Booked</a>
+						<a *ngIf="quote?.is_booked" (click)="booked(quote.id)" class="ui right floated gray button" style="margin-left:1em;">Mark As Not Booked</a>
+						<a (click)="notify(quote.id)" class="ui right floated button">Resend Notifications</a>
 					</div>
 				</div>
 

@@ -66,6 +66,19 @@ export class DashboardView  {
       this.loadFilteredData();
     }
 
+    private export() {
+        this.isLoading = true;
+         console.log(this.filterSelect);
+        let endpoint = '/api/quotes/export?a=b';
+        if (this.filterSelect.origin) endpoint += '&origin='+this.filterSelect.origin;
+        if (this.filterSelect.destination) endpoint += '&destination='+this.filterSelect.destination;
+        if (this.filterSelect.account) endpoint += '&account='+this.filterSelect.account;
+        if (this.filterSelect.created_at) endpoint += '&created_at='+this.filterSelect.created_at;
+        if (this.filterSelect.page) endpoint += '&page='+this.filterSelect.page;
+        this.isLoading = false;
+        window.open(endpoint);
+    }
+
     private renderDropdowns() {
       setTimeout(() => {
         $(this.element.nativeElement).find('.ui.dropdown').dropdown();

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Quotes as QuotesModel;
+use App\Settings as SettingsModel;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -41,6 +42,13 @@ class QuotesController extends Controller
             $message->subject('Livingston Vehicle Transportation | QUOTE #' . $quote->id);
         });
 
+        $emails = [$quote->user->email];
+
+        if ($quote->is_booked) {
+            $more_emails = $this->notifyBooking($quote_id, false);
+            $emails = array_merge($emails, $more_emails);
+        }
+
         if ($returning)
         {
             return response()->json($emails);
@@ -49,6 +57,25 @@ class QuotesController extends Controller
         {
             return;
         }
+
+    }
+
+
+    public function bookedQuote($quote_id)
+    {
+
+        $quote = QuotesModel::with('account')->with('user')->where('id', $quote_id)->first();
+
+        if (!$quote)
+        {
+            return response()->json(['error' => 'Quote not found'], 404);
+        }
+
+        $quote->is_booked = !$quote->is_booked;
+
+        $quote->save();
+
+        return response()->json($quote);
 
     }
 
@@ -68,8 +95,19 @@ class QuotesController extends Controller
         }
 
         // Send to staff - with rates
+        // @TODO pull notification settings
 
         $emails = ['kev.langlois@gmail.com'];
+
+        $settings = SettingsModel::get();
+
+        $notify_location = strtolower($quote->destination).'_email';
+
+        foreach($settings as $setting) {
+            if ($setting->setting === $notify_location) {
+                $emails[] = $setting->value;
+            }
+        }
 
         \Mail::send('emails.quote', ['quote' => $quote, 'admin' => true], function ($message) use ($emails, $quote)
         {
@@ -91,7 +129,7 @@ class QuotesController extends Controller
         }
         else
         {
-            return;
+            return $emails;
         }
 
     }
@@ -176,6 +214,50 @@ class QuotesController extends Controller
 
         return response()->json($results);
 
+    }
+
+    /**
+     * @param Request $request
+     */
+    public function exportQuotes(Request $request)
+    {
+
+        $quotes = QuotesModel::select('*');
+
+        if ($request->has('origin'))
+        {
+            $quotes->where('origin', $request->get('origin'));
+        }
+
+        if ($request->has('destination'))
+        {
+            $quotes->where('destination', $request->get('destination'));
+        }
+
+        if ($request->has('account'))
+        {
+            $quotes->where('account_id', $request->get('account'));
+        }
+
+        if ($request->has('created_at'))
+        {
+            $date = new Carbon($request->get('created_at'));
+            $day_start = $date->copy()->startOfDay();
+            $day_end = $date->copy()->endOfDay();
+            $quotes->where('created_at', '>=', $day_start)->where('created_at', '<=', $day_end);
+        }
+
+        $quotes = $quotes->with('account')->with('user')->get();
+
+        return \Excel::create('Quote Export', function($excel) use ($quotes) {
+
+            $excel->sheet('Quotes', function($sheet) use ($quotes) {
+
+                $sheet->loadView('exports.quotes', ['quotes' => $quotes]);
+
+            });
+
+        })->download('xls');
     }
 
     /**

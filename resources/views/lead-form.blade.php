@@ -454,6 +454,7 @@ $(document).ready(function() {
                     <div class="lg-subsection-holder" style="opacity: 1;">
                         <label for="departureDate" class="lg-section-subheading">Expected Departure Date</label>
                         <input id="departureDate" name="departureDate" value="" type="text" class="text">
+                        <small>* Weekend departure dates will be booked for the following business day.</small>
                     </div>
                 </div>
             </div>
@@ -592,6 +593,8 @@ $(document).ready(function() {
                         </div>
                     </div>
 
+                    <small>* Transporting classic cars or vehicles not listed above require that you contact us for a custom quote</small>
+
                     <!-- hidding type -->
                     <div style="display:none">
                         <div class="marginx3" style="height: 72px;" style="display:none;">
@@ -625,7 +628,7 @@ $(document).ready(function() {
             <!-- FORM: Personal Details -->
             <div class="lg-section-holder after" style="border: none;">
                 <p class="lg-section-heading marginx3" style="font-size: 22px !important;">Please complete the above form for a real-time quote.</p>
-                <p class="lg-section-heading marginx3" style="font-size: 22px !important; margin-bottom:0;">Or, <a href="#" class="contact-anyway">Contact us here</a> and a sales representative can assist you.</p>
+                <p class="lg-section-heading marginx3" style="font-size: 22px !important; margin-bottom:0;">Or, <a href="http://vehicletransportation.ca/about-us/contact-us/" class="contact-anyway-link">Contact us here</a> and a sales representative can assist you.</p>
             </div>
         </div>
     </div>

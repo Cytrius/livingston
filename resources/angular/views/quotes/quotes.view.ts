@@ -60,16 +60,27 @@ export class QuotesView  {
       });
     }
 
-    /**
-     * On Component Initialize - Request the navigation json
-     */
-    ngOnInit() : void {
+    private booked(quote_id) {
+      this.isLoading = true;
+      this.appService.booked(quote_id).then(res => {
+        this.loadQuote();
+        this.isLoading = false;
+      });
+    }
 
+    private loadQuote() {
       this.appService.getQuoteById(+this.route.snapshot.params['id']).then(quote => {
           this.quote = quote;
           this.isLoading = false;
           this.renderDropdowns();
           this.renderDatepicker();
       });
+    }
+    /**
+     * On Component Initialize - Request the navigation json
+     */
+    ngOnInit() : void {
+
+      this.loadQuote();
     }
 }

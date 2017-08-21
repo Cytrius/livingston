@@ -47,6 +47,10 @@
 					<label>&nbsp;</label>
 					<a (click)="clear()" class="ui button">Clear</a>
 				</div>
+				<div class="field">
+					<label>&nbsp;</label>
+					<a (click)="export()" class="ui button">Export</a>
+				</div>
 			</div>
 		</div>
 
@@ -61,7 +65,8 @@
 			    <th>Destination</th>
 			    <th class="collapsing">Pickup</th>
 			    <th class="collapsing">Delivery</th>
-			    <th style="text-align:right">Amount</th>
+			    <th class="collapsing">Booked</th>
+			    <th style="text-align:right">Quote</th>
 		  	</tr>
 		  </thead>
 		  <tbody>
@@ -80,11 +85,15 @@
 		      		<i *ngIf="quote?.destination_delivery" class="fa fa-check"></i>
 		      		<i *ngIf="!quote?.destination_delivery" class="fa fa-close"></i>
 		      	</td>
+		      	<td class="collapsing" style="text-align:center">
+		      		<i *ngIf="quote?.is_booked" class="fa fa-check"></i>
+		      		<i *ngIf="!quote?.is_booked" class="fa fa-close"></i>
+		      	</td>
 		     	<td style="text-align:right">{{ quote?.total || 0 | number:'1.2-2' }}</td>
 		    </tr>
 		  </tbody>
 		  <tfoot>
-		    <tr><th colspan="9">
+		    <tr><th colspan="10">
 		      <div class="ui right floated tiny pagination menu">
 		        <a class="icon item" (click)="first()">
 		          <i class="angle double left icon"></i>

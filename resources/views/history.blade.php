@@ -47,6 +47,32 @@
 
         }
     }
+
+    table {
+            width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0;
+    margin-bottom: 0;
+    max-width: 66.25rem;
+    margin-top:2em;
+    margin-bottom:2em;
+    }
+    table th {
+        background-color:#004E9C;
+        color:#fff;
+    }
+    table td, table th {
+        text-align:left;
+        padding:10px;
+        font-size:16px;
+    }
+    table td {
+        font-size:14px;
+    }
+    tbody tr:nth-child(odd) {
+       background-color: #A8CAE6;
+    }
 </style>
 
 <script>
@@ -71,6 +97,46 @@ $(document).ready(function() {
     </div>
 </div>
 
-<?php var_dump($quotes);?>
+<table class="ui small selectable celled table">
+          <thead>
+            <tr>
+                <th>Quote Date</th>
+                <th>Departure Date</th>
+                <th>Account</th>
+                <th>User</th>
+                <th>Origin</th>
+                <th>Destination</th>
+                <th class="collapsing">Pickup</th>
+                <th class="collapsing">Delivery</th>
+                <th class="collapsing">Booked</th>
+                <th style="text-align:right">Quote</th>
+            </tr>
+          </thead>
+          <tbody>
+            @foreach($quotes as $index=>$quote)
+            <tr href="">
+                <td>{{ $quote->created_at }}</td>
+                <td>{{ $quote->departure_at }}</td>
+                <td>{{ $quote->account->company }}</td>
+                <td>{{ $quote->user->name }}</td>
+                <td>{{ $quote->origin }}</td>
+                <td>{{ $quote->destination }}</td>
+                <td class="collapsing" style="text-align:center">
+                    @if($quote->origin_pickup)<i class="fa fa-check"></i>@endif
+                    @if(!$quote->origin_pickup)<i class="fa fa-close"></i>@endif
+                </td>
+                <td class="collapsing" style="text-align:center">
+                    @if($quote->destination_delivery)<i class="fa fa-check"></i>@endif
+                    @if(!$quote->destination_delivery)<i class="fa fa-close"></i>@endif
+                </td>
+                <td class="collapsing" style="text-align:center">
+                    @if($quote->is_booked)<i class="fa fa-check"></i>@endif
+                    @if(!$quote->is_booked)<i class="fa fa-close"></i>@endif
+                </td>
+                <td style="text-align:right">{{ number_format($quote->total, 2, '.', '') }}</td>
+            </tr>
+            @endforeach
+          </tbody>
+        </table>
 
 @endsection
