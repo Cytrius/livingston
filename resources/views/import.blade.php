@@ -29,9 +29,11 @@
 
 	    <form action="/import" method="post" enctype="multipart/form-data">
 
-	    	<input type="file" name="file">
+	    	<input type="file" name="file"><br/>
+	    	<label><input type="checkbox" value="truncate" name="truncate"> Delete all existing records?</label><br/><br/>
 
 	    	<button type="submit" class="lead-gen-button">Import</button>
+	    	<br/><br/>
 
 	    </form>
 

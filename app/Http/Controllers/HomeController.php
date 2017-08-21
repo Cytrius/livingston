@@ -410,16 +410,22 @@ class HomeController extends Controller
         $file = $request->file('file');
 
         try {
-            \Excel::load($file->getPath() . '/' . $file->getFilename(), function ($reader)
+            \Excel::load($file->getPath() . '/' . $file->getFilename(), function ($reader) use ($request)
             {
                 $sheet = $reader->sheet(0)->toArray();
 
                 if (isset($sheet[5]) && $sheet[5][0] === 'Origin' && $sheet[5][7] === 'Dealer')
                 {
+                    if ($request->has('truncate')) {
+                        $deleted = RatesModel::where('type', 'pd')->delete();
+                    }
                     return $this->parsePickupDeliveryRates($sheet);
                 }
                 else if (isset($sheet[4]) && $sheet[4][0] === 'Origin' && $sheet[4][2] === 'Days')
                 {
+                    if ($request->has('truncate')) {
+                        $deleted = RatesModel::where('type', 'rail')->delete();
+                    }
                     return $this->parseRailRates($sheet);
                 }
                 else
