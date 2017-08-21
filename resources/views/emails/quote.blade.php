@@ -999,6 +999,21 @@ Vehicle Description | {{ $quote->vehicle_year }} {{ $quote->vehicle_make }} {{ $
 <u><strong>Account ID</strong></u><br>
 {{ $quote->account_id }}<br><br>
 
+@if($quote->origin_contact_name)
+<u><strong>Origin Contact Name</strong></u><br>
+{{ $quote->origin_contact_name }}<br><br>
+@endif
+
+@if($quote->origin_contact_phone)
+<u><strong>Origin Contact Phone</strong></u><br>
+{{ $quote->origin_contact_phone }}<br><br>
+@endif
+
+@if($quote->origin_contact_address)
+<u><strong>Origin Contact Address</strong></u><br>
+{{ $quote->origin_contact_address }}<br><br>
+@endif
+
                                     </td>
                                 </tr>
                             </tbody></table>
@@ -1083,6 +1098,21 @@ Vehicle Description | {{ $quote->vehicle_year }} {{ $quote->vehicle_make }} {{ $
 
 <u><strong>Vehicle Model</strong></u><br>
 {{ $quote->vehicle_model }}<br><br>
+
+@if($quote->dest_contact_name)
+<u><strong>Destination Contact Name</strong></u><br>
+{{ $quote->dest_contact_name }}<br><br>
+@endif
+
+@if($quote->dest_contact_phone)
+<u><strong>Destination Contact Name</strong></u><br>
+{{ $quote->dest_contact_phone }}<br><br>
+@endif
+
+@if($quote->dest_contact_address)
+<u><strong>Destination Contact Name</strong></u><br>
+{{ $quote->dest_contact_address }}<br><br>
+@endif
 
                                     </td>
                                 </tr>

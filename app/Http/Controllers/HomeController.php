@@ -91,7 +91,7 @@ class HomeController extends Controller
     /**
      * @param $quote_id
      */
-    public function bookConfirm($quote_id = false)
+    public function bookConfirm(Request $request, $quote_id = false)
     {
 
         if (!\Auth::user()->is_admin)
@@ -104,6 +104,24 @@ class HomeController extends Controller
             $quote = QuotesModel::where('id', $quote_id)->first();
 
             $quote->is_booked = true;
+
+            if ($request->has('origin_contact_name'))
+                $quote->origin_contact_name = $request->get('origin_contact_name');
+
+            if ($request->has('origin_contact_phone'))
+                $quote->origin_contact_phone = $request->get('origin_contact_phone');
+
+            if ($request->has('origin_contact_address'))
+                $quote->origin_contact_address = $request->get('origin_contact_address');
+
+            if ($request->has('dest_contact_name'))
+                $quote->dest_contact_name = $request->get('dest_contact_name');
+
+            if ($request->has('dest_contact_phone'))
+                $quote->dest_contact_phone = $request->get('dest_contact_phone');
+
+            if ($request->has('dest_contact_address'))
+                $quote->dest_contact_address = $request->get('dest_contact_address');
 
             $quote->save();
 

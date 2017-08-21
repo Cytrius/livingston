@@ -112,18 +112,18 @@ $(document).ready(function() {
 
                         <div class="lg-section-content contact-info" style="margin-bottom:0">
                             <div class="marginx1 form-check form-check-email">
-                                <label class="" for="contact_email">Name *</label>
-                                <input type="text" class="" name="contact_email" id="contact_email" size="30" maxlength="255">
+                                <label class="" for="origin_contact_name">Name *</label>
+                                <input type="text" class="" name="origin_contact_name" id="origin_contact_name" size="30" maxlength="255">
                                 <span class="errormsg">Please provide a full name.</span>
                             </div>
                             <div class="marginx1 form-check">
-                                <label class="" for="contact_first_name">Phone Number *</label>
-                                <input type="text" class="" name="contact_first_name" id="contact_first_name" size="30" maxlength="40">
+                                <label class="" for="origin_contact_phone">Phone Number *</label>
+                                <input type="text" class="" name="origin_contact_phone" id="origin_contact_phone" size="30" maxlength="40">
                                 <span class="errormsg">Please provide a phone number.</span>
                             </div>
                             <div class="marginx1 form-check">
-                                <label class="" for="contact_first_name">Street Address *</label>
-                                <input type="text" class="" name="contact_first_name" id="contact_first_name" size="30" maxlength="40">
+                                <label class="" for="origin_contact_address">Street Address *</label>
+                                <input type="text" class="" name="origin_contact_address" id="origin_contact_address" size="30" maxlength="40">
                                 <span class="errormsg">Please provide the street address.</span>
                             </div>
                         </div>
@@ -134,18 +134,18 @@ $(document).ready(function() {
 
                         <div class="lg-section-content contact-info" style="margin-bottom:0">
                             <div class="marginx1 form-check form-check-email">
-                                <label class="" for="contact_email">Name *</label>
-                                <input type="text" class="" name="contact_email" id="contact_email" size="30" maxlength="255">
+                                <label class="" for="dest_contact_name">Name *</label>
+                                <input type="text" class="" name="dest_contact_name" id="dest_contact_name" size="30" maxlength="255">
                                 <span class="errormsg">Please provide a full name.</span>
                             </div>
                             <div class="marginx1 form-check">
-                                <label class="" for="contact_first_name">Phone Number *</label>
-                                <input type="text" class="" name="contact_first_name" id="contact_first_name" size="30" maxlength="40">
+                                <label class="" for="dest_contact_phone">Phone Number *</label>
+                                <input type="text" class="" name="dest_contact_phone" id="dest_contact_phone" size="30" maxlength="40">
                                 <span class="errormsg">Please provide a phone number.</span>
                             </div>
                             <div class="marginx1 form-check">
-                                <label class="" for="contact_first_name">Street Address *</label>
-                                <input type="text" class="" name="contact_first_name" id="contact_first_name" size="30" maxlength="40">
+                                <label class="" for="dest_contact_address">Street Address *</label>
+                                <input type="text" class="" name="dest_contact_address" id="dest_contact_address" size="30" maxlength="40">
                                 <span class="errormsg">Please provide the street address.</span>
                             </div>
                         </div>
