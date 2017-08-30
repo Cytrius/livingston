@@ -67,11 +67,6 @@ class HomeController extends Controller
     public function book($quote_id = false)
     {
 
-        if (!\Auth::user()->is_admin)
-        {
-            return response('', 400);
-        }
-
         if ($quote_id)
         {
             $quote = QuotesModel::where('id', $quote_id)->first();
@@ -94,11 +89,6 @@ class HomeController extends Controller
     public function bookConfirm(Request $request, $quote_id = false)
     {
 
-        if (!\Auth::user()->is_admin)
-        {
-            return response('', 400);
-        }
-
         if ($quote_id)
         {
             $quote = QuotesModel::where('id', $quote_id)->first();
@@ -106,22 +96,34 @@ class HomeController extends Controller
             $quote->is_booked = true;
 
             if ($request->has('origin_contact_name'))
+            {
                 $quote->origin_contact_name = $request->get('origin_contact_name');
+            }
 
             if ($request->has('origin_contact_phone'))
+            {
                 $quote->origin_contact_phone = $request->get('origin_contact_phone');
+            }
 
             if ($request->has('origin_contact_address'))
+            {
                 $quote->origin_contact_address = $request->get('origin_contact_address');
+            }
 
             if ($request->has('dest_contact_name'))
+            {
                 $quote->dest_contact_name = $request->get('dest_contact_name');
+            }
 
             if ($request->has('dest_contact_phone'))
+            {
                 $quote->dest_contact_phone = $request->get('dest_contact_phone');
+            }
 
             if ($request->has('dest_contact_address'))
+            {
                 $quote->dest_contact_address = $request->get('dest_contact_address');
+            }
 
             $quote->save();
 
@@ -416,14 +418,16 @@ class HomeController extends Controller
 
                 if (isset($sheet[5]) && $sheet[5][0] === 'Origin' && $sheet[5][7] === 'Dealer')
                 {
-                    if ($request->has('truncate')) {
+                    if ($request->has('truncate'))
+                    {
                         $deleted = RatesModel::where('type', 'pd')->delete();
                     }
                     return $this->parsePickupDeliveryRates($sheet);
                 }
                 else if (isset($sheet[4]) && $sheet[4][0] === 'Origin' && $sheet[4][2] === 'Days')
                 {
-                    if ($request->has('truncate')) {
+                    if ($request->has('truncate'))
+                    {
                         $deleted = RatesModel::where('type', 'rail')->delete();
                     }
                     return $this->parseRailRates($sheet);
