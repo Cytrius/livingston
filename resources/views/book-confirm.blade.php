@@ -11,7 +11,7 @@
     }
 
     .lg-section-holder:visible {
-        border-bottom:none;   
+        border-bottom:none;
     }
 
     .hidden { display:none; }
@@ -71,7 +71,7 @@ $(document).ready(function() {
     <div class="lead-gen-form">
         <div id="lg-form-services">
             <p class="lg-section-heading marginx2" style="padding-top:1.5em; padding-bottom:0.5em; color: #7F8992 !important;">
-                Your booking has been forwarded to one of our representatives.
+                A representative will be in touch shortly to confirm your booking.<br/><br/>Thank you
             </p>
         </div>
     </div>

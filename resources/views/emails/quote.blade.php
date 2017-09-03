@@ -14,7 +14,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Livingston Vehicle Transportation</title>
-        
+
     <style type="text/css">
 		p{
 			margin:10px 0;
@@ -605,11 +605,11 @@
                     <table align="left" width="100%" border="0" cellpadding="0" cellspacing="0" class="mcnImageContentContainer" style="min-width:100%;">
                         <tbody><tr>
                             <td class="mcnImageContent" valign="top" style="padding-right: 9px; padding-left: 9px; padding-top: 0; padding-bottom: 0; text-align:center;">
-                                
-                                    
+
+
                                         <img align="center" alt="" src="http://livingston.cytrius.com/images/basic-logo.png" width="200" style="max-width:200px; padding-bottom: 0; display: inline !important; vertical-align: bottom;" class="mcnImage">
-                                    
-                                
+
+
                             </td>
                         </tr>
                     </tbody></table>
@@ -643,15 +643,15 @@
 				<table align="left" border="0" cellspacing="0" cellpadding="0" width="100%" style="width:100%;">
 				<tr>
 				<![endif]-->
-			    
+
 				<!--[if mso]>
 				<td valign="top" width="600" style="width:600px;">
 				<![endif]-->
                 <table align="left" border="0" cellpadding="0" cellspacing="0" style="max-width:100%; min-width:100%;" width="100%" class="mcnTextContentContainer">
                     <tbody><tr>
-                        
+
                         <td valign="top" class="mcnTextContent" style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;">
-                        
+
                             <h2 class="null" style="text-align: center;"><span style="color:#000080">Vehicle Transportation</span></h2>
 
 @if($admin)
@@ -671,7 +671,7 @@
 	                        </td>
 	                    </tr>
 	                </tbody></table>
-	<!--            
+	<!--
 	                <td class="mcnDividerBlockInner" style="padding: 18px;">
 	                <hr class="mcnDividerContent" style="border-bottom-color:none; border-left-color:none; border-right-color:none; border-bottom-width:0; border-left-width:0; border-right-width:0; margin-top:0; margin-right:0; margin-bottom:0; margin-left:0;" />
 	-->
@@ -679,11 +679,11 @@
 	        </tr>
 	    </tbody>
 	</table>
-	
+
 @endif
 
 <p>Hello {{ $quote->user->name }},<br>
-As per your request, I have attached the following quote for your reference. The options noted below include: <strong>(fuel surcharge, insurance and applicable taxes.)</strong></p>
+As per your request, I have attached the following quote for your reference. The options noted below include: <strong>fuel surcharge and insurance</strong>. Applicable taxes not included.</p>
 
                         </td>
                     </tr>
@@ -691,7 +691,7 @@ As per your request, I have attached the following quote for your reference. The
 				<!--[if mso]>
 				</td>
 				<![endif]-->
-                
+
 				<!--[if mso]>
 				</tr>
 				</table>
@@ -706,15 +706,15 @@ As per your request, I have attached the following quote for your reference. The
 	<tbody class="mcnBoxedTextBlockOuter">
         <tr>
             <td valign="top" class="mcnBoxedTextBlockInner">
-                
+
 				<!--[if gte mso 9]>
 				<td align="center" valign="top" ">
 				<![endif]-->
                 <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%" style="min-width:100%;" class="mcnBoxedTextContentContainer">
                     <tbody><tr>
-                        
+
                         <td style="padding-top:9px; padding-left:18px; padding-bottom:9px; padding-right:18px;">
-                        
+
                             <table border="0" cellpadding="18" cellspacing="0" class="mcnTextContentContainer" width="100%" style="min-width: 100% !important;background-color: #222074;">
                                 <tbody><tr>
                                     <td valign="top" class="mcnTextContent" style="color: #F2F2F2;font-family: Helvetica;font-size: 14px;font-weight: normal;text-align: center;">
@@ -731,7 +731,7 @@ Vehicle Description | {{ $quote->vehicle_year }} {{ $quote->vehicle_make }} {{ $
 				<!--[if gte mso 9]>
 				</td>
 				<![endif]-->
-                
+
 				<!--[if gte mso 9]>
                 </tr>
                 </table>
@@ -752,22 +752,22 @@ Vehicle Description | {{ $quote->vehicle_year }} {{ $quote->vehicle_make }} {{ $
 		<tbody class="mcnBoxedTextBlockOuter">
 	        <tr>
 	            <td valign="top" class="mcnBoxedTextBlockInner">
-	                
+
 					<!--[if gte mso 9]>
 					<td align="center" valign="top" ">
 					<![endif]-->
 	                <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%" style="min-width:100%;" class="mcnBoxedTextContentContainer">
 	                    <tbody><tr>
-	                        
+
 	                        <td style="padding-top:9px; padding-left:18px; padding-bottom:9px; padding-right:18px;">
-	                        
+
 	                            <table border="0" cellpadding="18" cellspacing="0" class="mcnTextContentContainer" width="100%" style="min-width: 100% !important;background-color: #E4E4E4;">
 	                                <tbody><tr>
 	                                    <td valign="top" class="mcnTextContent" style="color: #000000;font-family: Helvetica;font-size: 14px;font-weight: normal;text-align: left;">
 	                                        <strong><u>OPTION 1</u><br>
 	Pickup to Delivery: </strong><span style="color:#000080"><strong> {{$quote->origin_pickup}} to {{$quote->destination_delivery}}</strong></span>
 
-	<p style="color: #000000;font-family: Helvetica;font-size: 14px;font-weight: normal;text-align: left;"><span style="color:#000080"><span style="font-size:18px"><strong>${{ number_format($quote->total, 2) }}</strong></span></span></p>
+	<p style="color: #000000;font-family: Helvetica;font-size: 14px;font-weight: normal;text-align: left;"><span style="color:#000080"><span style="font-size:18px"><strong>${{ number_format($quote->subtotal, 2) }}</strong><small> (Plus Tax)</small></span></span></p>
 
 	<p style="color: #000000;font-family: Helvetica;font-size: 14px;font-weight: normal;text-align: left;"><strong>The overall transit times for Pickup to Delivery Options vary based on requested pickup &amp; delivery locations as well as rail departure dates. Additional information available at time of booking.</strong></p>
 
@@ -780,7 +780,7 @@ Vehicle Description | {{ $quote->vehicle_year }} {{ $quote->vehicle_make }} {{ $
 					<!--[if gte mso 9]>
 					</td>
 					<![endif]-->
-	                
+
 					<!--[if gte mso 9]>
 	                </tr>
 	                </table>
@@ -797,22 +797,22 @@ Vehicle Description | {{ $quote->vehicle_year }} {{ $quote->vehicle_make }} {{ $
 		<tbody class="mcnBoxedTextBlockOuter">
 	        <tr>
 	            <td valign="top" class="mcnBoxedTextBlockInner">
-	                
+
 					<!--[if gte mso 9]>
 					<td align="center" valign="top" ">
 					<![endif]-->
 	                <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%" style="min-width:100%;" class="mcnBoxedTextContentContainer">
 	                    <tbody><tr>
-	                        
+
 	                        <td style="padding-top:9px; padding-left:18px; padding-bottom:9px; padding-right:18px;">
-	                        
+
 	                            <table border="0" cellpadding="18" cellspacing="0" class="mcnTextContentContainer" width="100%" style="min-width: 100% !important;background-color: #E4E4E4;">
 	                                <tbody><tr>
 	                                    <td valign="top" class="mcnTextContent" style="color: #000000;font-family: Helvetica;font-size: 14px;font-weight: normal;text-align: left;">
 	                                        <strong><u>OPTION 2</u><br>
 	Terminal to Terminal: </strong><span style="color:#000080"><strong>{{$quote->origin}} to {{$quote->destination}}</strong></span>
 
-	<p style="color: #000000;font-family: Helvetica;font-size: 14px;font-weight: normal;text-align: left;"><span style="color:#000080"><span style="font-size:18px"><strong>${{ number_format($quote->alt_total, 2) }}</strong></span></span></p>
+	<p style="color: #000000;font-family: Helvetica;font-size: 14px;font-weight: normal;text-align: left;"><span style="color:#000080"><span style="font-size:18px"><strong>${{ number_format($quote->alt_subtotal, 2) }}</strong><small> (plus tax)</small></span></span></p>
 
 	<p style="color: #000000;font-family: Helvetica;font-size: 14px;font-weight: normal;text-align: left;"><strong>The estimated transit time is {{ $quote->est_days }} days from the date of departure from the origin terminal</strong></p>
 
@@ -825,7 +825,7 @@ Vehicle Description | {{ $quote->vehicle_year }} {{ $quote->vehicle_make }} {{ $
 					<!--[if gte mso 9]>
 					</td>
 					<![endif]-->
-	                
+
 					<!--[if gte mso 9]>
 	                </tr>
 	                </table>
@@ -844,15 +844,15 @@ Vehicle Description | {{ $quote->vehicle_year }} {{ $quote->vehicle_make }} {{ $
 		<tbody class="mcnBoxedTextBlockOuter">
 	        <tr>
 	            <td valign="top" class="mcnBoxedTextBlockInner">
-	                
+
 					<!--[if gte mso 9]>
 					<td align="center" valign="top" ">
 					<![endif]-->
 	                <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%" style="min-width:100%;" class="mcnBoxedTextContentContainer">
 	                    <tbody><tr>
-	                        
+
 	                        <td style="padding-top:9px; padding-left:18px; padding-bottom:9px; padding-right:18px;">
-	                        
+
 	                            <table border="0" cellpadding="18" cellspacing="0" class="mcnTextContentContainer" width="100%" style="min-width: 100% !important;background-color: #E4E4E4;">
 	                                <tbody><tr>
 	                                    <td valign="top" class="mcnTextContent" style="color: #000000;font-family: Helvetica;font-size: 14px;font-weight: normal;text-align: left;">
@@ -872,7 +872,7 @@ Vehicle Description | {{ $quote->vehicle_year }} {{ $quote->vehicle_make }} {{ $
 					<!--[if gte mso 9]>
 					</td>
 					<![endif]-->
-	                
+
 					<!--[if gte mso 9]>
 	                </tr>
 	                </table>
@@ -895,15 +895,15 @@ Vehicle Description | {{ $quote->vehicle_year }} {{ $quote->vehicle_make }} {{ $
 				<table align="left" border="0" cellspacing="0" cellpadding="0" width="100%" style="width:100%;">
 				<tr>
 				<![endif]-->
-			    
+
 				<!--[if mso]>
 				<td valign="top" width="600" style="width:600px;">
 				<![endif]-->
                 <table align="left" border="0" cellpadding="0" cellspacing="0" style="max-width:100%; min-width:100%;" width="100%" class="mcnTextContentContainer">
                     <tbody><tr>
-                        
+
                         <td valign="top" class="mcnTextContent" style="padding: 0px 18px 9px; text-align: center;">
-                        
+
                             <div style="text-align: center;">
 <div><span style="color:#000080"><strong>*Quote valid for 30 days, only subject to monthly fuel change*</strong></span><br>
 <br>
@@ -921,7 +921,7 @@ Vehicle Description | {{ $quote->vehicle_year }} {{ $quote->vehicle_make }} {{ $
 				<!--[if mso]>
 				</td>
 				<![endif]-->
-                
+
 				<!--[if mso]>
 				</tr>
 				</table>
@@ -959,19 +959,19 @@ Vehicle Description | {{ $quote->vehicle_year }} {{ $quote->vehicle_make }} {{ $
 	<tbody class="mcnBoxedTextBlockOuter">
         <tr>
             <td valign="top" class="mcnBoxedTextBlockInner">
-                
+
 				<!--[if gte mso 9]>
 				<td align="center" valign="top" ">
 				<![endif]-->
                 <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%" style="min-width:100%;" class="mcnBoxedTextContentContainer">
                     <tbody><tr>
-                        
+
                         <td style="padding-top:9px; padding-left:18px; padding-bottom:9px; padding-right:18px;">
-                        
+
                             <table border="0" cellpadding="18" cellspacing="0" class="mcnTextContentContainer" width="100%" style="min-width: 100% !important;background-color: #E4E4E4;">
                                 <tbody><tr>
                                     <td valign="top" class="mcnTextContent" style="color: #646464;font-family: Helvetica;font-size: 14px;font-weight: normal;text-align: left;">
-                                       
+
 <u><strong>Email</strong></u><br>
 {{ $quote->form_email }}<br><br>
 
@@ -1023,7 +1023,7 @@ Vehicle Description | {{ $quote->vehicle_year }} {{ $quote->vehicle_make }} {{ $
 				<!--[if gte mso 9]>
 				</td>
 				<![endif]-->
-                
+
 				<!--[if gte mso 9]>
                 </tr>
                 </table>
@@ -1047,15 +1047,15 @@ Vehicle Description | {{ $quote->vehicle_year }} {{ $quote->vehicle_make }} {{ $
 	<tbody class="mcnBoxedTextBlockOuter">
         <tr>
             <td valign="top" class="mcnBoxedTextBlockInner">
-                
+
 				<!--[if gte mso 9]>
 				<td align="center" valign="top" ">
 				<![endif]-->
                 <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%" style="min-width:100%;" class="mcnBoxedTextContentContainer">
                     <tbody><tr>
-                        
+
                         <td style="padding-top:9px; padding-left:18px; padding-bottom:9px; padding-right:18px;">
-                        
+
                             <table border="0" cellpadding="18" cellspacing="0" class="mcnTextContentContainer" width="100%" style="min-width: 100% !important;background-color: #E4E4E4;">
                                 <tbody><tr>
                                     <td valign="top" class="mcnTextContent" style="color: #646464;font-family: Helvetica;font-size: 14px;font-weight: normal;text-align: left;">
@@ -1123,7 +1123,7 @@ Vehicle Description | {{ $quote->vehicle_year }} {{ $quote->vehicle_make }} {{ $
 				<!--[if gte mso 9]>
 				</td>
 				<![endif]-->
-                
+
 				<!--[if gte mso 9]>
                 </tr>
                 </table>
@@ -1164,7 +1164,7 @@ Vehicle Description | {{ $quote->vehicle_year }} {{ $quote->vehicle_make }} {{ $
                         </td>
                     </tr>
                 </tbody></table>
-<!--            
+<!--
                 <td class="mcnDividerBlockInner" style="padding: 18px;">
                 <hr class="mcnDividerContent" style="border-bottom-color:none; border-left-color:none; border-right-color:none; border-bottom-width:0; border-left-width:0; border-right-width:0; margin-top:0; margin-right:0; margin-bottom:0; margin-left:0;" />
 -->
@@ -1179,15 +1179,15 @@ Vehicle Description | {{ $quote->vehicle_year }} {{ $quote->vehicle_make }} {{ $
 				<table align="left" border="0" cellspacing="0" cellpadding="0" width="100%" style="width:100%;">
 				<tr>
 				<![endif]-->
-			    
+
 				<!--[if mso]>
 				<td valign="top" width="600" style="width:600px;">
 				<![endif]-->
                 <table align="left" border="0" cellpadding="0" cellspacing="0" style="max-width:100%; min-width:100%;" width="100%" class="mcnTextContentContainer">
                     <tbody><tr>
-                        
+
                         <td valign="top" class="mcnTextContent" style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;">
-                        
+
                             <p><span style="font-size:11px"><em>This e-mail may contain privileged and confidential information. If you are not the intended recipient, you are hereby notified that any review, dissemination, distribution or duplication of this communication is strictly prohibited. You are requested to notify the sender and delete this message and all copies thereof. Internet e-mail is not guaranteed to be secure or error-free. This sender will not be liable for the risks associated with e-mail. | Ce message électronique pourrait contenir des informations privilégiées et confidentielles. Si vous n'en êtes pas le récipiendaire prévu, nous vous signalons qu'il est strictement interdit d'examiner, de diffuser, de distribuer et de reproduire le présent message. Veuillez prévenir l'expéditeur, puis effacer ce message et en détruire toute copie. Le courrier électronique n'est pas garanti sécuritaire ni exempt d'erreurs. L'expéditeur n'est pas responsable des risques associés au courrier électronique.</em></span></p>
 
                         </td>
@@ -1196,7 +1196,7 @@ Vehicle Description | {{ $quote->vehicle_year }} {{ $quote->vehicle_make }} {{ $
 				<!--[if mso]>
 				</td>
 				<![endif]-->
-                
+
 				<!--[if mso]>
 				</tr>
 				</table>

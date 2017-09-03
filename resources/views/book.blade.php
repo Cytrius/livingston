@@ -11,7 +11,7 @@
     }
 
     .lg-section-holder:visible {
-        border-bottom:none;   
+        border-bottom:none;
     }
 
     .hidden { display:none; }
@@ -53,8 +53,11 @@
 
 /* Lead Form Script */
 $(document).ready(function() {
-    $('.lead-gen-button').click(function() {
+    $('.lead-gen-button:not(.grey)').click(function() {
         $('#book-form').submit();
+    });
+    $('.lead-gen-button.grey').click(function() {
+        window.location.href = '/';
     });
 });
 
@@ -108,6 +111,7 @@ $(document).ready(function() {
                             Quote #{{ $quote->id }} - Book Now
                         </p>
 
+                        @if(!$origin_term)
                         <p class="lg-section-heading marginx3 contact-info">Contact at origin ({{ $quote->origin_pickup ? $quote->origin_pickup : $quote->origin }})?</p>
 
                         <div class="lg-section-content contact-info" style="margin-bottom:0">
@@ -128,8 +132,27 @@ $(document).ready(function() {
                             </div>
                         </div>
 
+                        @else
+
+                        <p class="lg-section-heading marginx3 contact-info">Drop off address at origin ({{ $quote->origin_pickup ? $quote->origin_pickup : $quote->origin }})</p>
+
+                        <div class="lg-section-content contact-info" style="margin-bottom:0">
+                            <p><strong>{{ $origin_term->name }}</strong></p>
+                            <p>{{ $origin_term->address }}</p>
+                            <p>{{ $origin_term->city }}, {{ $origin_term->province }}, {{ $origin_term->postal_code }}</p>
+                            <p>{{ $origin_term->operator }}</p>
+                            <br/>
+                            <p>{{ $origin_term->hours }}</p>
+                            <p>Direct: {{ $origin_term->phone }}</p>
+                            <p>Tracking Information: {{ $origin_term->tracking_phone }}</p>
+                        </div>
+
+
+                        @endif
+
                         <br/><br/>
 
+                         @if(!$dest_term)
                         <p class="lg-section-heading marginx3 contact-info">Contact at destination ({{ $quote->destination_delivery ? $quote->destination_delivery : $quote->destination }})?</p>
 
                         <div class="lg-section-content contact-info" style="margin-bottom:0">
@@ -149,6 +172,23 @@ $(document).ready(function() {
                                 <span class="errormsg">Please provide the street address.</span>
                             </div>
                         </div>
+
+                        @else
+
+                        <p class="lg-section-heading marginx3 contact-info">Pickup address at destination ({{ $quote->destination_delivery ? $quote->destination_delivery : $quote->destination }})</p>
+
+                        <div class="lg-section-content contact-info" style="margin-bottom:0">
+                            <p><strong>{{ $dest_term->name }}</strong></p>
+                            <p>{{ $dest_term->address }}</p>
+                            <p>{{ $dest_term->city }}, {{ $dest_term->province }}, {{ $dest_term->postal_code }}</p>
+                            <p>{{ $dest_term->operator }}</p>
+                            <br/>
+                            <p>{{ $dest_term->hours }}</p>
+                            <p>Direct: {{ $dest_term->phone }}</p>
+                            <p>Tracking Information: {{ $dest_term->tracking_phone }}</p>
+                        </div>
+
+                        @endif
 
                     </form>
 
@@ -174,7 +214,7 @@ $(document).ready(function() {
                             <p style="font-size:26px; color:#fff !important;">
                                 <sup style="top: -5px;">$</sup>{{ money_format('%.2n', $quote->total) }}
                             </p>
-                            <p style="margin-top:1em; font-size:14px;">The estimated transit time is {{ $quote->est_days }} days from the date of departure from the origin terminal</p>
+                            <p style="margin-top:1em; font-size:14px;">{{ $quote->tax_percent }}% Tax Included<!--The estimated transit time is {{ $quote->est_days }} days from the date of departure from the origin terminal--></p>
                         </div>
                     </div>
                      @endif
@@ -195,7 +235,7 @@ $(document).ready(function() {
 <div class="lead-gen-form-container lead-gen-main">
     <div class="lead-gen-form">
         <div id="lg-form-services">
-            
+
         </div>
     </div>
 </div>

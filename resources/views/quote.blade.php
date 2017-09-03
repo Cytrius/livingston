@@ -11,7 +11,7 @@
     }
 
     .lg-section-holder:visible {
-        border-bottom:none;   
+        border-bottom:none;
     }
 
     .hidden { display:none; }
@@ -115,7 +115,7 @@ $(document).ready(function() {
                         <i class="fa fa-car"></i>
                         Transport Your<br/><span class="information">{{ $form['cb_vehicleYear'] }} {{ $form['cb_vehicleMake'] }} {{ $form['cb_vehicleModel'] }}</span>
                     </p>
-    
+
                     @if($quote->origin_pickup_rate && $quote->origin_pickup_rate !== 0)
                          <p class="lg-section-heading marginx2"><i class="fa fa-map-marker"></i> Pickup From<br/><span class="information"><span class="postal-code">{{ $quote->form_origin_postal }}</span>, <span class="city">{{ $quote->origin_pickup }}</span>, <span class="province">{{ $quote->form_origin_province }}</span></span></p>
                     @endif

@@ -545,11 +545,11 @@ $(document).ready(function() {
             </div>
 
             <div class="lg-section-holder section-3" style="border-bottom:none;">
-                <p class="lg-section-heading marginx2">Vehicle can be driven?</p>
+                <p class="lg-section-heading marginx2">Vehicle is in operable condition?</p>
                 <div class="lg-section-content">
                     <div class="checkbox-group">
                         <input id="vehicleCanBeDriven" name="vehicleCanBeDriven" type="checkbox" value="yes">
-                        <label for="vehicleCanBeDriven">Yes, vehicle can be driven.</label>
+                        <label for="vehicleCanBeDriven">Yes, vehicle is operable.</label>
                     </div>
                 </div>
                 <br/>
@@ -593,7 +593,7 @@ $(document).ready(function() {
                         </div>
                     </div>
 
-                    <small>* Transporting classic cars or vehicles not listed above require that you contact us for a custom quote</small>
+                    <small>* Transportation of classic cars or vehicles not listed above requires that you contact us for a custom quote</small>
 
                     <!-- hidding type -->
                     <div style="display:none">

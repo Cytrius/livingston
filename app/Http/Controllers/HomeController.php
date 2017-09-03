@@ -30,7 +30,7 @@ class HomeController extends Controller
     public function history()
     {
 
-        $quotes = QuotesModel::where('account_id', \Auth::user()->account_id)->get();
+        $quotes = QuotesModel::where('account_id', \Auth::user()->account_id)->orderBy('created_at', 'DESC')->get();
 
         return view('history', ['user' => \Auth::user(), 'quotes' => $quotes]);
     }
@@ -64,7 +64,7 @@ class HomeController extends Controller
     /**
      * @param $quote_id
      */
-    public function book($quote_id = false)
+    public function book(Request $request, $quote_id = false)
     {
 
         if ($quote_id)
@@ -76,10 +76,56 @@ class HomeController extends Controller
             $quote = null;
         }
 
+        if ($request->has('alt') && $request->get('alt') === 'true')
+        {
+            $quote->origin_pickup = null;
+            $quote->destination_delivery = null;
+
+            $total = 0;
+
+            $quote->origin_pickup_rate = 0;
+
+            if ($quote->rate)
+            {
+                $total += $quote->rate;
+            }
+
+            $quote->destination_delivery_rate = 0;
+
+            $fuel_surcharge = SettingsModel::where('setting', 'fuel_surcharge')->first();
+            $quote->fuel_surcharge = floatval($fuel_surcharge->value);
+            $quote->subtotal = $total + ($total * ($quote->fuel_surcharge / 100));
+
+            $quote->tax_percent = $this->getTaxRate($quote->destination);
+            $quote->total = $quote->subtotal + ($quote->subtotal * ($quote->tax_percent / 100));
+
+            $quote->save();
+        }
+
+        if (is_null($quote->origin_pickup))
+        {
+            $origin_term = \DB::table('terminals')->where('term_city', $quote->origin)->first();
+        }
+        else
+        {
+            $origin_term = false;
+        }
+
+        if (is_null($quote->destination_delivery))
+        {
+            $dest_term = \DB::table('terminals')->where('term_city', $quote->destination)->first();
+        }
+        else
+        {
+            $dest_term = false;
+        }
+
         return view('book', [
             'user' => \Auth::user(),
             'account' => AccountModel::where('id', \Auth::user()->account_id)->first(),
             'quote' => $quote,
+            'origin_term' => $origin_term,
+            'dest_term' => $dest_term,
         ]);
     }
 
