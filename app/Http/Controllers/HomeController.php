@@ -462,7 +462,7 @@ class HomeController extends Controller
             {
                 $sheet = $reader->sheet(0)->toArray();
 
-                if (isset($sheet[5]) && $sheet[5][0] === 'Origin' && $sheet[5][7] === 'Dealer')
+                if (isset($sheet[5]) && $sheet[5][0] === 'Origin' && $sheet[5][6] === 'Dealer')
                 {
                     if ($request->has('truncate'))
                     {
@@ -487,6 +487,7 @@ class HomeController extends Controller
         }
         catch (\Exception $e)
         {
+            dd($e);
             return response($e->getMessage(), 403);
         }
 
@@ -503,10 +504,10 @@ class HomeController extends Controller
         $col_origin_prov = 1;
         $col_destination = 2;
         $col_destination_prov = 3;
-        $col_is_local = 4;
-        $col_type_private = 5;
-        $col_type_mover = 6;
-        $col_type_dealer = 7;
+        //$col_is_local = 4;
+        $col_type_private = 4;
+        $col_type_mover = 5;
+        $col_type_dealer = 6;
 
         $normalized = [];
 
