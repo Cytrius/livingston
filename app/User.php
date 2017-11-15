@@ -2,10 +2,9 @@
 
 namespace App;
 
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-
 use App\Account;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
@@ -17,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'account_id', 'phone'
+        'name', 'email', 'password', 'account_id', 'phone', 'is_rep', 'is_admin',
     ];
 
     /**
@@ -29,7 +28,11 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function account() {
+    /**
+     * @return mixed
+     */
+    public function account()
+    {
         return $this->hasOne(Account::class, 'id', 'account_id');
     }
 }

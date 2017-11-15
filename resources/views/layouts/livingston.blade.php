@@ -29,22 +29,22 @@
 
 <link rel="alternate" type="application/rss+xml" title="Vehicle shipping by Livingston » Feed" href="http://vehicletransportation.ca/feed/">
 <link rel="alternate" type="application/rss+xml" title="Vehicle shipping by Livingston » Comments Feed" href="http://vehicletransportation.ca/comments/feed/">
-		<script type="text/javascript" async="" src="http://www.google-analytics.com/ga.js"></script><script type="text/javascript">
-			window._wpemojiSettings = {"baseUrl":"http:\/\/s.w.org\/images\/core\/emoji\/72x72\/","ext":".png","source":{"concatemoji":"http:\/\/vehicletransportation.ca\/wp-includes\/js\/wp-emoji-release.min.js"}};
-			!function(a,b,c){function d(a){var c=b.createElement("canvas"),d=c.getContext&&c.getContext("2d");return d&&d.fillText?(d.textBaseline="top",d.font="600 32px Arial","flag"===a?(d.fillText(String.fromCharCode(55356,56812,55356,56807),0,0),c.toDataURL().length>3e3):(d.fillText(String.fromCharCode(55357,56835),0,0),0!==d.getImageData(16,16,1,1).data[0])):!1}function e(a){var c=b.createElement("script");c.src=a,c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g;c.supports={simple:d("simple"),flag:d("flag")},c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.simple&&c.supports.flag||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
-		</script>
-		<style type="text/css">
+        <script type="text/javascript" async="" src="http://www.google-analytics.com/ga.js"></script><script type="text/javascript">
+            window._wpemojiSettings = {"baseUrl":"http:\/\/s.w.org\/images\/core\/emoji\/72x72\/","ext":".png","source":{"concatemoji":"http:\/\/vehicletransportation.ca\/wp-includes\/js\/wp-emoji-release.min.js"}};
+            !function(a,b,c){function d(a){var c=b.createElement("canvas"),d=c.getContext&&c.getContext("2d");return d&&d.fillText?(d.textBaseline="top",d.font="600 32px Arial","flag"===a?(d.fillText(String.fromCharCode(55356,56812,55356,56807),0,0),c.toDataURL().length>3e3):(d.fillText(String.fromCharCode(55357,56835),0,0),0!==d.getImageData(16,16,1,1).data[0])):!1}function e(a){var c=b.createElement("script");c.src=a,c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g;c.supports={simple:d("simple"),flag:d("flag")},c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.simple&&c.supports.flag||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+        </script>
+        <style type="text/css">
 img.wp-smiley,
 img.emoji {
-	display: inline !important;
-	border: none !important;
-	box-shadow: none !important;
-	height: 1em !important;
-	width: 1em !important;
-	margin: 0 .07em !important;
-	vertical-align: -0.1em !important;
-	background: none !important;
-	padding: 0 !important;
+    display: inline !important;
+    border: none !important;
+    box-shadow: none !important;
+    height: 1em !important;
+    width: 1em !important;
+    margin: 0 .07em !important;
+    vertical-align: -0.1em !important;
+    background: none !important;
+    padding: 0 !important;
 }
 </style>
 <script src="https://use.fontawesome.com/1c93c020aa.js"></script>
@@ -99,7 +99,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
                             @if(\Auth::check())
                                  <a href="/history" class="bold-700">Quote History</a>
                             @endif
-                            @if(\Auth::user()->is_rep || \Auth::user()->is_admin)
+                            @if(\Auth::user()->is_admin)
                                  <a href="/dashboard/quotes" class="bold-700">Administrators</a>
                             @endif
                             <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="bold-700">Log Out</a>
@@ -125,10 +125,10 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
                         <ul id="menu-main" class="right primary-nav hide-for-medium-down"><li id="menu-item-4" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4"><a href="http://vehicletransportation.ca/about-us">About Us</a></li>
 <li id="menu-item-5" class="menu-item menu-item-type-custom menu-item-object-custom has-dropdown menu-item-5 not-click"><a href="http://vehicletransportation.ca/what-we-do">What We Do</a>
 <ul class="dropdown"><li class="title back js-generated"><h5><a href="javascript:void(0)">Back</a></h5></li>
-	<li id="menu-item-983" class="show-for-large-up hide-for-medium menu-item menu-item-type-post_type menu-item-object-page menu-item-983"><a href="http://vehicletransportation.ca/what-we-do/long-distance-moves/">Long Distance Moves</a></li>
-	<li id="menu-item-958" class="show-for-large-up hide-for-medium menu-item menu-item-type-post_type menu-item-object-page menu-item-958"><a href="http://vehicletransportation.ca/what-we-do/short-distance-moves/">Short Distance Moves</a></li>
-	<li id="menu-item-957" class="show-for-large-up hide-for-medium menu-item menu-item-type-post_type menu-item-object-page menu-item-957"><a href="http://vehicletransportation.ca/what-we-do/personal-moves/">Personal moves</a></li>
-	<li id="menu-item-955" class="show-for-large-up hide-for-medium menu-item menu-item-type-post_type menu-item-object-page menu-item-955"><a href="http://vehicletransportation.ca/what-we-do/business-moves/">Business Moves</a></li>
+    <li id="menu-item-983" class="show-for-large-up hide-for-medium menu-item menu-item-type-post_type menu-item-object-page menu-item-983"><a href="http://vehicletransportation.ca/what-we-do/long-distance-moves/">Long Distance Moves</a></li>
+    <li id="menu-item-958" class="show-for-large-up hide-for-medium menu-item menu-item-type-post_type menu-item-object-page menu-item-958"><a href="http://vehicletransportation.ca/what-we-do/short-distance-moves/">Short Distance Moves</a></li>
+    <li id="menu-item-957" class="show-for-large-up hide-for-medium menu-item menu-item-type-post_type menu-item-object-page menu-item-957"><a href="http://vehicletransportation.ca/what-we-do/personal-moves/">Personal moves</a></li>
+    <li id="menu-item-955" class="show-for-large-up hide-for-medium menu-item menu-item-type-post_type menu-item-object-page menu-item-955"><a href="http://vehicletransportation.ca/what-we-do/business-moves/">Business Moves</a></li>
 </ul>
 </li>
 <li id="menu-item-6" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-6"><a href="http://vehicletransportation.ca/our-promise">Our Promise</a></li>
@@ -162,10 +162,10 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
                             <ul id="menu-main-1" class="mobile-primary-nav"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4"><a href="http://vehicletransportation.ca/about-us">About Us</a></li>
 <li class="menu-item menu-item-type-custom menu-item-object-custom has-dropdown menu-item-5 not-click"><a href="http://vehicletransportation.ca/what-we-do">What We Do</a>
 <ul class="dropdown"><li class="title back js-generated"><h5><a href="javascript:void(0)">Back</a></h5></li>
-	<li class="show-for-large-up hide-for-medium menu-item menu-item-type-post_type menu-item-object-page menu-item-983"><a href="http://vehicletransportation.ca/what-we-do/long-distance-moves/">Long Distance Moves</a></li>
-	<li class="show-for-large-up hide-for-medium menu-item menu-item-type-post_type menu-item-object-page menu-item-958"><a href="http://vehicletransportation.ca/what-we-do/short-distance-moves/">Short Distance Moves</a></li>
-	<li class="show-for-large-up hide-for-medium menu-item menu-item-type-post_type menu-item-object-page menu-item-957"><a href="http://vehicletransportation.ca/what-we-do/personal-moves/">Personal moves</a></li>
-	<li class="show-for-large-up hide-for-medium menu-item menu-item-type-post_type menu-item-object-page menu-item-955"><a href="http://vehicletransportation.ca/what-we-do/business-moves/">Business Moves</a></li>
+    <li class="show-for-large-up hide-for-medium menu-item menu-item-type-post_type menu-item-object-page menu-item-983"><a href="http://vehicletransportation.ca/what-we-do/long-distance-moves/">Long Distance Moves</a></li>
+    <li class="show-for-large-up hide-for-medium menu-item menu-item-type-post_type menu-item-object-page menu-item-958"><a href="http://vehicletransportation.ca/what-we-do/short-distance-moves/">Short Distance Moves</a></li>
+    <li class="show-for-large-up hide-for-medium menu-item menu-item-type-post_type menu-item-object-page menu-item-957"><a href="http://vehicletransportation.ca/what-we-do/personal-moves/">Personal moves</a></li>
+    <li class="show-for-large-up hide-for-medium menu-item menu-item-type-post_type menu-item-object-page menu-item-955"><a href="http://vehicletransportation.ca/what-we-do/business-moves/">Business Moves</a></li>
 </ul>
 </li>
 <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-6"><a href="/http://vehicletransportation.caour-promise">Our Promise</a></li>
@@ -226,8 +226,8 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 <li id="menu-item-886" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-886"><a href="http://vehicletransportation.ca/what-we-do/">What We Do</a></li>
 <li id="menu-item-949" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-949"><a href="http://vehicletransportation.ca/our-promise/">Our Promise</a></li>
 <li id="menu-item-884" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-884"><a href="http://vehicletransportation.ca/about-us/contact-us/">Contact Us</a></li>
-</ul><div id="footer-copy" class="small-12 medium-6 columns">About Livingston VTS			<div class="textwidget">We are an asset-based transportation company with secure compounds in Vancouver, Edmonton, Saskatoon, Winnipeg, Toronto, Montreal and Halifax. We use our own trucks, in conjunction with safe and trusted partner- carriers, to process pick-up and delivery requirements throughout the country. We've also partnered with CN Rail, Canada's largest railway, to provide fast and efficient service.</div>
-		</div>                </nav>
+</ul><div id="footer-copy" class="small-12 medium-6 columns">About Livingston VTS           <div class="textwidget">We are an asset-based transportation company with secure compounds in Vancouver, Edmonton, Saskatoon, Winnipeg, Toronto, Montreal and Halifax. We use our own trucks, in conjunction with safe and trusted partner- carriers, to process pick-up and delivery requirements throughout the country. We've also partnered with CN Rail, Canada's largest railway, to provide fast and efficient service.</div>
+        </div>                </nav>
 
                 <nav class="row" role="navigation">
                     <ul id="footer-menu-bottom" class="inline-list small-12 columns"><li id="menu-item-748" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-748"><a href="http://www.livingstonintl.com/about-us/accessibility/">Accessibility</a></li>
@@ -259,7 +259,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 
     <input type="hidden" id="txtDebug" name="txtDebug" value="">
 
-    	<!-- Analytics plugin did load --><span id="bruteprotect_uptime_check_string" style="display:none;">7ads6x98y</span><script type="text/javascript" src="http://vehicletransportation.ca/wp-content/themes/vts2016/library/js/rem-unit-polyfill.min.js"></script>
+        <!-- Analytics plugin did load --><span id="bruteprotect_uptime_check_string" style="display:none;">7ads6x98y</span><script type="text/javascript" src="http://vehicletransportation.ca/wp-content/themes/vts2016/library/js/rem-unit-polyfill.min.js"></script>
 <script type="text/javascript" src="http://vehicletransportation.ca/wp-content/themes/vts2016/library/bower_components/jquery.responsive-slides/jquery.responsive-slides.min.js"></script>
 <script type="text/javascript" src="http://vehicletransportation.ca/wp-content/themes/vts2016/library/bower_components/matchHeight/jquery.matchHeight.js"></script>
 <script type="text/javascript" src="http://vehicletransportation.ca/wp-content/themes/vts2016/library/bower_components/tinysort/dist/jquery.tinysort.min.js"></script>

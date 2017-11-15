@@ -200,7 +200,7 @@ $(document).ready(function() {
                         <h3>Pickup To Delivery</h3>
                         <div class="description">
                             <p style="font-size:26px; color:#fff !important;">
-                                <sup style="top: -5px;">$</sup>{{ money_format('%.2n', $quote->total) }}
+                                <sup style="top: -5px;">$</sup>{{ number_format($quote->total, 2) }}
                             </p>
                             <p style="margin-top:1em; font-size:14px;">The overall transit times vary based on requested pickup & delivery locations as well as rail departure dates. Additional information available at time of booking.</p>
                         </div>
@@ -212,7 +212,7 @@ $(document).ready(function() {
                         <h3>Terminal To Terminal</h3>
                         <div class="description">
                             <p style="font-size:26px; color:#fff !important;">
-                                <sup style="top: -5px;">$</sup>{{ money_format('%.2n', $quote->total) }}
+                                <sup style="top: -5px;">$</sup>{{ number_format($quote->total, 2) }}
                             </p>
                             <p style="margin-top:1em; font-size:14px;">{{ $quote->tax_percent }}% Tax Included<!--The estimated transit time is {{ $quote->est_days }} days from the date of departure from the origin terminal--></p>
                         </div>
