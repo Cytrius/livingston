@@ -2,7 +2,7 @@
 
 @section('content')
 
-<form class="lead-form" action="/quote" method="post" style="margin-bottom:0;">
+<form class="lead-form" action="/quote" method="post" style="margin-bottom:0;" autocomplete="off">
 
 <link href="{{ asset('css/form.css') }}" rel="stylesheet">
 
@@ -273,7 +273,7 @@ $(document).ready(function() {
             if (
                 $('#cb_originCity').val() && $('#cb_originCity').val().length &&
                 $('#cb_originProvince').val() && $('#cb_originProvince').val().length &&
-                $('#cb_originPostalCode').val() && $('#cb_originPostalCode').val().length &&
+                /*$('#cb_originPostalCode').val() && $('#cb_originPostalCode').val().length &&*/
                 window.validTransport
             ) {
                 $('.section-2-2').fadeIn();
@@ -340,7 +340,7 @@ $(document).ready(function() {
             if (
                 $('#cb_destCity').val() && $('#cb_destCity').val().length &&
                 $('#cb_destProvince').val() && $('#cb_destProvince').val().length &&
-                $('#cb_destPostalCode').val() && $('#cb_destPostalCode').val().length &&
+                /*$('#cb_destPostalCode').val() && $('#cb_destPostalCode').val().length &&*/
                 window.validTransport
             ) {
                 $('.section-3').fadeIn();

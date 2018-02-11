@@ -31,11 +31,11 @@ class DropdownController extends Controller
             $rates->groupBy('destination', 'destination_province')->limit(5);
         }
 
-        if ( $request->has('local') && $request->get('local') !== "false" ) 
+        if ( $request->has('local') && $request->get('local') !== "false" )
         {
             $rates->where('type', 'pd');
-        } 
-        else 
+        }
+        else
         {
             $rates->where('type', 'rail');
         }
@@ -44,17 +44,17 @@ class DropdownController extends Controller
 
         $destinations = [];
 
-        
+
 
         if (!count($rates))
         {
             $valid = false;
             $destinations[] = ['id' =>  $request->get('term'), 'text' =>  $request->get('term')];
-        } 
-        else 
+        }
+        else
         {
             $valid = true;
-            foreach($rates as $rate) 
+            foreach($rates as $rate)
             {
                 $destinations[] = ['id' =>  $rate->destination, 'text' =>  $rate->destination, 'province'=>$rate->destination_province];
             }
@@ -79,17 +79,17 @@ class DropdownController extends Controller
 
         $destinations = [];
 
-        
+
 
         if (!count($rates))
         {
             $valid = false;
             $destinations[] = ['id' =>  $request->get('term'), 'text' =>  $request->get('term')];
-        } 
-        else 
+        }
+        else
         {
             $valid = true;
-            foreach($rates as $rate) 
+            foreach($rates as $rate)
             {
                 $destinations[] = ['id' =>  $rate->name, 'text' =>  $rate->name];
             }
@@ -107,7 +107,7 @@ class DropdownController extends Controller
         if ($request->has('term') && $request->get('term') !== 'undefined')
             $years = $years->where('YearDesc', 'LIKE', $request->get('term').'%');
 
-        $years = $years->get();
+        $years = $years->orderBy('YearDesc', 'DESC')->get();
 
         if ($years)
             $years = $years->map(function($v) { return [ 'id' => $v->YearDesc, 'text' => $v->YearDesc]; });
@@ -151,5 +151,5 @@ class DropdownController extends Controller
 
         return response()->json($models);
     }
-    
+
 }

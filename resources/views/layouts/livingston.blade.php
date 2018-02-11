@@ -14,6 +14,10 @@
         <![endif]-->
         <!-- scripts/styles enqueued via library/bones.php -->
 
+        <link rel="apple-touch-icon" href="/custom_icon.png">
+        <meta name="apple-mobile-web-app-title" content="Livingston Quote">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+
 <!-- This site is optimized with the Yoast SEO plugin v3.0.6 - https://yoast.com/wordpress/plugins/seo/ -->
 <title>Vehicle shipping Quote for your car or auto | Livingston</title>
 <meta name="description" content="Request a quote to move your vehicle. Livingston offers vehicle pick-up and delivery, door to door, between U.S. and Canada.">
