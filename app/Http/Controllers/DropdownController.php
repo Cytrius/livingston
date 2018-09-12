@@ -28,7 +28,7 @@ class DropdownController extends Controller
         {
             $rates->where('destination', 'LIKE', $request->get('term').'%')->groupBy('destination', 'destination_province');
         } else {
-            $rates->groupBy('destination', 'destination_province')->limit(5);
+            $rates->groupBy('destination', 'destination_province');
         }
 
         if ( $request->has('local') && $request->get('local') !== "false" )

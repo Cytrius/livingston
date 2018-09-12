@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="row masthead" style="margin-top:2em;">
+<div class="row masthead" style="padding-top:4em;">
     <div class="small-12 columns compact">
         <h2>Login</h2>
     </div>

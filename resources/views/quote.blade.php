@@ -6,6 +6,41 @@
 
 <style>
 
+@media print {
+    #liHeader, #liFooter { display:none; }
+    .lead-gen-form-container.lead-gen-main.cta-box { display:none; }
+    .block-bucket a { display:none; }
+    .disclaimer {
+        padding-left:20px;
+    }
+    #liContainer h1,h2,h3,h4,h5,h6,p,span,div {
+        color:#000 !important;
+    }
+    #liContainer .blue-background h3 {
+        color:#000 !important;
+    }
+    #liContainer .blue-background p, #liContent .blue-background p {
+        color:#000 !important;
+    }
+    #printLogo {
+        display:block;
+    }
+    .lead-gen-module h2 {
+        font-size:30px !important;
+    }
+    .lead-gen-module {
+        padding-bottom:0;
+    }
+}
+@media screen {
+    #printLogo {
+        display:none;
+    }
+#liContainer .blue-background p, #liContent .blue-background p {
+    color:#fff !important;
+}
+}
+
     .lead-gen-module {
         padding-top:60px;
     }
@@ -62,6 +97,8 @@ $(document).ready(function() {
 });
 
 </script>
+
+<img id="printLogo" src="http://vehicletransportation.ca/wp-content/themes/vts2016/library/images/2015/livingston-simplify-trade-logo.svg">
 
 <div class="lead-gen-module-container lead-gen-main">
     <div class="lead-gen-module">
@@ -147,7 +184,7 @@ $(document).ready(function() {
                     <div style="min-height:160px;max-height:none;height:auto;" class="block-bucket block-bucket-med blue-background">
                         <h3>Pickup To Delivery</h3>
                         <div class="description">
-                            <p style="font-size:26px; color:#fff !important;">
+                            <p style="font-size:26px; color:#fff;">
                                 <sup style="top: -5px;">$</sup>{{ number_format($quote->subtotal, 2) }}
                             </p>
                             <p style=" font-size:14px; margin-bottom: 55px;"><small style="display:block;margin-bottom:0.5em;">Plus Tax</small>The overall transit times vary based on requested pickup & delivery locations as well as rail departure dates. Additional information available at time of booking.</p>
@@ -166,7 +203,7 @@ $(document).ready(function() {
                         @endif
                             <h3>@if($quote->origin_pickup_rate !== 0&& !is_null($quote->origin_pickup_rate)) Option 2<br/> @endif Terminal To Terminal</h3>
                             <div class="description">
-                                <p style="font-size:26px; color:#fff !important;">
+                                <p style="font-size:26px; color:#fff;">
                                     @if($quote->origin_pickup_rate !== 0 && !is_null($quote->origin_pickup_rate))
                                     <sup style="top: -5px;">$</sup>{{ number_format($quote->alt_subtotal, 2) }}
                                     @else
@@ -186,6 +223,10 @@ $(document).ready(function() {
 
                     <p class="disclaimer">
                         <i class="fa fa-info-circle"></i> Fuel surcharge and insurance included in all quotes above.
+                        <br/><br/>
+                        <i class="fa fa-info-circle"></i> Date Quoted: {{ $quote->created_at->format('Y-m-d') }}
+                        <br/><br/>
+                        <i class="fa fa-info-circle"></i> Expires At: {{ $quote->created_at->addDays(30)->format('Y-m-d') }}
                     </p>
 
                 </div>
@@ -197,7 +238,7 @@ $(document).ready(function() {
     </div>
 </div>
 
-<div class="lead-gen-form-container lead-gen-main" style="background: #F2F6F9; margin-top:2em;">
+<div class="lead-gen-form-container lead-gen-main cta-box" style="background: #F2F6F9; margin-top:2em;">
     <div class="lead-gen-form">
         <div id="lg-form-personal">
             <div id="lg-form-submit" style="padding:40px 0;">
