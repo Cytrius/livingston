@@ -107,7 +107,7 @@ class DropdownController extends Controller
         if ($request->has('term') && $request->get('term') !== 'undefined')
             $years = $years->where('YearDesc', 'LIKE', $request->get('term').'%');
 
-        $years = $years->where('YearDesc', '>=', 2003)->orderBy('YearDesc', 'DESC')->get();
+        $years = $years->where('YearDesc', '>=', 2003)->where('YearDesc', 'NOT LIKE', '%.%')->orderBy('YearDesc', 'DESC')->get();
 
         if ($years)
             $years = $years->map(function($v) { return [ 'id' => $v->YearDesc, 'text' => $v->YearDesc]; });
