@@ -657,7 +657,7 @@
 @if($admin)
 
     <p>Hello Sales Rep,<br/>
-    The following quote was requested by {{$quote->user->name}} from {{$quote->account->company}}. This quote has been emailed to {{$quote->user->email}}.
+    The following booking has been requested by {{$quote->user->name}} from {{$quote->account->company}}. This quote has been emailed to {{$quote->user->email}}.
     </p>
 
     <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnDividerBlock" style="min-width:100%;">
