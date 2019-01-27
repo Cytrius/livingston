@@ -1,5 +1,5 @@
 <!doctype html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<html xmlns="https://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
    <head>
       <!-- NAME: 1:2 COLUMN - FULL WIDTH -->
       <!--[if gte mso 15]>
@@ -587,7 +587,7 @@
                                                             <tbody>
                                                                <tr>
                                                                   <td class="mcnImageContent" valign="top" style="padding-right: 9px; padding-left: 9px; padding-top: 0; padding-bottom: 0; text-align:center;">
-                                                                     <img align="center" alt="" src="http://livingston.cytrius.com/images/basic-logo.png" width="200" style="max-width:150px; padding-bottom: 0; display: inline !important; vertical-align: bottom;" class="mcnImage">
+                                                                     <img align="center" alt="" src="/images/basic-logo.png" width="200" style="max-width:150px; padding-bottom: 0; display: inline !important; vertical-align: bottom;" class="mcnImage">
                                                                   </td>
                                                                </tr>
                                                             </tbody>

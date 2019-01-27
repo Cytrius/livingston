@@ -628,7 +628,7 @@ $(document).ready(function() {
             <!-- FORM: Personal Details -->
             <div class="lg-section-holder after" style="border: none;">
                 <p class="lg-section-heading marginx3" style="font-size: 22px !important;">Please complete the above form for a real-time quote.</p>
-                <p class="lg-section-heading marginx3" style="font-size: 22px !important; margin-bottom:0;">Or, <a href="http://vehicletransportation.ca/about-us/contact-us/" class="contact-anyway-link">Contact us here</a> and a sales representative can assist you.</p>
+                <p class="lg-section-heading marginx3" style="font-size: 22px !important; margin-bottom:0;">Or, <a href="https://vehicletransportation.ca/about-us/contact-us/" class="contact-anyway-link">Contact us here</a> and a sales representative can assist you.</p>
             </div>
         </div>
     </div>

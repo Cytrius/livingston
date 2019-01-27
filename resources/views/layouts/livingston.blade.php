@@ -1,4 +1,4 @@
-<html lang="en-US" prefix="og: http://ogp.me/ns#" class="js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths wf-proximanova-n7-active wf-proximanova-i7-active wf-proximanova-n6-active wf-proximanova-i6-active wf-proximanova-n4-active wf-proximanova-i4-active wf-proximanova-n3-active wf-proximanova-i3-active wf-active"><!--<![endif]--><head>
+<html lang="en-US" prefix="og: https://ogp.me/ns#" class="js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths wf-proximanova-n7-active wf-proximanova-i7-active wf-proximanova-n6-active wf-proximanova-i6-active wf-proximanova-n4-active wf-proximanova-i4-active wf-proximanova-n3-active wf-proximanova-i3-active wf-active"><!--<![endif]--><head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
@@ -6,11 +6,11 @@
         <meta name="MobileOptimized" content="320">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="msapplication-TileColor" content="#f01d4f">
-        <meta name="msapplication-TileImage" content="http://vehicletransportation.ca/wp-content/themes/vts2016/library/images/win8-tile-icon.png">
-        <meta property="og:title" content="Get a Quote"><meta property="og:description" content=""><meta property="url" content="http://vehicletransportation.ca/quote/">        <link rel="apple-touch-icon" href="http://vehicletransportation.ca/wp-content/themes/vts2016/library/images/apple-touch-icon.png">
-        <link rel="icon" href="http://vehicletransportation.ca/wp-content/themes/vts2016/favicon.ico">
+        <meta name="msapplication-TileImage" content="https://vehicletransportation.ca/wp-content/themes/vts2016/library/images/win8-tile-icon.png">
+        <meta property="og:title" content="Get a Quote"><meta property="og:description" content=""><meta property="url" content="https://vehicletransportation.ca/quote/">        <link rel="apple-touch-icon" href="https://vehicletransportation.ca/wp-content/themes/vts2016/library/images/apple-touch-icon.png">
+        <link rel="icon" href="https://vehicletransportation.ca/wp-content/themes/vts2016/favicon.ico">
         <!--[if IE]>
-            <link rel="shortcut icon" href="http://vehicletransportation.ca/wp-content/themes/vts2016/library/images/favicon.ico">
+            <link rel="shortcut icon" href="https://vehicletransportation.ca/wp-content/themes/vts2016/library/images/favicon.ico">
         <![endif]-->
         <!-- scripts/styles enqueued via library/bones.php -->
 
@@ -22,18 +22,18 @@
 <title>Vehicle shipping Quote for your car or auto | Livingston</title>
 <meta name="description" content="Request a quote to move your vehicle. Livingston offers vehicle pick-up and delivery, door to door, between U.S. and Canada.">
 <meta name="robots" content="noodp">
-<link rel="canonical" href="http://vehicletransportation.ca/quote/">
+<link rel="canonical" href="https://vehicletransportation.ca/quote/">
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Vehicle shipping Quote for your car or auto | Livingston">
 <meta property="og:description" content="Request a quote to move your vehicle. Livingston offers vehicle pick-up and delivery, door to door, between U.S. and Canada.">
-<meta property="og:url" content="http://vehicletransportation.ca/quote/">
+<meta property="og:url" content="https://vehicletransportation.ca/quote/">
 <meta property="og:site_name" content="Vehicle shipping by Livingston">
 <!-- / Yoast SEO plugin. -->
 
-<link rel="alternate" type="application/rss+xml" title="Vehicle shipping by Livingston » Feed" href="http://vehicletransportation.ca/feed/">
-<link rel="alternate" type="application/rss+xml" title="Vehicle shipping by Livingston » Comments Feed" href="http://vehicletransportation.ca/comments/feed/">
-        <script type="text/javascript" async="" src="http://www.google-analytics.com/ga.js"></script><script type="text/javascript">
+<link rel="alternate" type="application/rss+xml" title="Vehicle shipping by Livingston » Feed" href="https://vehicletransportation.ca/feed/">
+<link rel="alternate" type="application/rss+xml" title="Vehicle shipping by Livingston » Comments Feed" href="https://vehicletransportation.ca/comments/feed/">
+        <script type="text/javascript" async="" src="https://www.google-analytics.com/ga.js"></script><script type="text/javascript">
             window._wpemojiSettings = {"baseUrl":"http:\/\/s.w.org\/images\/core\/emoji\/72x72\/","ext":".png","source":{"concatemoji":"http:\/\/vehicletransportation.ca\/wp-includes\/js\/wp-emoji-release.min.js"}};
             !function(a,b,c){function d(a){var c=b.createElement("canvas"),d=c.getContext&&c.getContext("2d");return d&&d.fillText?(d.textBaseline="top",d.font="600 32px Arial","flag"===a?(d.fillText(String.fromCharCode(55356,56812,55356,56807),0,0),c.toDataURL().length>3e3):(d.fillText(String.fromCharCode(55357,56835),0,0),0!==d.getImageData(16,16,1,1).data[0])):!1}function e(a){var c=b.createElement("script");c.src=a,c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g;c.supports={simple:d("simple"),flag:d("flag")},c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.simple&&c.supports.flag||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
         </script>
@@ -52,20 +52,20 @@ img.emoji {
 }
 </style>
 <script src="https://use.fontawesome.com/1c93c020aa.js"></script>
-<link rel="stylesheet" id="f5bb-app-stylesheet-css" href="http://vehicletransportation.ca/wp-content/themes/vts2016/library/css/main.css" type="text/css" media="all">
-<link rel="stylesheet" id="f5bb-app-genericons-css" href="http://vehicletransportation.ca/wp-content/themes/vts2016/library/css/genericons/genericons.css" type="text/css" media="all">
-<script type="text/javascript" src="http://vehicletransportation.ca/wp-content/themes/vts2016/library/bower_components/modernizr/modernizr.js"></script>
-<script type="text/javascript" src="http://vehicletransportation.ca/wp-content/themes/vts2016/library/bower_components/jquery/dist/jquery.min.js"></script>
-<script type="text/javascript" src="http://vehicletransportation.ca/wp-content/themes/vts2016/library/bower_components/jquery.easing/js/jquery.easing.min.js"></script>
-<script type="text/javascript" src="http://vehicletransportation.ca/wp-content/themes/vts2016/library/bower_components/foundation/js/foundation.js"></script><meta class="foundation-data-attribute-namespace"><meta class="foundation-mq-xxlarge"><meta class="foundation-mq-xlarge-only"><meta class="foundation-mq-xlarge"><meta class="foundation-mq-large-only"><meta class="foundation-mq-large"><meta class="foundation-mq-medium-only"><meta class="foundation-mq-medium"><meta class="foundation-mq-small-only"><meta class="foundation-mq-small"><style></style>
-<link rel="shortlink" href="http://vehicletransportation.ca/?p=79">
+<link rel="stylesheet" id="f5bb-app-stylesheet-css" href="https://vehicletransportation.ca/wp-content/themes/vts2016/library/css/main.css" type="text/css" media="all">
+<link rel="stylesheet" id="f5bb-app-genericons-css" href="https://vehicletransportation.ca/wp-content/themes/vts2016/library/css/genericons/genericons.css" type="text/css" media="all">
+<script type="text/javascript" src="https://vehicletransportation.ca/wp-content/themes/vts2016/library/bower_components/modernizr/modernizr.js"></script>
+<script type="text/javascript" src="https://vehicletransportation.ca/wp-content/themes/vts2016/library/bower_components/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="https://vehicletransportation.ca/wp-content/themes/vts2016/library/bower_components/jquery.easing/js/jquery.easing.min.js"></script>
+<script type="text/javascript" src="https://vehicletransportation.ca/wp-content/themes/vts2016/library/bower_components/foundation/js/foundation.js"></script><meta class="foundation-data-attribute-namespace"><meta class="foundation-mq-xxlarge"><meta class="foundation-mq-xlarge-only"><meta class="foundation-mq-xlarge"><meta class="foundation-mq-large-only"><meta class="foundation-mq-large"><meta class="foundation-mq-medium-only"><meta class="foundation-mq-medium"><meta class="foundation-mq-small-only"><meta class="foundation-mq-small"><style></style>
+<link rel="shortlink" href="https://vehicletransportation.ca/?p=79">
 <script type="text/javascript">
 var _gaq = _gaq || [];
 _gaq.push(['_setAccount', 'UA-33493506-1']);
 _gaq.push(['_trackPageview']);
 (function() {
 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'https://www') + '.google-analytics.com/ga.js';
 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 })();
 </script>
@@ -76,15 +76,15 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 
     <meta class="foundation-mq-topbar"></head>
 
-    <body id="page-0" class="page page-id-79 page-template-default" itemscope="" itemtype="http://schema.org/WebPage">
+    <body id="page-0" class="page page-id-79 page-template-default" itemscope="" itemtype="https://schema.org/WebPage">
 
         <div id="liContainer">
 
-            <header id="liHeader" class="header sticky" role="banner" itemscope="" itemtype="http://schema.org/WPHeader">
+            <header id="liHeader" class="header sticky" role="banner" itemscope="" itemtype="https://schema.org/WPHeader">
 
         <div class="contain-to-grid">
             <div id="top-decoration" class="row full-width show-for-medium-down"></div>
-            <nav class="top-bar full-width blue-background top_wrap hide-for-medium-down" data-topbar="" role="navigation" itemscope="" itemtype="http://schema.org/SiteNavigationElement">
+            <nav class="top-bar full-width blue-background top_wrap hide-for-medium-down" data-topbar="" role="navigation" itemscope="" itemtype="https://schema.org/SiteNavigationElement">
                 <div class="row">
 
                     <div class="medium-4 columns text-left top-bar-featured">
@@ -113,12 +113,12 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
                 </div>
             </nav>
 
-            <nav class="top-bar full-width white-background header_wrap" data-topbar="" role="navigation" itemscope="" itemtype="http://schema.org/SiteNavigationElement" data-options="mobile_show_parent_link: false">
+            <nav class="top-bar full-width white-background header_wrap" data-topbar="" role="navigation" itemscope="" itemtype="https://schema.org/SiteNavigationElement" data-options="mobile_show_parent_link: false">
                 <div class="row">
                     <ul class="title-area columns">
                         <li class="name">
                             <h1>
-                                <a href="http://vehicletransportation.ca" title="" class="logo" style="background-image: url(http://vehicletransportation.ca/wp-content/themes/vts2016/library/images/2015/livingston-simplify-trade-logo.svg);">
+                                <a href="https://vehicletransportation.ca" title="" class="logo" style="background-image: url(https://vehicletransportation.ca/wp-content/themes/vts2016/library/images/2015/livingston-simplify-trade-logo.svg);">
                                     Livingston International
                                 </a>
                             </h1>
@@ -126,18 +126,18 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
                     </ul><section class="top-bar-section">
 
                         <!-- desktop menu -->
-                        <ul id="menu-main" class="right primary-nav hide-for-medium-down"><li id="menu-item-4" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4"><a href="http://vehicletransportation.ca/about-us">About Us</a></li>
-<li id="menu-item-5" class="menu-item menu-item-type-custom menu-item-object-custom has-dropdown menu-item-5 not-click"><a href="http://vehicletransportation.ca/what-we-do">What We Do</a>
+                        <ul id="menu-main" class="right primary-nav hide-for-medium-down"><li id="menu-item-4" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4"><a href="https://vehicletransportation.ca/about-us">About Us</a></li>
+<li id="menu-item-5" class="menu-item menu-item-type-custom menu-item-object-custom has-dropdown menu-item-5 not-click"><a href="https://vehicletransportation.ca/what-we-do">What We Do</a>
 <ul class="dropdown"><li class="title back js-generated"><h5><a href="javascript:void(0)">Back</a></h5></li>
-    <li id="menu-item-983" class="show-for-large-up hide-for-medium menu-item menu-item-type-post_type menu-item-object-page menu-item-983"><a href="http://vehicletransportation.ca/what-we-do/long-distance-moves/">Long Distance Moves</a></li>
-    <li id="menu-item-958" class="show-for-large-up hide-for-medium menu-item menu-item-type-post_type menu-item-object-page menu-item-958"><a href="http://vehicletransportation.ca/what-we-do/short-distance-moves/">Short Distance Moves</a></li>
-    <li id="menu-item-957" class="show-for-large-up hide-for-medium menu-item menu-item-type-post_type menu-item-object-page menu-item-957"><a href="http://vehicletransportation.ca/what-we-do/personal-moves/">Personal moves</a></li>
-    <li id="menu-item-955" class="show-for-large-up hide-for-medium menu-item menu-item-type-post_type menu-item-object-page menu-item-955"><a href="http://vehicletransportation.ca/what-we-do/business-moves/">Business Moves</a></li>
+    <li id="menu-item-983" class="show-for-large-up hide-for-medium menu-item menu-item-type-post_type menu-item-object-page menu-item-983"><a href="https://vehicletransportation.ca/what-we-do/long-distance-moves/">Long Distance Moves</a></li>
+    <li id="menu-item-958" class="show-for-large-up hide-for-medium menu-item menu-item-type-post_type menu-item-object-page menu-item-958"><a href="https://vehicletransportation.ca/what-we-do/short-distance-moves/">Short Distance Moves</a></li>
+    <li id="menu-item-957" class="show-for-large-up hide-for-medium menu-item menu-item-type-post_type menu-item-object-page menu-item-957"><a href="https://vehicletransportation.ca/what-we-do/personal-moves/">Personal moves</a></li>
+    <li id="menu-item-955" class="show-for-large-up hide-for-medium menu-item menu-item-type-post_type menu-item-object-page menu-item-955"><a href="https://vehicletransportation.ca/what-we-do/business-moves/">Business Moves</a></li>
 </ul>
 </li>
-<li id="menu-item-6" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-6"><a href="http://vehicletransportation.ca/our-promise">Our Promise</a></li>
-<li id="menu-item-7" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-7"><a href="http://vehicletransportation.ca/resources/">Resources</a></li>
-<li id="menu-item-262" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-262"><a href="http://vehicletransportation.ca/about-us/contact-us/">Contact Us</a></li>
+<li id="menu-item-6" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-6"><a href="https://vehicletransportation.ca/our-promise">Our Promise</a></li>
+<li id="menu-item-7" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-7"><a href="https://vehicletransportation.ca/resources/">Resources</a></li>
+<li id="menu-item-262" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-262"><a href="https://vehicletransportation.ca/about-us/contact-us/">Contact Us</a></li>
 <li id="menu-item-950" class="search-button menu-item menu-item-type-custom menu-item-object-custom menu-item-950"><a href="#">Search</a></li>
 </ul>
                         <div id="search-form-wrapper">
@@ -163,19 +163,19 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
                                 <input name="s" id="s" type="text" placeholder="Search...">
                                 <input type="hidden" name="lang" value="">
                             </form>
-                            <ul id="menu-main-1" class="mobile-primary-nav"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4"><a href="http://vehicletransportation.ca/about-us">About Us</a></li>
-<li class="menu-item menu-item-type-custom menu-item-object-custom has-dropdown menu-item-5 not-click"><a href="http://vehicletransportation.ca/what-we-do">What We Do</a>
+                            <ul id="menu-main-1" class="mobile-primary-nav"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4"><a href="https://vehicletransportation.ca/about-us">About Us</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom has-dropdown menu-item-5 not-click"><a href="https://vehicletransportation.ca/what-we-do">What We Do</a>
 <ul class="dropdown"><li class="title back js-generated"><h5><a href="javascript:void(0)">Back</a></h5></li>
-    <li class="show-for-large-up hide-for-medium menu-item menu-item-type-post_type menu-item-object-page menu-item-983"><a href="http://vehicletransportation.ca/what-we-do/long-distance-moves/">Long Distance Moves</a></li>
-    <li class="show-for-large-up hide-for-medium menu-item menu-item-type-post_type menu-item-object-page menu-item-958"><a href="http://vehicletransportation.ca/what-we-do/short-distance-moves/">Short Distance Moves</a></li>
-    <li class="show-for-large-up hide-for-medium menu-item menu-item-type-post_type menu-item-object-page menu-item-957"><a href="http://vehicletransportation.ca/what-we-do/personal-moves/">Personal moves</a></li>
-    <li class="show-for-large-up hide-for-medium menu-item menu-item-type-post_type menu-item-object-page menu-item-955"><a href="http://vehicletransportation.ca/what-we-do/business-moves/">Business Moves</a></li>
+    <li class="show-for-large-up hide-for-medium menu-item menu-item-type-post_type menu-item-object-page menu-item-983"><a href="https://vehicletransportation.ca/what-we-do/long-distance-moves/">Long Distance Moves</a></li>
+    <li class="show-for-large-up hide-for-medium menu-item menu-item-type-post_type menu-item-object-page menu-item-958"><a href="https://vehicletransportation.ca/what-we-do/short-distance-moves/">Short Distance Moves</a></li>
+    <li class="show-for-large-up hide-for-medium menu-item menu-item-type-post_type menu-item-object-page menu-item-957"><a href="https://vehicletransportation.ca/what-we-do/personal-moves/">Personal moves</a></li>
+    <li class="show-for-large-up hide-for-medium menu-item menu-item-type-post_type menu-item-object-page menu-item-955"><a href="https://vehicletransportation.ca/what-we-do/business-moves/">Business Moves</a></li>
 </ul>
 </li>
-<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-6"><a href="/http://vehicletransportation.caour-promise">Our Promise</a></li>
-<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-6"><a href="/http://vehicletransportation.caour-promise">Our Promise</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-6"><a href="/https://vehicletransportation.caour-promise">Our Promise</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-6"><a href="/https://vehicletransportation.caour-promise">Our Promise</a></li>
 <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-7"><a href="/resources/">Resources</a></li>
-<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-262"><a href="http://vehicletransportation.ca/about-us/contact-us/">Contact Us</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-262"><a href="https://vehicletransportation.ca/about-us/contact-us/">Contact Us</a></li>
 <li class="search-button menu-item menu-item-type-custom menu-item-object-custom menu-item-950"><a href="#">Search</a></li>
 </ul>                            <div class="clear"></div>
                         </div>
@@ -197,13 +197,13 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 
             </main>
 
-        <footer id="liFooter" class="footer" role="contentinfo" itemscope="" itemtype="http://schema.org/WPFooter">
+        <footer id="liFooter" class="footer" role="contentinfo" itemscope="" itemtype="https://schema.org/WPFooter">
 
             <div id="inner-footer" class="wrap cf">
 
                 <div class="row">
                     <div class="small-12 medium-6 large-9 columns">
-                       <a href="/" title="" class="logo" style="background-image: url(http://vehicletransportation.ca/wp-content/themes/vts2016/library/images/2015/livingston-white-logo.svg);">
+                       <a href="/" title="" class="logo" style="background-image: url(https://vehicletransportation.ca/wp-content/themes/vts2016/library/images/2015/livingston-white-logo.svg);">
                             Livingston International
                                         </a>
                     </div>
@@ -213,30 +213,30 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
                                                                         <li><a href="https://twitter.com/livingston_intl" target="_blank"><span class="genericon genericon-twitter"></span></a></li>
                                                                         <li><a href="https://plus.google.com/+Livingstonintl/posts" target="_blank"><span class="genericon genericon-googleplus-alt"></span></a></li>
                                                                         <li><a href="https://www.linkedin.com/company/livingston-international" target="_blank"><span class="genericon genericon-linkedin"></span></a></li>
-                                                                        <li class="feed"><a href="http://vehicletransportation.ca/feed/" target="_blank"><span class="genericon genericon-feed"></span></a></li>
+                                                                        <li class="feed"><a href="https://vehicletransportation.ca/feed/" target="_blank"><span class="genericon genericon-feed"></span></a></li>
                         </ul>
                                             </div>
                 </div>
 
                 <nav class="row" role="navigation">
                     <ul id="menu-footer-menu-left" class="small-12 medium-3 columns"><li id="menu-item-887" class="primary disabled menu-item menu-item-type-custom menu-item-object-custom menu-item-887"><a>Navigation</a></li>
-<li id="menu-item-878" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-878"><a href="http://vehicletransportation.ca/">Homepage</a></li>
-<li id="menu-item-881" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-881"><a href="http://vehicletransportation.ca/what-we-do/long-distance-moves/">Long Distance Moves</a></li>
-<li id="menu-item-882" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-882"><a href="http://vehicletransportation.ca/what-we-do/short-distance-moves/">Short Distance Moves</a></li>
-<li id="menu-item-880" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-880"><a href="http://vehicletransportation.ca/what-we-do/business-moves/">Business Moves</a></li>
-<li id="menu-item-879" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-879"><a href="http://vehicletransportation.ca/resources/">Resources</a></li>
+<li id="menu-item-878" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-878"><a href="https://vehicletransportation.ca/">Homepage</a></li>
+<li id="menu-item-881" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-881"><a href="https://vehicletransportation.ca/what-we-do/long-distance-moves/">Long Distance Moves</a></li>
+<li id="menu-item-882" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-882"><a href="https://vehicletransportation.ca/what-we-do/short-distance-moves/">Short Distance Moves</a></li>
+<li id="menu-item-880" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-880"><a href="https://vehicletransportation.ca/what-we-do/business-moves/">Business Moves</a></li>
+<li id="menu-item-879" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-879"><a href="https://vehicletransportation.ca/resources/">Resources</a></li>
 </ul><ul id="menu-footer-menu-right" class="small-12 medium-3 columns"><li id="menu-item-888" class="primary disabled show-for-medium-up menu-item menu-item-type-custom menu-item-object-custom menu-item-888"><a>&nbsp;</a></li>
-<li id="menu-item-883" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-883"><a href="http://vehicletransportation.ca/about-us/">About Us</a></li>
-<li id="menu-item-886" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-886"><a href="http://vehicletransportation.ca/what-we-do/">What We Do</a></li>
-<li id="menu-item-949" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-949"><a href="http://vehicletransportation.ca/our-promise/">Our Promise</a></li>
-<li id="menu-item-884" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-884"><a href="http://vehicletransportation.ca/about-us/contact-us/">Contact Us</a></li>
+<li id="menu-item-883" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-883"><a href="https://vehicletransportation.ca/about-us/">About Us</a></li>
+<li id="menu-item-886" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-886"><a href="https://vehicletransportation.ca/what-we-do/">What We Do</a></li>
+<li id="menu-item-949" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-949"><a href="https://vehicletransportation.ca/our-promise/">Our Promise</a></li>
+<li id="menu-item-884" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-884"><a href="https://vehicletransportation.ca/about-us/contact-us/">Contact Us</a></li>
 </ul><div id="footer-copy" class="small-12 medium-6 columns">About Livingston VTS           <div class="textwidget">We are an asset-based transportation company with secure compounds in Vancouver, Edmonton, Saskatoon, Winnipeg, Toronto, Montreal and Halifax. We use our own trucks, in conjunction with safe and trusted partner- carriers, to process pick-up and delivery requirements throughout the country. We've also partnered with CN Rail, Canada's largest railway, to provide fast and efficient service.</div>
         </div>                </nav>
 
                 <nav class="row" role="navigation">
-                    <ul id="footer-menu-bottom" class="inline-list small-12 columns"><li id="menu-item-748" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-748"><a href="http://www.livingstonintl.com/about-us/accessibility/">Accessibility</a></li>
-<li id="menu-item-153" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-153"><a target="_blank" href="http://www.livingstonintl.com/about-us/privacy-policy/">Terms of Use</a></li>
-<li id="menu-item-154" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-154"><a target="_blank" href="http://www.livingstonintl.com/service-terms/">Service Terms and Conditions</a></li>
+                    <ul id="footer-menu-bottom" class="inline-list small-12 columns"><li id="menu-item-748" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-748"><a href="https://www.livingstonintl.com/about-us/accessibility/">Accessibility</a></li>
+<li id="menu-item-153" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-153"><a target="_blank" href="https://www.livingstonintl.com/about-us/privacy-policy/">Terms of Use</a></li>
+<li id="menu-item-154" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-154"><a target="_blank" href="https://www.livingstonintl.com/service-terms/">Service Terms and Conditions</a></li>
 </ul>                </nav>
 
                 <div class="row hide-for-medium-up">
@@ -246,7 +246,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
                                                                         <li><a href="https://twitter.com/livingston_intl" target="_blank"><span class="genericon genericon-twitter"></span></a></li>
                                                                         <li><a href="https://plus.google.com/+Livingstonintl/posts" target="_blank"><span class="genericon genericon-googleplus-alt"></span></a></li>
                                                                         <li><a href="https://www.linkedin.com/company/livingston-international" target="_blank"><span class="genericon genericon-linkedin"></span></a></li>
-                                                                        <li class="feed"><a href="http://vehicletransportation.ca/feed/" target="_blank"><span class="genericon genericon-feed"></span></a></li>
+                                                                        <li class="feed"><a href="https://vehicletransportation.ca/feed/" target="_blank"><span class="genericon genericon-feed"></span></a></li>
                         </ul>
                                             </div>
                 </div>
@@ -263,12 +263,12 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 
     <input type="hidden" id="txtDebug" name="txtDebug" value="">
 
-        <!-- Analytics plugin did load --><span id="bruteprotect_uptime_check_string" style="display:none;">7ads6x98y</span><script type="text/javascript" src="http://vehicletransportation.ca/wp-content/themes/vts2016/library/js/rem-unit-polyfill.min.js"></script>
-<script type="text/javascript" src="http://vehicletransportation.ca/wp-content/themes/vts2016/library/bower_components/jquery.responsive-slides/jquery.responsive-slides.min.js"></script>
-<script type="text/javascript" src="http://vehicletransportation.ca/wp-content/themes/vts2016/library/bower_components/matchHeight/jquery.matchHeight.js"></script>
-<script type="text/javascript" src="http://vehicletransportation.ca/wp-content/themes/vts2016/library/bower_components/tinysort/dist/jquery.tinysort.min.js"></script>
-<script type="text/javascript" src="http://vehicletransportation.ca/wp-content/themes/vts2016/library/js/app.js"></script>
-<script type="text/javascript" src="http://vehicletransportation.ca/wp-content/themes/vts2016/library/js/scroll.nav.js"></script>
+        <!-- Analytics plugin did load --><span id="bruteprotect_uptime_check_string" style="display:none;">7ads6x98y</span><script type="text/javascript" src="https://vehicletransportation.ca/wp-content/themes/vts2016/library/js/rem-unit-polyfill.min.js"></script>
+<script type="text/javascript" src="https://vehicletransportation.ca/wp-content/themes/vts2016/library/bower_components/jquery.responsive-slides/jquery.responsive-slides.min.js"></script>
+<script type="text/javascript" src="https://vehicletransportation.ca/wp-content/themes/vts2016/library/bower_components/matchHeight/jquery.matchHeight.js"></script>
+<script type="text/javascript" src="https://vehicletransportation.ca/wp-content/themes/vts2016/library/bower_components/tinysort/dist/jquery.tinysort.min.js"></script>
+<script type="text/javascript" src="https://vehicletransportation.ca/wp-content/themes/vts2016/library/js/app.js"></script>
+<script type="text/javascript" src="https://vehicletransportation.ca/wp-content/themes/vts2016/library/js/scroll.nav.js"></script>
 
 
 

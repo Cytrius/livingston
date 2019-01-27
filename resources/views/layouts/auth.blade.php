@@ -49,7 +49,7 @@
             }
 
             .masthead {
-                /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#34d7b4+0,9d8bcc+100 */
+                /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#34d7b4+0,9d8bcc+100 */
                 background: rgb(52,215,180); /* Old browsers */
                 background: -moz-linear-gradient(left, rgba(52,215,180,1) 0%, rgba(157,139,204,1) 100%); /* FF3.6-15 */
                 background: -webkit-linear-gradient(left, rgba(52,215,180,1) 0%,rgba(157,139,204,1) 100%); /* Chrome10-25,Safari5.1-6 */
@@ -147,7 +147,7 @@
                         @else
                             <a href="{{ url('/register') }}">Sign Up</a>
                             &nbsp;
-                            <a class="basic" href="{{ url('/login') }}">Log In</a> 
+                            <a class="basic" href="{{ url('/login') }}">Log In</a>
                         @endif
                     </div>
                 @endif
@@ -155,7 +155,7 @@
         </div>
 
         @yield('content')
- 
+
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
@@ -163,20 +163,20 @@
     <script>
         var User = User || {};
 
-        <?php 
+        <?php
             /**
              * User Information
              */
             if (Auth::check()) {
                 $user = Auth::user();
                 echo 'User = '.json_encode($user->toArray()).';';
-            } 
+            }
         ?>
     </script>
 
     <!-- Semantic UI -->
     <script src="/semantic/semantic.min.js"></script>
-  
+
     <!-- JQuery Sortable CDN -->
     <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
 

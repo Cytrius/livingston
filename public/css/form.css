@@ -5,7 +5,7 @@
 /********************************************************************************/
 
 .lead-gen-module h2 {
-	font-size: 50px !important;
+    font-size: 50px !important;
     line-height: 50px !important;
     letter-spacing: -1px;
     text-transform: uppercase;
@@ -14,28 +14,28 @@
     color: #FCB414;
     font-family: "Avenir Next W00", Helvetica, Roboto, Arial, sans-serif !important;
     font-weight: 600 !important;
-	color: #004E9C;
+    color: #004E9C;
 }
 .lead-gen-module h2 span {
-	display: inline-block !important;
-	color: white;
+    display: inline-block !important;
+    color: white;
 }
 @media only screen and (max-width: 47.9375em) {
-	.lead-gen-module h2 {
-		font-size: 40px !important;
-	    line-height: 40px !important;
-	}
+    .lead-gen-module h2 {
+        font-size: 40px !important;
+        line-height: 40px !important;
+    }
 }
 
 p.lead-gen-ctaPhone {
-	color: white !important;
-	padding: 0 !important;
-	font-weight: 500 !important;
-  	font-size: 22px !important;
+    color: white !important;
+    padding: 0 !important;
+    font-weight: 500 !important;
+    font-size: 22px !important;
 }
 
 p.lead-gen-ctaPhone span {
-	color: #004E9C;
+    color: #004E9C;
 }
 
 /********************************************************************************/
@@ -75,7 +75,7 @@ p.lead-gen-ctaPhone span {
 
 .lead-gen-module .loading-results
 {
-	-webkit-animation: search-animation 1s infinite;
+    -webkit-animation: search-animation 1s infinite;
    -moz-animation: search-animation 1s infinite;
    -o-animation: search-animation 1s infinite;
     animation: search-animation 1s infinite;
@@ -83,58 +83,58 @@ p.lead-gen-ctaPhone span {
 
 .lead-gen-module-container
 {
-	width: 100%;
-	background-color: #FCB414;
+    width: 100%;
+    background-color: #FCB414;
 }
 
 .lead-gen-module
 {
-	background-color: #FCB414;
-	margin-left: auto;
-	margin-right: auto;
-	padding-top: 100px;
-	padding-bottom: 60px;
-	width: 85%;
-	max-width: 1000px;
+    background-color: #FCB414;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 100px;
+    padding-bottom: 60px;
+    width: 85%;
+    max-width: 1000px;
 
-	font-family: "Proxima Nova W01", Helvetica, Roboto, Arial, sans-serif;
+    font-family: "Proxima Nova W01", Helvetica, Roboto, Arial, sans-serif;
 }
 
 .lead-gen-module-heading {
-	/*margin-bottom: 30px;*/
+    /*margin-bottom: 30px;*/
 }
 
 .lead-gen-module p
 {
-	color: #485865;
-	font-size: 18px !important;
-	line-height: 24px !important;
-	padding-top: 25px !important;
-	padding-bottom: 25px !important;
-	max-width: 820px !important;
-	margin-bottom: 0 !important;
+    color: #485865;
+    font-size: 18px !important;
+    line-height: 24px !important;
+    padding-top: 25px !important;
+    padding-bottom: 25px !important;
+    max-width: 820px !important;
+    margin-bottom: 0 !important;
 }
 
 .lead-gen-module b
 {
-	font-family: "Proxima Nova W01", Helvetica, Roboto, Arial, sans-serif;
-	/*font-family: ProximaNova-Semibold, verdana, helvetica, sans-serif;*/
-	/*font-weight: bold;*/
-	font-weight: 500 !important;
-	color: #000 !important;
+    font-family: "Proxima Nova W01", Helvetica, Roboto, Arial, sans-serif;
+    /*font-family: ProximaNova-Semibold, verdana, helvetica, sans-serif;*/
+    /*font-weight: bold;*/
+    font-weight: 500 !important;
+    color: #000 !important;
 }
 
 
 .lead-gen-module .sentence {
 
-	max-width: 900px;
-	letter-spacing: -0.5px;
-	font-size:40px;
-	line-height: 44px;
-	color: white;
-	cursor:default;
+    max-width: 900px;
+    letter-spacing: -0.5px;
+    font-size:40px;
+    line-height: 44px;
+    color: white;
+    cursor:default;
 
-	-webkit-touch-callout: none;
+    -webkit-touch-callout: none;
     -webkit-user-select: none;
     -khtml-user-select: none;
     -moz-user-select: none;
@@ -147,10 +147,10 @@ p.lead-gen-ctaPhone span {
 /* this is a comment */
 
 .lead-gen-module a {
-	color: #004E9C;
-	text-decoration: none;
-	display: inline-block;
-	position: relative;
+    color: #004E9C;
+    text-decoration: none;
+    display: inline-block;
+    position: relative;
 }
 
 .lead-gen-module a::after {
@@ -192,111 +192,111 @@ p.lead-gen-ctaPhone span {
 }
 
 .lead-gen-button:hover {
-	background-color: #2D80C2;
-	cursor: pointer;
+    background-color: #2D80C2;
+    cursor: pointer;
 }
 
 .lead-gen-module-popover
 {
-	font-size: 0px;
-	line-height: 0px;
-	position: absolute;
-	left: 20px;
-	right: 20px;
-	z-index: 99;
-	text-align: center;
-	width: 250px;
+    font-size: 0px;
+    line-height: 0px;
+    position: absolute;
+    left: 20px;
+    right: 20px;
+    z-index: 99;
+    text-align: center;
+    width: 250px;
 }
 
 .lead-gen-module-select
 {
-	width: 250px;
+    width: 250px;
 }
 
 .lead-gen-module-popover-box
 {
-	padding-top: 6px;
-	padding-bottom: 6px;
-	width: 100%;
-	width: 300px;
-	height: 300px;
-	background-color: #F2F6F9;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    width: 100%;
+    width: 300px;
+    height: 300px;
+    background-color: #F2F6F9;
 
-	-webkit-border-radius: 6px;
-	-moz-border-radius: 6px;
-	border-radius: 6px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
 
-	-webkit-box-shadow: 2px 2px 20px 0px rgba(0, 0, 0, 0.2);
-	-moz-box-shadow:    2px 2px 20px 0px rgba(0, 0, 0, 0.2);
-	box-shadow:         2px 2px 20px 0px rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow: 2px 2px 20px 0px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow:    2px 2px 20px 0px rgba(0, 0, 0, 0.2);
+    box-shadow:         2px 2px 20px 0px rgba(0, 0, 0, 0.2);
 }
 
 .lead-gen-module-popover-arrow
 {
-	padding:0px;
-	padding-top:2px;
-	text-align: center;
-	width:100%;
-	height: 14px;
+    padding:0px;
+    padding-top:2px;
+    text-align: center;
+    width:100%;
+    height: 14px;
 }
 
 .lead-gen-module-popover-multiple-option
 {
-	padding-left: 10px;
-	padding-top: 6px;
-	padding-bottom: 10px;
-	font-family: "Proxima Nova W01", Helvetica, Roboto, Arial, sans-serif;
-	text-decoration: underline;
-	color:#004E9C;
-	background-color: none;
-	top:7px;
-	background-color: none;
-	font-size: 15px;
-	line-height: 15px;
-	text-align: left;
-	border-bottom: 1px solid #e5e5e5;
+    padding-left: 10px;
+    padding-top: 6px;
+    padding-bottom: 10px;
+    font-family: "Proxima Nova W01", Helvetica, Roboto, Arial, sans-serif;
+    text-decoration: underline;
+    color:#004E9C;
+    background-color: none;
+    top:7px;
+    background-color: none;
+    font-size: 15px;
+    line-height: 15px;
+    text-align: left;
+    border-bottom: 1px solid #e5e5e5;
 }
 
 .lead-gen-module-popover-multiple-option a {
-	color:#004E9C;
-	cursor: pointer;
+    color:#004E9C;
+    cursor: pointer;
 }
 
 .lead-gen-module-popover-multiple-option a:hover {
-	color:#2D80C2;
-	cursor: pointer;
+    color:#2D80C2;
+    cursor: pointer;
 }
 
 .lead-gen-module-calendar-container {
 
-	position: relative;
-	top: 0px;
-	padding: 0px;
-	margin: 0px;
-	width: 245px;
-	height: 175px;
-	text-align: left;
-	border-top: 1px solid #e5e5e5;
-	background-color: none;
+    position: relative;
+    top: 0px;
+    padding: 0px;
+    margin: 0px;
+    width: 245px;
+    height: 175px;
+    text-align: left;
+    border-top: 1px solid #e5e5e5;
+    background-color: none;
 }
 
 .lead-gen-module-calendar-item {
 
-	font-size: 12px;
-	display: inline-block;
-	padding: 0px;
-	margin:  0px;
-	background-color: none;
-	border-bottom: 1px solid #e5e5e5;
-	border-right: 1px solid #e5e5e5;
-	line-height: 37px;
-	width: 35px;
-	height: 35px;
-	color:#485865;
-	font-family: "Proxima Nova W01", Helvetica, Roboto, Arial, sans-serif;
-	text-align: center;
+    font-size: 12px;
+    display: inline-block;
+    padding: 0px;
+    margin:  0px;
+    background-color: none;
+    border-bottom: 1px solid #e5e5e5;
+    border-right: 1px solid #e5e5e5;
+    line-height: 37px;
+    width: 35px;
+    height: 35px;
+    color:#485865;
+    font-family: "Proxima Nova W01", Helvetica, Roboto, Arial, sans-serif;
+    text-align: center;
 
-	-webkit-touch-callout: none;
+    -webkit-touch-callout: none;
     -webkit-user-select: none;
     -khtml-user-select: none;
     -moz-user-select: none;
@@ -310,11 +310,11 @@ p.lead-gen-ctaPhone span {
 
 .lead-gen-module-calendar-item:hover
 {
-	cursor: pointer;
-	color: white;
-	background-color: #004E9C !important;
-	border-bottom: 1px solid #004E9C;
-	border-right: 1px solid #004E9C;
+    cursor: pointer;
+    color: white;
+    background-color: #004E9C !important;
+    border-bottom: 1px solid #004E9C;
+    border-right: 1px solid #004E9C;
 }
 
 /********************************************************************************/
@@ -326,12 +326,12 @@ p.lead-gen-ctaPhone span {
 
 .lead-gen-module .scroll-hint-container
 {
-	display: inline-block;
-	overflow: visible;
-	visibility: visible;
-	opacity: 0;
-	height: 0;
-	-webkit-transition: 0.5s;
+    display: inline-block;
+    overflow: visible;
+    visibility: visible;
+    opacity: 0;
+    height: 0;
+    -webkit-transition: 0.5s;
     -moz-transition: 0.5s;
     -ms-transition: 0.5s;
     -o-transition: 0.5s;
@@ -346,15 +346,15 @@ p.lead-gen-ctaPhone span {
 
 .lead-gen-module .scroll-hint-icon
 {
-	display: inline-block;
-	vertical-align: middle;
-	width: 40px;
-	height: 40px;
+    display: inline-block;
+    vertical-align: middle;
+    width: 40px;
+    height: 40px;
 
-	content: url("/images/scroll-hint-circle.svg");
-	background-image: url("/images/scroll-hint-arrow.svg");
+    content: url("/images/scroll-hint-circle.svg");
+    background-image: url("/images/scroll-hint-arrow.svg");
 
-	-webkit-animation: scroll-hint-animation 3s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite;
+    -webkit-animation: scroll-hint-animation 3s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite;
    -moz-animation: scroll-hint-animation 3s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite;
    -o-animation: scroll-hint-animation 3s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite;
     animation: scroll-hint-animation 3s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite;
@@ -366,11 +366,11 @@ p.lead-gen-ctaPhone span {
 
 .lead-gen-module .scroll-hint-text
 {
-	display: inline-block;
-	vertical-align: middle;
-	margin-left: 15px;
-	color: white;
-	font-size: 14px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 15px;
+    color: white;
+    font-size: 14px;
 }
 
 @keyframes scroll-hint-animation
@@ -410,37 +410,37 @@ p.lead-gen-ctaPhone span {
 
 .lead-gen-module .sentence-hint-container
 {
-	position: absolute;
-	top: 200px;
-	left: 0px;
-	width: 34px;
-	height: 60px;
+    position: absolute;
+    top: 200px;
+    left: 0px;
+    width: 34px;
+    height: 60px;
 }
 
 .lead-gen-module .sentence-hint-connector
 {
-	position: relative;
-	top: 0px;
-	left: 0px;
-	width: 34px;
-	height: 60px;
-	background-repeat: no-repeat;
-	background-image: url("/images/sentence-hint-connector.svg");
+    position: relative;
+    top: 0px;
+    left: 0px;
+    width: 34px;
+    height: 60px;
+    background-repeat: no-repeat;
+    background-image: url("/images/sentence-hint-connector.svg");
 }
 
 .lead-gen-module .sentence-hint-arrow
 {
-	position: absolute;
-	vertical-align: middle;
-	top: 50px;
-	left: 4px;
-	width: 40px;
-	height: 20px;
+    position: absolute;
+    vertical-align: middle;
+    top: 50px;
+    left: 4px;
+    width: 40px;
+    height: 20px;
 
-	background-image: url("/images/sentence-hint-arrow.svg");
-	background-repeat: no-repeat;
+    background-image: url("/images/sentence-hint-arrow.svg");
+    background-repeat: no-repeat;
 
-	-webkit-animation: typing-hint-animation 1s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite;
+    -webkit-animation: typing-hint-animation 1s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite;
    -moz-animation: typing-hint-animation 1s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite;
    -o-animation: typing-hint-animation 1s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite;
     animation: typing-hint-animation 1s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite;
@@ -451,8 +451,8 @@ p.lead-gen-ctaPhone span {
 
     /*
     box-shadow:     inset    0px 0px 0px 2px #FFFFFF;
-  	-webkit-box-shadow:inset 0px 0px 0px 2px #FFFFFF;
-  	-moz-box-shadow:   inset 0px 0px 0px 2px #FFFFFF;
+    -webkit-box-shadow:inset 0px 0px 0px 2px #FFFFFF;
+    -moz-box-shadow:   inset 0px 0px 0px 2px #FFFFFF;
     */
 
 }
@@ -489,18 +489,18 @@ p.lead-gen-ctaPhone span {
 
 .select-list-container
 {
-	padding: 0px;
-	margin: 0px;
-	width:300px;
-	height:200px;
-	background-color: none;
-	overflow-y: auto;
-	overflow-x: hidden;
+    padding: 0px;
+    margin: 0px;
+    width:300px;
+    height:200px;
+    background-color: none;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .select-list-item
 {
-	-webkit-touch-callout: none; /* iOS Safari */
+    -webkit-touch-callout: none; /* iOS Safari */
   -webkit-user-select: none;   /* Chrome/Safari/Opera */
   -khtml-user-select: none;    /* Konqueror */
   -moz-user-select: none;      /* Firefox */
@@ -508,11 +508,11 @@ p.lead-gen-ctaPhone span {
   user-select: none;           /* Non-prefixed version, currently
                                   not supported by any browser */
 
-	font-family: "Proxima Nova W01", Helvetica, Roboto, Arial, sans-serif;
-	font-weight: 200;
+    font-family: "Proxima Nova W01", Helvetica, Roboto, Arial, sans-serif;
+    font-weight: 200;
     text-align: left;
-	font-size: 15px;
-	line-height: 17px;
+    font-size: 15px;
+    line-height: 17px;
     height:40px;
     color:#485865;
     background-color: none;
@@ -525,7 +525,7 @@ p.lead-gen-ctaPhone span {
 
 .select-list-item:hover {
 
-	cursor: pointer;
+    cursor: pointer;
 }
 
 .select-list-item.selected
@@ -536,18 +536,18 @@ p.lead-gen-ctaPhone span {
 
 .select-search
 {
-	padding: 7px !important;
-	margin: 0 !important;
-	border-bottom: 1px solid #D0DBE5;
-	background-color: none;
-	width: 300px;
+    padding: 7px !important;
+    margin: 0 !important;
+    border-bottom: 1px solid #D0DBE5;
+    background-color: none;
+    width: 300px;
 }
 
 .select-search-field
 {
-	font-family: "Proxima Nova W01", Helvetica, Roboto, Arial, sans-serif;
-	font-weight: 200;
-	-webkit-appearance: none;
+    font-family: "Proxima Nova W01", Helvetica, Roboto, Arial, sans-serif;
+    font-weight: 200;
+    -webkit-appearance: none;
     border: 2px;
     font-size: 18px;
     margin: 0 !important;
@@ -556,11 +556,11 @@ p.lead-gen-ctaPhone span {
     padding-right: 6px;
     height: 36px;
     -webkit-border-radius: 3px;
-	-moz-border-radius: 3px;
-	border-radius: 3px;
-	width: 100%;
-	border: 1px solid #D0DBE5;
-	outline:none;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    width: 100%;
+    border: 1px solid #D0DBE5;
+    outline:none;
 }
 
 ::-webkit-input-placeholder {
@@ -585,100 +585,100 @@ p.lead-gen-ctaPhone span {
 ___________________________________________________________*/
 
 .lead-gen-form-container {
-	width: 100%;
-	background-color: #FFFFFF;
+    width: 100%;
+    background-color: #FFFFFF;
 }
 
 .lead-gen-form {
-	-webkit-touch-callout: none;
+    -webkit-touch-callout: none;
     -webkit-user-select: none;
     -khtml-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
 
-	/* background-color: white; */
-	margin: 0px;
-	padding: 0px;
-	margin-left: auto;
-	margin-right: auto;
-	max-width: 1000px;
-	width: 85%;
+    /* background-color: white; */
+    margin: 0px;
+    padding: 0px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1000px;
+    width: 85%;
 
-	font-size: 15px;
-	line-height: 20px;
-	color: #7F8992;
+    font-size: 15px;
+    line-height: 20px;
+    color: #7F8992;
 }
 
 .form-service-holder {
-	display: none;
+    display: none;
 }
 
 .lead-gen-post-container {
-	display: none;
-	background: #F2F6F9;
-	background-position: center 80px;
-	background-repeat: no-repeat;
-	width: 100%;
-	padding-top: 230px;
-	min-height: 700px;
-	text-align: center;
+    display: none;
+    background: #F2F6F9;
+    background-position: center 80px;
+    background-repeat: no-repeat;
+    width: 100%;
+    padding-top: 230px;
+    min-height: 700px;
+    text-align: center;
 }
 
 .lead-gen-post-container p.heading {
-	font-size: 24px !important;
-	line-height: 1.2em !important;
-	margin-bottom: 30px !important;
+    font-size: 24px !important;
+    line-height: 1.2em !important;
+    margin-bottom: 30px !important;
 }
 
 .lead-gen-post-container #sent-to-phone, .lead-gen-post-container #sent-to-email {
-	display: block;
-	margin-top: 30px;
-	margin-bottom: 50px;
-	color: #004E9C;
+    display: block;
+    margin-top: 30px;
+    margin-bottom: 50px;
+    color: #004E9C;
 }
 
 .lead-gen-post-container button, .lead-gen-post-container input {
-	width: 320px !important;
-	margin: 0 !important;
+    width: 320px !important;
+    margin: 0 !important;
 }
 
 #lg-post-thankyou {
-	background-image: url("http://livingstonintl.com/livingston-content/plugins/leadgen/leadgen-source/leadgen-assets/images/icon-send-success.svg");
+    background-image: url("https://livingstonintl.com/livingston-content/plugins/leadgen/leadgen-source/leadgen-assets/images/icon-send-success.svg");
 }
 
 #lg-post-thankyou .form-error .errormsg, #lg-post-validate .form-error .errormsg {
-	width: 320px;
-	padding-left: 0;
-	text-align: left;
-	display: block;
-	margin: 10px auto 0 auto;
+    width: 320px;
+    padding-left: 0;
+    text-align: left;
+    display: block;
+    margin: 10px auto 0 auto;
 }
 
 #lg-post-error, #lg-post-validate {
-	background-image: url("http://livingstonintl.com/livingston-content/plugins/leadgen/leadgen-source/leadgen-assets/images/icon-send-error.svg");
+    background-image: url("https://livingstonintl.com/livingston-content/plugins/leadgen/leadgen-source/leadgen-assets/images/icon-send-error.svg");
 }
 
 #lg-post-loading {
-	background-image: url("http://livingstonintl.com/livingston-content/plugins/leadgen/leadgen-source/leadgen-assets/images/loading.svg");
+    background-image: url("https://livingstonintl.com/livingston-content/plugins/leadgen/leadgen-source/leadgen-assets/images/loading.svg");
 }
 
 
 
 /*
 #lg-form-submit .loading {
-	display: none;
-	font-weight: bold;
+    display: none;
+    font-weight: bold;
 }
 
 #lg-form-submit button.submitting {
-	cursor: default;
-	-webkit-transition: none;
-	-moz-transition: none;
-	-ms-transition: none;
-	-o-transition: none;
-	transition: none;
-	background-color: #2D80C2;
+    cursor: default;
+    -webkit-transition: none;
+    -moz-transition: none;
+    -ms-transition: none;
+    -o-transition: none;
+    transition: none;
+    background-color: #2D80C2;
 }
 */
 
@@ -689,150 +689,150 @@ ___________________________________________________________*/
 
 
 .lg-section-holder {
-	padding: 50px 0;
-	border-bottom: 1px solid #B6BCC1;
+    padding: 50px 0;
+    border-bottom: 1px solid #B6BCC1;
 }
 
 .form-service-holder > .lg-section-holder:last-child {
-	border: none;
+    border: none;
 }
 
 .lg-section-heading, .lg-section-subheading {
-	display: block;
-	font-weight:200 !important;
-/* 	margin-top: 10px !important;
-	margin-bottom: 10px !important; */
+    display: block;
+    font-weight:200 !important;
+/*  margin-top: 10px !important;
+    margin-bottom: 10px !important; */
 }
 
 .lg-section-heading {
-	font-family: "Proxima Nova W01", Helvetica, Roboto, Arial, sans-serif;
-	font-size: 30px !important;
-	font-weight: 200 !important;
-	line-height: 30px !important;
-	color: #485865 !important;
+    font-family: "Proxima Nova W01", Helvetica, Roboto, Arial, sans-serif;
+    font-size: 30px !important;
+    font-weight: 200 !important;
+    line-height: 30px !important;
+    color: #485865 !important;
 }
 
 .lg-section-heading span {
-	white-space: nowrap;
+    white-space: nowrap;
 }
 
 .lg-section-content {
-	/* border: 1px solid red; */
-	/* margin-bottom: 10px !important; */
+    /* border: 1px solid red; */
+    /* margin-bottom: 10px !important; */
 }
 
 .lg-subsection-toggle > div, .lg-subsection-holder > div {
-	overflow: hidden;
-	height: 0;
+    overflow: hidden;
+    height: 0;
 }
 
 .lead-gen-form p {
-	line-height: 20px;
-	color: #7F8992;
+    line-height: 20px;
+    color: #7F8992;
 }
 
 .lead-gen-form .label {
-	display: inline-block;
-	margin:0px;
-	height: 30px;
-	color:#485865;
-	font-size: 18px;
-	line-height: 32px;
-	margin-right: 25px;
-	vertical-align: middle;
+    display: inline-block;
+    margin:0px;
+    height: 30px;
+    color:#485865;
+    font-size: 18px;
+    line-height: 32px;
+    margin-right: 25px;
+    vertical-align: middle;
 }
 
 .lg-section-holder p.description {
-	max-width: 70%;
+    max-width: 70%;
 }
 
 #lg-form-submit {
-	padding-bottom: 50px;
+    padding-bottom: 50px;
 }
 
 .lg-subsection-holder {
-	/* border: 1px solid red; */
+    /* border: 1px solid red; */
 }
 
 #lg-form-personal {
-	/* background: #ccffff; */
+    /* background: #ccffff; */
 }
 
 .lg-dynamic {
-	/* background: yellow; */
+    /* background: yellow; */
 }
 
 .lg-sub-dynamic {
-	display: none;
+    display: none;
 }
 
 .dyn-FCL-false, .dyn-FCL-true {
-	display: none;
+    display: none;
 }
 
 a.lg-link-button {
-	cursor: pointer;
-	font-weight: 500;
-	color: #004E9C;
-	text-decoration: underline;
+    cursor: pointer;
+    font-weight: 500;
+    color: #004E9C;
+    text-decoration: underline;
 }
 
 a.lg-link-button:hover {
-	color: #0589DB;
-	text-decoration: underline;
+    color: #0589DB;
+    text-decoration: underline;
 }
 
 .errormsg {
-	display: none;
-	color: #f77d19;
-	padding-left: 30px;
+    display: none;
+    color: #f77d19;
+    padding-left: 30px;
 }
 
 .errormsg:before {
-	content: "";
-	background-image: url("http://livingstonintl.com/livingston-content/plugins/leadgen/leadgen-source/leadgen-assets/images/icon-error.svg");
-	background-repeat:no-repeat;
-	display: inline-block;
-	vertical-align: middle;
-	outline: none;
-	width: 22px;
-	height: 22px;
-	padding-right: 5px;
+    content: "";
+    background-image: url("https://livingstonintl.com/livingston-content/plugins/leadgen/leadgen-source/leadgen-assets/images/icon-error.svg");
+    background-repeat:no-repeat;
+    display: inline-block;
+    vertical-align: middle;
+    outline: none;
+    width: 22px;
+    height: 22px;
+    padding-right: 5px;
 }
 
 .form-error .errorflag-holder {
-	border: 2px solid red;
-	margin-top: 30px;
+    border: 2px solid red;
+    margin-top: 30px;
 }
 
 .errorflag, .date-check > .errormsg {
-	padding-left: 0 !important;
+    padding-left: 0 !important;
 }
 
 .date-check > .errormsg {
-	margin-top: 20px;
+    margin-top: 20px;
 }
 
 .form-error .errormsg {
-	display: inline-block;
+    display: inline-block;
 }
 
 .form-error label {
-	color: #f77d19 !important;
+    color: #f77d19 !important;
 }
 
 .form-error input {
-	border: 3px solid #f77d19 !important;
+    border: 3px solid #f77d19 !important;
 }
 .form-error input[type="text"]:focus {
-	border: none !important;
+    border: none !important;
 }
 
 .lg-superlarge {
-	display: inline-block;
-	font-size: 38px;
-	vertical-align: middle;
-	padding-right: 10px;
+    display: inline-block;
+    font-size: 38px;
+    vertical-align: middle;
+    padding-right: 10px;
 }
 
 
@@ -842,30 +842,30 @@ ___________________________________________________________*/
 
 
 .lead-gen-form .row {
-	display: inline-block;
+    display: inline-block;
 }
 
 .lead-gen-form .row-item {
-	display: inline-block;
-	margin-right: 15px;
+    display: inline-block;
+    margin-right: 15px;
 }
 
 .lead-gen-form .field-label, .lg-section-subheading {
-	font-family: "Proxima Nova W01", Helvetica, Roboto, Arial, sans-serif;
-	font-weight: 500;
-	font-size: 15px;
-	padding-left:3px;
-	margin-bottom: 4px;
-	color: black;
+    font-family: "Proxima Nova W01", Helvetica, Roboto, Arial, sans-serif;
+    font-weight: 500;
+    font-size: 15px;
+    padding-left:3px;
+    margin-bottom: 4px;
+    color: black;
 }
 
 .lead-gen-form-container select {
-	vertical-align: middle;
+    vertical-align: middle;
 }
 
 select:-moz-focusring {
-	color: transparent !important;
-	text-shadow: 0 0 0 #000 !important;
+    color: transparent !important;
+    text-shadow: 0 0 0 #000 !important;
 }
 
 
@@ -877,28 +877,28 @@ Input fields style
 
 .lead-gen-form input[type="text"] {
 
-	width: 311px;
-	height: 40px;
+    width: 311px;
+    height: 40px;
 
-	margin: 0;
-	padding: 0;
-	padding-left: 10px;
-	padding-right: 10px;
+    margin: 0;
+    padding: 0;
+    padding-left: 10px;
+    padding-right: 10px;
 
-	font-family: "Proxima Nova W01", Helvetica, Roboto, Arial, sans-serif;
-	font-style: normal;
-	font-weight: 100;
-	font-size: 18px;
-	line-height: 18px;
+    font-family: "Proxima Nova W01", Helvetica, Roboto, Arial, sans-serif;
+    font-style: normal;
+    font-weight: 100;
+    font-size: 18px;
+    line-height: 18px;
 
-	appearance: none;
-	box-shadow: none;
+    appearance: none;
+    box-shadow: none;
 
-	-webkit-border-radius: 3px;
-	-moz-border-radius: 3px;
-	border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
 
-	-webkit-transition: 0.2s;
+    -webkit-transition: 0.2s;
     -moz-transition: 0.2s;
     -ms-transition: 0.2s;
     -o-transition: 0.2s;
@@ -909,32 +909,32 @@ Input fields style
     -webkit-box-sizing: border-box;
 
     -webkit-border-radius: 3px;
-	-moz-border-radius: 3px;
-	border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
 
     color: #004E9C;
-	background-color:white;
+    background-color:white;
     border: 1px solid #B6BCC1;
-	outline: none;
+    outline: none;
 }
 
 .lead-gen-form input[type="text"].small {
-	width: 180px;
+    width: 180px;
 }
 
 .lead-gen-form input[type="text"]:focus {
 
-	color: #004E9C;
-	background-color:white;
+    color: #004E9C;
+    background-color:white;
 
-	 box-sizing: border-box;
+     box-sizing: border-box;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
 
-	border: 1px solid #004E9C;
- 	box-shadow:         inset 0px 0px 0px 3px #004E9C;
-  	-webkit-box-shadow: inset 0px 0px 0px 3px #004E9C;
-  	-moz-box-shadow:    inset 0px 0px 0px 3px #004E9C;
+    border: 1px solid #004E9C;
+    box-shadow:         inset 0px 0px 0px 3px #004E9C;
+    -webkit-box-shadow: inset 0px 0px 0px 3px #004E9C;
+    -moz-box-shadow:    inset 0px 0px 0px 3px #004E9C;
 }
 
 
@@ -952,12 +952,12 @@ Radio Specific Styles
 
 .lead-gen-form .radio-group {
 
-	margin-bottom:0px;
+    margin-bottom:0px;
 }
 
 .lead-gen-form .radio-group label {
 
-	display: inline-block;
+    display: inline-block;
     cursor: pointer;
     position: relative;
     background-color: none;
@@ -974,17 +974,17 @@ Radio Specific Styles
 
 .lead-gen-form .radio-group label:before {
 
- 	content: "";
+    content: "";
     position: absolute;
     display: inline-block;
-	background-image: none;
-	outline: none;
+    background-image: none;
+    outline: none;
     width: 30px;
     height: 30px;
-	left: 0px;
+    left: 0px;
     top: 0px;
-	color:#485865;
-	background-color:white;
+    color:#485865;
+    background-color:white;
     border: 2px solid #B6BCC1;
 
     -webkit-transition: 0.1s;
@@ -992,26 +992,26 @@ Radio Specific Styles
     -ms-transition: 0.1s;
     -o-transition: 0.1s;
     transition: 0.1s;
- 	box-sizing: border-box;
+    box-sizing: border-box;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
 
     -webkit-border-radius: 15px;
-	-moz-border-radius: 15px;
-	border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
 }
 
 .lead-gen-form input[type=radio]:checked + label:before {
 
-	background-image: url("http://livingstonintl.com/livingston-content/plugins/leadgen/leadgen-source/leadgen-assets/images/radio-checked.svg");
-	background-repeat:no-repeat;
-	background-origin: border-box;
-	background-color: none;
-	height: 30px;
+    background-image: url("https://livingstonintl.com/livingston-content/plugins/leadgen/leadgen-source/leadgen-assets/images/radio-checked.svg");
+    background-repeat:no-repeat;
+    background-origin: border-box;
+    background-color: none;
+    height: 30px;
     width: 30px;
     border: 2px solid #004E9C;
 
-	box-sizing: border-box;
+    box-sizing: border-box;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
 }
@@ -1035,7 +1035,7 @@ Checkbox specific styles
 
 .lead-gen-form .checkbox-group label {
 
-	display: inline-block;
+    display: inline-block;
     cursor: pointer;
     position: relative;
     background-color: none;
@@ -1050,7 +1050,7 @@ Checkbox specific styles
 }
 
 .lead-gen-form input[type=checkbox] {
-	display: none;
+    display: none;
 }
 
 .lead-gen-form .checkbox-group label:before {
@@ -1058,14 +1058,14 @@ Checkbox specific styles
     content: "";
     position: absolute;
     display: inline-block;
-	background-image: none;
-	outline: none;
+    background-image: none;
+    outline: none;
     width: 30px;
     height: 30px;
-	left: 0px;
+    left: 0px;
     top: 0px;
-	color:#485865;
-	background-color:white;
+    color:#485865;
+    background-color:white;
     border: 2px solid #B6BCC1;
 
     -webkit-transition: 0.1s;
@@ -1079,15 +1079,15 @@ Checkbox specific styles
     -webkit-box-sizing: border-box;
 
     -webkit-border-radius: 3px;
-	-moz-border-radius: 3px;
-	border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
 }
 
 .lead-gen-form input[type=checkbox]:checked + label:before {
-	background-image: url("http://livingstonintl.com/livingston-content/plugins/leadgen/leadgen-source/leadgen-assets/images/checkbox-checked.svg");
-	background-repeat:no-repeat;
-	background-origin: border-box;
-	background-color: none;
+    background-image: url("https://livingstonintl.com/livingston-content/plugins/leadgen/leadgen-source/leadgen-assets/images/checkbox-checked.svg");
+    background-repeat:no-repeat;
+    background-origin: border-box;
+    background-color: none;
     height: 30px;
     width: 30px;
     border: 3px solid #004E9C;
@@ -1107,35 +1107,35 @@ Customs Select
 
 
 .lead-gen-form select::-ms-expand {
-	display: none;
+    display: none;
 }
 
 .lead-gen-form select {
 
-	margin: 0;
+    margin: 0;
 
-	width: auto;
+    width: auto;
 
-	cursor: pointer;
-	-webkit-appearance: none;
-	-moz-appearance: none;
+    cursor: pointer;
+    -webkit-appearance: none;
+    -moz-appearance: none;
 
-	overflow: hidden;
-	outline: none;
+    overflow: hidden;
+    outline: none;
 
-	font-family: "Proxima Nova W01", Helvetica, Roboto, Arial, sans-serif;
-	font-style: normal;
-	font-weight: 100;
-	font-size: 16px;
-	line-height: 16px;
+    font-family: "Proxima Nova W01", Helvetica, Roboto, Arial, sans-serif;
+    font-style: normal;
+    font-weight: 100;
+    font-size: 16px;
+    line-height: 16px;
 
-	height: 40px;
+    height: 40px;
 
-	padding: 0px;
-	padding-left:10px;
-	padding-right:50px;
+    padding: 0px;
+    padding-left:10px;
+    padding-right:50px;
 
-	padding-top:0px;
+    padding-top:0px;
 
     color:#485865;
     background-color: #F2F6F9;
@@ -1146,13 +1146,13 @@ Customs Select
     -webkit-box-sizing: border-box;
 
     -webkit-border-radius: 3px;
-	-moz-border-radius: 3px;
-	border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
 
-	background-image: url("http://livingstonintl.com/livingston-content/plugins/leadgen/leadgen-source/leadgen-assets/images/select-arrow.svg");
-	background-repeat: no-repeat;
-	background-position: 100% 0;
-	background-origin:border-box;
+    background-image: url("https://livingstonintl.com/livingston-content/plugins/leadgen/leadgen-source/leadgen-assets/images/select-arrow.svg");
+    background-repeat: no-repeat;
+    background-position: 100% 0;
+    background-origin:border-box;
 }
 
 
@@ -1160,7 +1160,7 @@ Customs Select
 /* ...__LIST CHECKBOXES tmp ...*/
 
 .lg-checkbox-list span {
-	display: block;
+    display: block;
 }
 
 
@@ -1171,79 +1171,79 @@ Customs Select
 /* __ICON CHECKBOXES */
 .lg-checkbox-icons {}
 .lg-checkbox-icons input {
-	opacity: 0;
+    opacity: 0;
     position: absolute;
 }
 
 .lg-checkbox-icons label {
 
-/* 	-moz-box-sizing: content-box;
-	-webkit-box-sizing: content-box;
-	box-sizing: content-box; */
+/*  -moz-box-sizing: content-box;
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box; */
 
-	margin: 0 !important;
+    margin: 0 !important;
 
-	position: relative;
-	display: block;
+    position: relative;
+    display: block;
     float: left;
-	background: url(http://livingstonintl.com/livingston-content/plugins/leadgen/leadgen-source/leadgen-assets/images/icons/empty.svg) no-repeat center top;
-	width: 150px;
-	border-right: 1px solid #B6BCC1;
-	cursor: pointer;
+    background: url(https://livingstonintl.com/livingston-content/plugins/leadgen/leadgen-source/leadgen-assets/images/icons/empty.svg) no-repeat center top;
+    width: 150px;
+    border-right: 1px solid #B6BCC1;
+    cursor: pointer;
 
-	padding-top: 95px;
-	text-align: center;
-	font-size: 14px;
-	white-space: nowrap;
-	line-height: 1.1em;
-	color: #485865;
-	margin-bottom: 20px;
+    padding-top: 95px;
+    text-align: center;
+    font-size: 14px;
+    white-space: nowrap;
+    line-height: 1.1em;
+    color: #485865;
+    margin-bottom: 20px;
 
-/* 	opacity: 0.5;
-	transition: opacity .25s ease-in-out;
-	-moz-transition: opacity .25s ease-in-out;
-	-webkit-transition: opacity .25s ease-in-out; */
+/*  opacity: 0.5;
+    transition: opacity .25s ease-in-out;
+    -moz-transition: opacity .25s ease-in-out;
+    -webkit-transition: opacity .25s ease-in-out; */
 
-	-webkit-backface-visibility: hidden;
-	-webkit-font-smoothing: antialiased;
+    -webkit-backface-visibility: hidden;
+    -webkit-font-smoothing: antialiased;
 }
 
 .lg-checkbox-icons .lg-last {
- 	border: none;
+    border: none;
 }
 
 .lg-checkbox-icons-tick {
-	display: block;
-	position: absolute;
-	width: 100%;
-	height: 50px;
-	top: 0;
-	text-align: center;
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 50px;
+    top: 0;
+    text-align: center;
 }
 
 .lg-checkbox-icons input:checked + label {
-	opacity: 1;
+    opacity: 1;
 }
 
 .lg-checkbox-icons input:checked + label .lg-checkbox-icons-tick {
-	background: url(http://livingstonintl.com/livingston-content/plugins/leadgen/leadgen-source/leadgen-assets/images/icons/icon-check.svg) no-repeat center top;
+    background: url(https://livingstonintl.com/livingston-content/plugins/leadgen/leadgen-source/leadgen-assets/images/icons/icon-check.svg) no-repeat center top;
 }
 
 .lg-checkbox-icons .lg-first {
-	width: 115px;
-	background-position: left top;
-	padding-right:35px;
+    width: 115px;
+    background-position: left top;
+    padding-right:35px;
 }
 
 .lg-first .lg-checkbox-icons-tick {
-	background-position: left top !important;
+    background-position: left top !important;
 }
 
 .lg-checkbox-icons-hover {
-	transition: none !important;
-	-moz-transition: none !important;
-	-webkit-transition: none !important;
-	opacity: 1 !important;
+    transition: none !important;
+    -moz-transition: none !important;
+    -webkit-transition: none !important;
+    opacity: 1 !important;
 }
 
 
@@ -1254,29 +1254,29 @@ ___________________________________________________________*/
 
 
 .lead-gen-form .marginx1 {
-	display: block;
-	margin-bottom: 10px;
+    display: block;
+    margin-bottom: 10px;
 }
 
 .lead-gen-form .marginx2 {
-	display: block;
-	margin-bottom: 20px;
+    display: block;
+    margin-bottom: 20px;
 }
 
 .lead-gen-form .marginx3 {
-	margin-bottom: 30px;
+    margin-bottom: 30px;
 }
 
 .clearfix:before, .clearfix:after {
-	content: " ";
-	display: table;
+    content: " ";
+    display: table;
 
 }
 
 .clearfix:after {
-	clear: both;
+    clear: both;
 }
 
 .clearfix {
-	*zoom: 1;
+    *zoom: 1;
 }

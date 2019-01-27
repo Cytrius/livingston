@@ -98,7 +98,7 @@ $(document).ready(function() {
 
 </script>
 
-<img id="printLogo" src="http://vehicletransportation.ca/wp-content/themes/vts2016/library/images/2015/livingston-simplify-trade-logo.svg">
+<img id="printLogo" src="https://vehicletransportation.ca/wp-content/themes/vts2016/library/images/2015/livingston-simplify-trade-logo.svg">
 
 <div class="lead-gen-module-container lead-gen-main">
     <div class="lead-gen-module">

@@ -16,7 +16,7 @@ class HomeController extends Controller
     /**
      * @var string
      */
-    private $parent_site = 'http://vehicletransportation.ca/';
+    private $parent_site = 'https://vehicletransportation.ca/';
     /**
      * Create a new controller instance.
      *
