@@ -21,14 +21,14 @@ Route::get('/get-a-quote', 'HomeController@form');
 /* Admin and API Routes */
 Route::get('/dashboard', 'HomeController@index');
 Route::get('/dashboard/{a?}/{b?}/{c?}/{d?}/{e?}', 'HomeController@index');
-Route::get('/import', 'HomeController@import');
+Route::get('/import', 'ImportController@import');
 Route::get('/book/{quote_id}', 'HomeController@book');
 Route::post('/book-confirm/{quote_id}', 'HomeController@bookConfirm');
 
 Route::get('/history', 'HomeController@history');
 
 Route::post('/quote', 'HomeController@quote');
-Route::post('/import', 'HomeController@importPost');
+Route::post('/import', 'ImportController@importPost');
 
 Route::get('/api/rates', 'RatesController@getAllRates');
 Route::post('/api/rates', 'RatesController@newRate');
