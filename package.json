@@ -4,7 +4,7 @@
     "scripts": {
         "dev": "NODE_ENV=develop webpack --config webpack.config.js --progress --color -d --watch",
         "prod": "NODE_ENV=production webpack --config webpack.config.js --progress --profile -p",
-        "zip": "zip ../release.zip -r * .[^.]* -x \"vendor/*\" -x \"node_modules/*\" -x \".env\" -x \".git/*\""
+        "zip": "rm release.zip || true && zip ../release.zip -r * .[^.]* -x \"vendor/*\" -x \"node_modules/*\" -x \".env\" -x \".git/*\""
     },
     "dependencies": {
         "@angular/common": "~2.4.8",
