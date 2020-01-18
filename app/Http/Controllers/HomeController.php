@@ -449,6 +449,7 @@ class HomeController extends Controller
      */
     public function importPost(Request $request)
     {
+        return response('importPost', 200);
 
         if (!\Auth::user()->is_admin)
         {
@@ -487,7 +488,6 @@ class HomeController extends Controller
         }
         catch (\Exception $e)
         {
-            dd($e);
             return response($e->getMessage(), 403);
         }
 
